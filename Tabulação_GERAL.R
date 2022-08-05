@@ -1,0 +1,11939 @@
+##
+###Indicando área de trabalho###
+##
+
+getwd()
+
+setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
+
+##
+###libraries###
+##
+
+library(dplyr)
+library(foreign)
+
+##
+###Importação da Base de Dados e Criação de Objetos Primários e seleção com DPLYR %>% select de colunas de interesse. É necessário atenção para a mudança da ficha do SINAN em 2015.###
+##
+
+BASE_IBGE<-read.table(file="/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/CSV/Planilha_Base_IBGE.csv", 
+                      header=TRUE, 
+                      sep=",")
+
+DENGON2009 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2009.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+DENGON2010 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2010.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+DENGON2011 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2011.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+DENGON2012 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2012.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+DENGON2013 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2013.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+DENGON2014 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2014.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+DENGON2015 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2015.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2016 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2016.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2017 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2017.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2018 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2018.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2019 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2019.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2020 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2020.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2021 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2021.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+DENGON2022 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2022.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
+###Transformando coluna de semana epidemiológica de fator para numérica (passando por texto, se for direto, ela transforma 200905 em 06. Seria possível realizar busca de SE passando direto de fator para numérica utilizando as.integer(DENGON2009 %>% 
+##filter(ID_MUNICIP == 410165, SEM_PRI == 6) -1, para buscar SE 05?
+##Será usado para buscar semanas epidemiológicas
+##
+
+DENGON2009$SEM_PRI <-as.numeric(as.character(DENGON2009$SEM_PRI))
+
+DENGON2010$SEM_PRI <-as.numeric(as.character(DENGON2010$SEM_PRI))
+
+DENGON2011$SEM_PRI <-as.numeric(as.character(DENGON2011$SEM_PRI))
+
+DENGON2012$SEM_PRI <-as.numeric(as.character(DENGON2012$SEM_PRI))
+
+DENGON2013$SEM_PRI <-as.numeric(as.character(DENGON2013$SEM_PRI))
+
+DENGON2014$SEM_PRI <-as.numeric(as.character(DENGON2014$SEM_PRI))
+
+DENGON2015$SEM_PRI <-as.numeric(as.character(DENGON2015$SEM_PRI))
+
+DENGON2016$SEM_PRI <-as.numeric(as.character(DENGON2016$SEM_PRI))
+
+DENGON2017$SEM_PRI <-as.numeric(as.character(DENGON2017$SEM_PRI))
+
+DENGON2018$SEM_PRI <-as.numeric(as.character(DENGON2018$SEM_PRI))
+
+DENGON2019$SEM_PRI <-as.numeric(as.character(DENGON2019$SEM_PRI))
+
+DENGON2020$SEM_PRI <-as.numeric(as.character(DENGON2020$SEM_PRI))
+
+DENGON2021$SEM_PRI <-as.numeric(as.character(DENGON2021$SEM_PRI))
+
+DENGON2022$SEM_PRI <-as.numeric(as.character(DENGON2022$SEM_PRI))
+
+##
+###Construindo o conjunto de tabelas necessárias por período sazonal####
+##
+
+#####################################################################################################################
+########################################         2009/10          ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_09_10_AUX01 <- DENGON2009 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 200930)
+
+RS22_09_10_AUX02 <- DENGON2010 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201029)
+
+RS22_09_10_SINAN <- rbind(RS22_09_10_AUX01, RS22_09_10_AUX02)
+
+rm(RS22_09_10_AUX01, RS22_09_10_AUX02)
+
+###Removendo tabela DENGON2009 já utilizada###
+
+rm (DENGON2009)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_09_10_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_09_10_SE_Notificados <- as.data.frame(RS22_09_10_SE_Notificados)
+
+colnames(RS22_09_10_SE_Notificados)[1] <- "Município" 
+
+RS22_09_10_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_09_10_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_09_10_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 2] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200930)%>%
+                                                                                      count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 3] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200931) %>% 
+                                                                                      count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 4] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200932) %>% 
+                                                                                      count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i),5] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i, 
+                                                                                            SEM_PRI ==200933) %>% 
+                                                                                     count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 6] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200934) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 7] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200935) %>% 
+                                                                                      count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 8] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200936) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 9] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==200937) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 10] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200938) %>%
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 11] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200939) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 12] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==200940) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 13] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200941) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 14] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200942) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 15] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200943) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 16] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200944) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 17] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200945) %>%
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 18] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200946) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 19] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200947) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 20] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200948) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i),  21] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==200949) %>%
+                                                                                        count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 22] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==200950) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 23] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==200951) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 24] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==200952) %>%
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 25] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==200953) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 26] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201001) %>%
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 27] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201002) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 28] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201003) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 29] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201004) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 30] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201005) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 31] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201006) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 32] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201007) %>% 
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 33] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201008) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 34] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201009) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 35] <- as.integer(RS22_09_10_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201010) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 36] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201011) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 37] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201012) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 38] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201013) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 39] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201014) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 40] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201015) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 41] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201016) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 42] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201017) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 43] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201018) %>% 
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 44] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201019) %>% 
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 45] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201020) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 46] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201021) %>% 
+                                                                                       count()
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 47] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201022) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 48] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201023) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 49] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201024) %>%
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 50] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201025) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 51] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201026) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 52] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201027) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 53] <- as.integer(RS22_09_10_SINAN %>%  
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201028) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 54] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201029) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_09_10_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_09_10_SE_Notificados[17,2:54] <- apply(RS22_09_10_SE_Notificados[,2:54], 2, sum)
+
+RS22_09_10_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_09_10_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_09_10_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_09_10_GERAL$Município), 2]
+
+RS22_09_10_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_09_10_GERAL$Município), 5]
+
+RS22_09_10_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_09_10_GERAL$Município), 1]
+
+RS22_09_10_GERAL <- RS22_09_10_GERAL[,c(4, 1, 2, 3)]
+
+RS22_09_10_GERAL$Notificados <- NA
+
+RS22_09_10_GERAL$Dengue <- NA
+
+RS22_09_10_GERAL$D_S_A <- NA
+
+RS22_09_10_GERAL$Dengue_Grave <- NA
+
+RS22_09_10_GERAL$Descartados <- NA
+
+RS22_09_10_GERAL$Autoctones <- NA
+
+RS22_09_10_GERAL$Incidencia <- NA
+
+RS22_09_10_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_09_10_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_09_10_GERAL$DENV_I <- NA
+
+RS22_09_10_GERAL$DENV_II <- NA
+
+RS22_09_10_GERAL$DENV_III <- NA
+
+RS22_09_10_GERAL$DENV_IV <- NA
+
+RS22_09_10_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_09_10_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 1, 
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_09_10_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 2, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_09_10_SINAN %>%   
+                                                                             filter(CLASSI_FIN == 3 | CLASSI_FIN == 4, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_09_10_SINAN %>%  
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_09_10_GERAL[which(RS22_09_10_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_09_10_GERAL$Incidencia <- (RS22_09_10_GERAL$Autoctones/RS22_09_10_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_09_10_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_09_10_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_09_10_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_09_10_EXTRA$Menos_1_ano <- NA
+
+RS22_09_10_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_09_10_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_09_10_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_09_10_EXTRA$Maior_Dezoito <- NA
+
+RS22_09_10_EXTRA$Area_Urbana <- NA
+
+RS22_09_10_EXTRA$Area_Rural <- NA
+
+RS22_09_10_EXTRA$Sexo_Feminino <- NA
+
+RS22_09_10_EXTRA$Sexo_Masculino <- NA
+
+RS22_09_10_EXTRA$Analfabeto <- NA
+
+RS22_09_10_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_09_10_EXTRA$Fundamental <- NA
+
+RS22_09_10_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_09_10_EXTRA$Ens_Medio<- NA
+
+RS22_09_10_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_09_10_EXTRA$Ens_Superior<- NA
+
+RS22_09_10_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_09_10_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_09_10_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_09_10_EXTRA[which(RS22_09_10_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_09_10_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+#####################################################################################################################
+########################################         2010/2011        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_10_11_AUX01 <- DENGON2010 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201030)
+
+RS22_10_11_AUX02 <- DENGON2011 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201129)
+
+RS22_10_11_SINAN <- rbind(RS22_10_11_AUX01, RS22_10_11_AUX02)
+
+rm(RS22_10_11_AUX01, RS22_10_11_AUX02)
+
+###Removendo tabela DENGON2010 já utilizada###
+
+rm (DENGON2010)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_10_11_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_10_11_SE_Notificados <- as.data.frame(RS22_10_11_SE_Notificados)
+
+colnames(RS22_10_11_SE_Notificados)[1] <- "Município" 
+
+RS22_10_11_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_10_11_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_10_11_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 2] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201030) %>% 
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 3] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,  
+                                                                                             SEM_PRI ==201031) %>%
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 4] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201032) %>% 
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i),5] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i, 
+                                                                                            SEM_PRI ==201033) %>% 
+                                                                                     count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 6] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201034) %>%
+                                                                                      count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 7] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201035) %>% 
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 8] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201036) %>%
+                                                                                      count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 9] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201037) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 10] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201038) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 11] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201039) %>%
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 12] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201040) %>%
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 13] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201041) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 14] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201042) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 15] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201043) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 16] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201044) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 17] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201045) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 18] <- as.integer(RS22_10_11_SINAN %>%  
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201046) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 19] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201047) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 20] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201048) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i),  21] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201049) %>%
+                                                                                        count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 22] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201050) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 23] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201051) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 24] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201052) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 25] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201053) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 26] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201101) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 27] <- as.integer(RS22_10_11_SINAN %>%  
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201102) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 28] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201103) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 29] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201104) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 30] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201105) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 31] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201106) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 32] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201107) %>%
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 33] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201108) %>%
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 34] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201109) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 35] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201110) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 36] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201111) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 37] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201112) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 38] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201113) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 39] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201114) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 40] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201115) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 41] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201116) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 42] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201117) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 43] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201118) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 44] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201119) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 45] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201120) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 46] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201121) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 47] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201122) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 48] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201123) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 49] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201124) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 50] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201125) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 51] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201126) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 52] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201127) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 53] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201128) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 54] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201129) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_10_11_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_10_11_SE_Notificados[17,2:54] <- apply(RS22_10_11_SE_Notificados[,2:54], 2, sum)
+
+RS22_10_11_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_10_11_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_10_11_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_10_11_GERAL$Município), 2]
+
+RS22_10_11_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_10_11_GERAL$Município), 5]
+
+RS22_10_11_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_10_11_GERAL$Município), 1]
+
+RS22_10_11_GERAL <- RS22_10_11_GERAL[,c(4, 1, 2, 3)]
+
+RS22_10_11_GERAL$Notificados <- NA
+
+RS22_10_11_GERAL$Dengue <- NA
+
+RS22_10_11_GERAL$D_S_A <- NA
+
+RS22_10_11_GERAL$Dengue_Grave <- NA
+
+RS22_10_11_GERAL$Descartados <- NA
+
+RS22_10_11_GERAL$Autoctones <- NA
+
+RS22_10_11_GERAL$Incidencia <- NA
+
+RS22_10_11_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_10_11_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_10_11_GERAL$DENV_I <- NA
+
+RS22_10_11_GERAL$DENV_II <- NA
+
+RS22_10_11_GERAL$DENV_III <- NA
+
+RS22_10_11_GERAL$DENV_IV <- NA
+
+RS22_10_11_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_10_11_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 1, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_10_11_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 2, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_10_11_SINAN %>%   
+                                                                             filter(CLASSI_FIN == 3 | CLASSI_FIN == 4, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_10_11_SINAN %>%  
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_10_11_GERAL[which(RS22_10_11_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_10_11_GERAL$Incidencia <- (RS22_10_11_GERAL$Autoctones/RS22_10_11_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+
+RS22_10_11_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_10_11_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_10_11_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_10_11_EXTRA$Menos_1_ano <- NA
+
+RS22_10_11_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_10_11_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_10_11_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_10_11_EXTRA$Maior_Dezoito <- NA
+
+RS22_10_11_EXTRA$Area_Urbana <- NA
+
+RS22_10_11_EXTRA$Area_Rural <- NA
+
+RS22_10_11_EXTRA$Sexo_Feminino <- NA
+
+RS22_10_11_EXTRA$Sexo_Masculino <- NA
+
+RS22_10_11_EXTRA$Analfabeto <- NA
+
+RS22_10_11_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_10_11_EXTRA$Fundamental <- NA
+
+RS22_10_11_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_10_11_EXTRA$Ens_Medio<- NA
+
+RS22_10_11_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_10_11_EXTRA$Ens_Superior<- NA
+
+RS22_10_11_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_10_11_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_10_11_EXTRA[which(RS22_10_11_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_10_11_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+#####################################################################################################################
+########################################         2011/2012        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_11_12_AUX01 <- DENGON2011 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201130)
+
+RS22_11_12_AUX02 <- DENGON2012 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201229)
+
+RS22_11_12_SINAN <- rbind(RS22_11_12_AUX01, RS22_11_12_AUX02)
+
+rm(RS22_11_12_AUX01, RS22_11_12_AUX02)
+
+###Removendo tabela DENGON2009 já utilizada###
+
+rm (DENGON2011)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_11_12_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_11_12_SE_Notificados <- as.data.frame(RS22_11_12_SE_Notificados)
+
+colnames(RS22_11_12_SE_Notificados)[1] <- "Município" 
+
+RS22_11_12_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_11_12_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_11_12_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 2] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201130)%>%
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 3] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201131) %>% 
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 4] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201132) %>% 
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i),5] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201133) %>% 
+                                                                                     count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 6] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201134) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 7] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201135) %>%
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 8] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201136) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 9] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201137) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 10] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201138) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 11] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201139) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 12] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201140) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 13] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201141) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 14] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201142) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 15] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201143) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 16] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201144) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 17] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201145) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 18] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201146) %>%                                                                                        count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 19] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201147) %>%                                                                                        count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 20] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201148) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i),  21] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201149) %>%
+                                                                                        count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 22] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201150) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 23] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201151) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 24] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201152) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 25] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201153) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 26] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201201) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 27] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201202) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 28] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201203) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 29] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201204) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 30] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201205) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 31] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201206) %>% 
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 32] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201207) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 33] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201208) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 34] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201209) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 35] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201210) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 36] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201211) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 37] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201212) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 38] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201213) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 39] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201214) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 40] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201215) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 41] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201216) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 42] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201217) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 43] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201218) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 44] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201219) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 45] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201220) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 46] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201221) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 47] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201222) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 48] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201223) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 49] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201224) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 50] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201225) %>% 
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 51] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201226) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 52] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201227) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 53] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201228) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 54] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201229) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_11_12_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_11_12_SE_Notificados[17,2:54] <- apply(RS22_11_12_SE_Notificados[,2:54], 2, sum)
+
+RS22_11_12_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_11_12_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_11_12_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_11_12_GERAL$Município), 2]
+
+RS22_11_12_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_11_12_GERAL$Município), 5]
+
+RS22_11_12_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_11_12_GERAL$Município), 1]
+
+RS22_11_12_GERAL <- RS22_11_12_GERAL[,c(4, 1, 2, 3)]
+
+RS22_11_12_GERAL$Notificados <- NA
+
+RS22_11_12_GERAL$Dengue <- NA
+
+RS22_11_12_GERAL$D_S_A <- NA
+
+RS22_11_12_GERAL$Dengue_Grave <- NA
+
+RS22_11_12_GERAL$Descartados <- NA
+
+RS22_11_12_GERAL$Autoctones <- NA
+
+RS22_11_12_GERAL$Incidencia <- NA
+
+RS22_11_12_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_11_12_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_11_12_GERAL$DENV_I <- NA
+
+RS22_11_12_GERAL$DENV_II <- NA
+
+RS22_11_12_GERAL$DENV_III <- NA
+
+RS22_11_12_GERAL$DENV_IV <- NA
+
+RS22_11_12_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_11_12_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 1, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_11_12_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 2, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_11_12_SINAN %>%   
+                                                                             filter(CLASSI_FIN == 3 | CLASSI_FIN == 4, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_11_12_SINAN %>%  
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_11_12_GERAL[which(RS22_11_12_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_11_12_GERAL$Incidencia <- (RS22_11_12_GERAL$Autoctones/RS22_11_12_GERAL$Populacao)*100000 
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_11_12_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_11_12_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_11_12_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_11_12_EXTRA$Menos_1_ano <- NA
+
+RS22_11_12_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_11_12_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_11_12_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_11_12_EXTRA$Maior_Dezoito <- NA
+
+RS22_11_12_EXTRA$Area_Urbana <- NA
+
+RS22_11_12_EXTRA$Area_Rural <- NA
+
+RS22_11_12_EXTRA$Sexo_Feminino <- NA
+
+RS22_11_12_EXTRA$Sexo_Masculino <- NA
+
+RS22_11_12_EXTRA$Analfabeto <- NA
+
+RS22_11_12_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_11_12_EXTRA$Fundamental <- NA
+
+RS22_11_12_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_11_12_EXTRA$Ens_Medio<- NA
+
+RS22_11_12_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_11_12_EXTRA$Ens_Superior<- NA
+
+RS22_11_12_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_11_12_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_11_12_EXTRA[which(RS22_11_12_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_11_12_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+
+#####################################################################################################################
+########################################         2012/2013        ###################################################
+#####################################################################################################################
+
+RS22_12_13_AUX01 <- DENGON2012 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201230)
+
+RS22_12_13_AUX02 <- DENGON2013 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201329)
+
+RS22_12_13_SINAN <- rbind(RS22_12_13_AUX01, RS22_12_13_AUX02)
+
+rm(RS22_12_13_AUX01, RS22_12_13_AUX02)
+
+###Removendo tabela DENGON2012 já utilizada###
+
+rm (DENGON2012)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_12_13_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_12_13_SE_Notificados <- as.data.frame(RS22_12_13_SE_Notificados)
+
+colnames(RS22_12_13_SE_Notificados)[1] <- "Município" 
+
+RS22_12_13_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_12_13_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_12_13_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 2] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201230)%>%
+                                                                                      count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 3] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201231) %>% 
+                                                                                      count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 4] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201232) %>% 
+                                                                                      count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i),5] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201233) %>% 
+                                                                                     count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 6] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201234) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 7] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201235) %>%
+                                                                                      count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 8] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201236) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 9] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201237) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 10] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201238) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 11] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201239) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 12] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201240) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 13] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201241) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 14] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201242) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 15] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201243) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 16] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201244) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 17] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201245) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 18] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201246) %>%                                                                                        count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 19] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201247) %>%                                                                                        count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 20] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201248) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i),  21] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201249) %>%
+                                                                                        count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 22] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201250) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 23] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201251) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 24] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201252) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 25] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201253) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 26] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201301) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 27] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201302) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 28] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201303) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 29] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201304) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 30] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201305) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 31] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201306) %>% 
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 32] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201307) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 33] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201308) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 34] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201309) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 35] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201310) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 36] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201311) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 37] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201312) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 38] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201313) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 39] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201314) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 40] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201315) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 41] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201316) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 42] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201317) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 43] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201318) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 44] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201319) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 45] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201320) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 46] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201321) %>%
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 47] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201322) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 48] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201323) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 49] <- as.integer(RS22_12_13_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201324) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 50] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201325) %>% 
+                                                                                       count()
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 51] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201326) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 52] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201327) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 53] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201328) %>%
+                                                                                       count() 
+  )
+  
+  RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 54] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201329) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_12_13_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_12_13_SE_Notificados[17,2:54] <- apply(RS22_12_13_SE_Notificados[,2:54], 2, sum)
+
+RS22_12_13_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_12_13_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_12_13_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_12_13_GERAL$Município), 2]
+
+RS22_12_13_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_12_13_GERAL$Município), 5]
+
+RS22_12_13_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_12_13_GERAL$Município), 1]
+
+RS22_12_13_GERAL <- RS22_12_13_GERAL[,c(4, 1, 2, 3)]
+
+RS22_12_13_GERAL$Notificados <- NA
+
+RS22_12_13_GERAL$Dengue <- NA
+
+RS22_12_13_GERAL$D_S_A <- NA
+
+RS22_12_13_GERAL$Dengue_Grave <- NA
+
+RS22_12_13_GERAL$Descartados <- NA
+
+RS22_12_13_GERAL$Autoctones <- NA
+
+RS22_12_13_GERAL$Incidencia <- NA
+
+RS22_12_13_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_12_13_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_12_13_GERAL$DENV_I <- NA
+
+RS22_12_13_GERAL$DENV_II <- NA
+
+RS22_12_13_GERAL$DENV_III <- NA
+
+RS22_12_13_GERAL$DENV_IV <- NA
+
+RS22_12_13_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_12_13_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 1, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_12_13_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 2, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_12_13_SINAN %>%   
+                                                                             filter(CLASSI_FIN == 3 | CLASSI_FIN == 4, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_12_13_SINAN %>%  
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_12_13_GERAL[which(RS22_12_13_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_12_13_GERAL$Incidencia <- (RS22_12_13_GERAL$Autoctones/RS22_12_13_GERAL$Populacao)*100000 
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_12_13_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_12_13_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_12_13_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_12_13_EXTRA$Menos_1_ano <- NA
+
+RS22_12_13_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_12_13_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_12_13_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_12_13_EXTRA$Maior_Dezoito <- NA
+
+RS22_12_13_EXTRA$Area_Urbana <- NA
+
+RS22_12_13_EXTRA$Area_Rural <- NA
+
+RS22_12_13_EXTRA$Sexo_Feminino <- NA
+
+RS22_12_13_EXTRA$Sexo_Masculino <- NA
+
+RS22_12_13_EXTRA$Analfabeto <- NA
+
+RS22_12_13_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_12_13_EXTRA$Fundamental <- NA
+
+RS22_12_13_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_12_13_EXTRA$Ens_Medio<- NA
+
+RS22_12_13_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_12_13_EXTRA$Ens_Superior<- NA
+
+RS22_12_13_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_12_13_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_12_13_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_12_13_EXTRA[which(RS22_12_13_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_12_13_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+#####################################################################################################################
+########################################         2013/2014        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_13_14_AUX01 <- DENGON2013 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201330)
+
+RS22_13_14_AUX02 <- DENGON2014 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201429)
+
+RS22_13_14_SINAN <- rbind(RS22_13_14_AUX01, RS22_13_14_AUX02)
+
+rm(RS22_13_14_AUX01, RS22_13_14_AUX02)
+
+###Removendo tabela DENGON2013 já utilizada###
+
+rm (DENGON2013)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_13_14_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_13_14_SE_Notificados <- as.data.frame(RS22_13_14_SE_Notificados)
+
+colnames(RS22_13_14_SE_Notificados)[1] <- "Município" 
+
+RS22_13_14_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_13_14_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_13_14_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 2] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201330)%>%
+                                                                                      count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 3] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201331) %>% 
+                                                                                      count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 4] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201332) %>% 
+                                                                                      count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i),5] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201333) %>% 
+                                                                                     count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 6] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201334) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 7] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201335) %>%
+                                                                                      count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 8] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201336) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 9] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201337) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 10] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201338) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 11] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201339) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 12] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201340) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 13] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201341) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 14] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201342) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 15] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201343) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 16] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201344) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 17] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201345) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 18] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201346) %>%                                                                                        count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 19] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201347) %>%                                                                                        count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 20] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201348) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i),  21] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201349) %>%
+                                                                                        count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 22] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201350) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 23] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201351) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 24] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201352) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 25] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201353) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 26] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201401) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 27] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201402) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 28] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201403) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 29] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201404) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 30] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201405) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 31] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201406) %>% 
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 32] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201407) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 33] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201408) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 34] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201409) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 35] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201410) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 36] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201411) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 37] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201412) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 38] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201413) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 39] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201414) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 40] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201415) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 41] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201416) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 42] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201417) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 43] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201418) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 44] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201419) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 45] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201420) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 46] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201421) %>%
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 47] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201422) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 48] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201423) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 49] <- as.integer(RS22_13_14_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201424) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 50] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201425) %>% 
+                                                                                       count()
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 51] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201426) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 52] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201427) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 53] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201428) %>%
+                                                                                       count() 
+  )
+  
+  RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 54] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201429) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_13_14_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_13_14_SE_Notificados[17,2:54] <- apply(RS22_13_14_SE_Notificados[,2:54], 2, sum)
+
+RS22_13_14_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_13_14_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_13_14_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_13_14_GERAL$Município), 2]
+
+RS22_13_14_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_13_14_GERAL$Município), 5]
+
+RS22_13_14_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_13_14_GERAL$Município), 1]
+
+RS22_13_14_GERAL <- RS22_13_14_GERAL[,c(4, 1, 2, 3)]
+
+RS22_13_14_GERAL$Notificados <- NA
+
+RS22_13_14_GERAL$Dengue <- NA
+
+RS22_13_14_GERAL$D_S_A <- NA
+
+RS22_13_14_GERAL$Dengue_Grave <- NA
+
+RS22_13_14_GERAL$Descartados <- NA
+
+RS22_13_14_GERAL$Autoctones <- NA
+
+RS22_13_14_GERAL$Incidencia <- NA
+
+RS22_13_14_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_13_14_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_13_14_GERAL$DENV_I <- NA
+
+RS22_13_14_GERAL$DENV_II <- NA
+
+RS22_13_14_GERAL$DENV_III <- NA
+
+RS22_13_14_GERAL$DENV_IV <- NA
+
+RS22_13_14_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_13_14_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 1, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_13_14_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 2, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_13_14_SINAN %>%   
+                                                                             filter(CLASSI_FIN == 3 | CLASSI_FIN == 4, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_13_14_SINAN %>%  
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_13_14_GERAL[which(RS22_13_14_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_13_14_GERAL$Incidencia <- (RS22_13_14_GERAL$Autoctones/RS22_13_14_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_13_14_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_13_14_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_13_14_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_13_14_EXTRA$Menos_1_ano <- NA
+
+RS22_13_14_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_13_14_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_13_14_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_13_14_EXTRA$Maior_Dezoito <- NA
+
+RS22_13_14_EXTRA$Area_Urbana <- NA
+
+RS22_13_14_EXTRA$Area_Rural <- NA
+
+RS22_13_14_EXTRA$Sexo_Feminino <- NA
+
+RS22_13_14_EXTRA$Sexo_Masculino <- NA
+
+RS22_13_14_EXTRA$Analfabeto <- NA
+
+RS22_13_14_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_13_14_EXTRA$Fundamental <- NA
+
+RS22_13_14_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_13_14_EXTRA$Ens_Medio<- NA
+
+RS22_13_14_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_13_14_EXTRA$Ens_Superior<- NA
+
+RS22_13_14_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_13_14_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_13_14_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_13_14_EXTRA[which(RS22_13_14_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_13_14_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+#####################################################################################################################
+########################################         2014/2015        ###################################################
+#####################################################################################################################
+
+RS22_14_15_AUX01 <- DENGON2014 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201430)
+
+RS22_14_15_AUX02 <- DENGON2015 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201529)
+
+RS22_14_15_SINAN <- merge(RS22_14_15_AUX01, RS22_14_15_AUX02, all=TRUE)
+
+rm(RS22_14_15_AUX01, RS22_14_15_AUX02)
+
+###Removendo tabela DENGON2014 já utilizada###
+
+rm (DENGON2014)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_14_15_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_14_15_SE_Notificados <- as.data.frame(RS22_14_15_SE_Notificados)
+
+colnames(RS22_14_15_SE_Notificados)[1] <- "Município" 
+
+RS22_14_15_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_14_15_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_14_15_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 2] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201430)%>%
+                                                                                      count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 3] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201431) %>% 
+                                                                                      count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 4] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201432) %>% 
+                                                                                      count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i),5] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201433) %>% 
+                                                                                     count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 6] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201434) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 7] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201435) %>%
+                                                                                      count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 8] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201436) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 9] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201437) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 10] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201438) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 11] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201439) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 12] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201440) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 13] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201441) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 14] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201442) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 15] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201443) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 16] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201444) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 17] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201445) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 18] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201446) %>%                                                                                        count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 19] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201447) %>%                                                                                        count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 20] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201448) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i),  21] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201449) %>%
+                                                                                        count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 22] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201450) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 23] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201451) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 24] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201452) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 25] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201453) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 26] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201501) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 27] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201502) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 28] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201503) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 29] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201504) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 30] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201505) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 31] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201506) %>% 
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 32] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201507) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 33] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201508) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 34] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201509) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 35] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201510) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 36] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201511) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 37] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201512) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 38] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201513) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 39] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201514) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 40] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201515) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 41] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201516) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 42] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201517) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 43] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201518) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 44] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201519) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 45] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201520) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 46] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201521) %>%
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 47] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201522) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 48] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201523) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 49] <- as.integer(RS22_14_15_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201524) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 50] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201525) %>% 
+                                                                                       count()
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 51] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201526) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 52] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201527) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 53] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201528) %>%
+                                                                                       count() 
+  )
+  
+  RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 54] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201529) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_14_15_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_14_15_SE_Notificados[17,2:54] <- apply(RS22_14_15_SE_Notificados[,2:54], 2, sum)
+
+RS22_14_15_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_14_15_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_14_15_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_14_15_GERAL$Município), 2]
+
+RS22_14_15_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_14_15_GERAL$Município), 5]
+
+RS22_14_15_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_14_15_GERAL$Município), 1]
+
+RS22_14_15_GERAL <- RS22_14_15_GERAL[,c(4, 1, 2, 3)]
+
+RS22_14_15_GERAL$Notificados <- NA
+
+RS22_14_15_GERAL$Dengue <- NA
+
+RS22_14_15_GERAL$D_S_A <- NA
+
+RS22_14_15_GERAL$Dengue_Grave <- NA
+
+RS22_14_15_GERAL$Descartados <- NA
+
+RS22_14_15_GERAL$Autoctones <- NA
+
+RS22_14_15_GERAL$Incidencia <- NA
+
+RS22_14_15_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_14_15_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_14_15_GERAL$DENV_I <- NA
+
+RS22_14_15_GERAL$DENV_II <- NA
+
+RS22_14_15_GERAL$DENV_III <- NA
+
+RS22_14_15_GERAL$DENV_IV <- NA
+
+RS22_14_15_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i)%>%
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_14_15_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 1 | CLASSI_FIN == 10,
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_14_15_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 2 | CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_14_15_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 3 | CLASSI_FIN == 4 | CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_14_15_SINAN %>%  
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_14_15_GERAL[which(RS22_14_15_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_14_15_GERAL$Incidencia <- (RS22_14_15_GERAL$Autoctones/RS22_14_15_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_14_15_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_14_15_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_14_15_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_14_15_EXTRA$Menos_1_ano <- NA
+
+RS22_14_15_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_14_15_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_14_15_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_14_15_EXTRA$Maior_Dezoito <- NA
+
+RS22_14_15_EXTRA$Area_Urbana <- NA
+
+RS22_14_15_EXTRA$Area_Rural <- NA
+
+RS22_14_15_EXTRA$Sexo_Feminino <- NA
+
+RS22_14_15_EXTRA$Sexo_Masculino <- NA
+
+RS22_14_15_EXTRA$Analfabeto <- NA
+
+RS22_14_15_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_14_15_EXTRA$Fundamental <- NA
+
+RS22_14_15_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_14_15_EXTRA$Ens_Medio<- NA
+
+RS22_14_15_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_14_15_EXTRA$Ens_Superior<- NA
+
+RS22_14_15_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_14_15_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_14_15_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_14_15_EXTRA[which(RS22_14_15_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_14_15_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+#####################################################################################################################
+########################################         2015/2016        ###################################################
+#####################################################################################################################
+
+###################### A partir de 2015 houve a mudança na ficha do SINAN de DENGUE/CHIKUNGUNYA. ####################
+
+####Tabela de notificações SINAN###
+
+RS22_15_16_AUX01 <- DENGON2015 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201530)
+
+RS22_15_16_AUX02 <- DENGON2016 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201629)
+
+RS22_15_16_SINAN <- rbind(RS22_15_16_AUX01, RS22_15_16_AUX02)
+
+rm(RS22_15_16_AUX01, RS22_15_16_AUX02)
+
+###Removendo tabela DENGON2015 já utilizada###
+
+rm (DENGON2015)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_15_16_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_15_16_SE_Notificados <- as.data.frame(RS22_15_16_SE_Notificados)
+
+colnames(RS22_15_16_SE_Notificados)[1] <- "Município" 
+
+RS22_15_16_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_15_16_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_15_16_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 2] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201530)%>%
+                                                                                      count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 3] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201531) %>% 
+                                                                                      count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 4] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201532) %>% 
+                                                                                      count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i),5] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201533) %>% 
+                                                                                     count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 6] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201534) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 7] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201535) %>%
+                                                                                      count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 8] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201536) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 9] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201537) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 10] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201538) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 11] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201539) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 12] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201540) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 13] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201541) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 14] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201542) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 15] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201543) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 16] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201544) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 17] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201545) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 18] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201546) %>%                                                                                        count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 19] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201547) %>%                                                                                        count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 20] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201548) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i),  21] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201549) %>%
+                                                                                        count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 22] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201550) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 23] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201551) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 24] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201552) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 25] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201553) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 26] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201601) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 27] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201602) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 28] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201603) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 29] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201604) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 30] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201605) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 31] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201606) %>% 
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 32] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201607) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 33] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201608) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 34] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201609) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 35] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201610) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 36] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201611) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 37] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201612) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 38] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201613) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 39] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201614) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 40] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201615) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 41] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201616) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 42] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201617) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 43] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201618) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 44] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201619) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 45] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201620) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 46] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201621) %>%
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 47] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201622) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 48] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201623) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 49] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201624) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 50] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201625) %>% 
+                                                                                       count()
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 51] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201626) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 52] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201627) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 53] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201628) %>%
+                                                                                       count() 
+  )
+  
+  RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 54] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201629) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_15_16_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_15_16_SE_Notificados[17,2:54] <- apply(RS22_15_16_SE_Notificados[,2:54], 2, sum)
+
+RS22_15_16_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_15_16_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_15_16_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_15_16_GERAL$Município), 2]
+
+RS22_15_16_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_15_16_GERAL$Município), 5]
+
+RS22_15_16_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_15_16_GERAL$Município), 1]
+
+RS22_15_16_GERAL <- RS22_15_16_GERAL[,c(4, 1, 2, 3)]
+
+RS22_15_16_GERAL$Notificados <- NA
+
+RS22_15_16_GERAL$Dengue <- NA
+
+RS22_15_16_GERAL$D_S_A <- NA
+
+RS22_15_16_GERAL$Dengue_Grave <- NA
+
+RS22_15_16_GERAL$Descartados <- NA
+
+RS22_15_16_GERAL$Autoctones <- NA
+
+RS22_15_16_GERAL$Incidencia <- NA
+
+RS22_15_16_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_15_16_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_15_16_GERAL$DENV_I <- NA
+
+RS22_15_16_GERAL$DENV_II <- NA
+
+RS22_15_16_GERAL$DENV_III <- NA
+
+RS22_15_16_GERAL$DENV_IV <- NA
+
+RS22_15_16_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_15_16_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_15_16_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_15_16_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_15_16_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_15_16_GERAL[which(RS22_15_16_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_15_16_GERAL$Incidencia <- (RS22_15_16_GERAL$Autoctones/RS22_15_16_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_15_16_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_15_16_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_15_16_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_15_16_EXTRA$Menos_1_ano <- NA
+
+RS22_15_16_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_15_16_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_15_16_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_15_16_EXTRA$Maior_Dezoito <- NA
+
+RS22_15_16_EXTRA$Area_Urbana <- NA
+
+RS22_15_16_EXTRA$Area_Rural <- NA
+
+RS22_15_16_EXTRA$Sexo_Feminino <- NA
+
+RS22_15_16_EXTRA$Sexo_Masculino <- NA
+
+RS22_15_16_EXTRA$Analfabeto <- NA
+
+RS22_15_16_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_15_16_EXTRA$Fundamental <- NA
+
+RS22_15_16_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_15_16_EXTRA$Ens_Medio<- NA
+
+RS22_15_16_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_15_16_EXTRA$Ens_Superior<- NA
+
+RS22_15_16_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_15_16_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_15_16_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_15_16_EXTRA[which(RS22_15_16_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_15_16_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_15_16_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_15_16_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_15_16_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_15_16_SINAIS$Febre <- NA
+
+RS22_15_16_SINAIS$Cefaleia <- NA
+
+RS22_15_16_SINAIS$Mialgia <- NA
+
+RS22_15_16_SINAIS$Exantema <- NA
+
+RS22_15_16_SINAIS$Vomitos <- NA
+
+RS22_15_16_SINAIS$Nausea <- NA
+
+RS22_15_16_SINAIS$Dor_nas_Costas <- NA
+
+RS22_15_16_SINAIS$Conjuntivite <- NA
+
+RS22_15_16_SINAIS$Artrite  <- NA
+
+RS22_15_16_SINAIS$Artralgia <- NA
+
+RS22_15_16_SINAIS$Petequias <- NA
+
+RS22_15_16_SINAIS$Leucopenia <- NA
+
+RS22_15_16_SINAIS$Dor_Retroorbital <- NA
+
+RS22_15_16_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_15_16_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_15_16_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_15_16_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_15_16_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_15_16_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_15_16_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_15_16_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_15_16_SINAIS[which(RS22_15_16_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_15_16_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_15_16_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_15_16_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_15_16_DOENCAS_PRE_EXISTENTES[which(RS22_15_16_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_15_16_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_15_16_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_15_16_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_15_16_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_15_16_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_15_16_SINAIS_DE_ALARME[which(RS22_15_16_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_15_16_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_15_16_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_15_16_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_15_16_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_15_16_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_15_16_DENGUE_GRAVE$TPC <- NA
+
+RS22_15_16_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_15_16_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_15_16_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_15_16_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_15_16_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_15_16_DENGUE_GRAVE$Melena <- NA
+
+RS22_15_16_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_15_16_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_15_16_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_15_16_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_15_16_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_15_16_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_15_16_DENGUE_GRAVE[which(RS22_15_16_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_15_16_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+#####################################################################################################################
+########################################         2016/2017        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_16_17_AUX01 <- DENGON2016 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201630)
+
+RS22_16_17_AUX02 <- DENGON2017 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201729)
+
+RS22_16_17_SINAN <- rbind(RS22_16_17_AUX01, RS22_16_17_AUX02)
+
+rm(RS22_16_17_AUX01, RS22_16_17_AUX02)
+
+###Removendo tabela DENGON2016 já utilizada###
+
+rm (DENGON2016)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_16_17_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_16_17_SE_Notificados <- as.data.frame(RS22_16_17_SE_Notificados)
+
+colnames(RS22_16_17_SE_Notificados)[1] <- "Município" 
+
+RS22_16_17_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_16_17_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_16_17_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 2] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201630)%>%
+                                                                                      count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 3] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201631) %>% 
+                                                                                      count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 4] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201632) %>% 
+                                                                                      count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i),5] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201633) %>% 
+                                                                                     count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 6] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201634) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 7] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201635) %>%
+                                                                                      count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 8] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201636) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 9] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201637) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 10] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201638) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 11] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201639) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 12] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201640) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 13] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201641) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 14] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201642) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 15] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201643) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 16] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201644) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 17] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201645) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 18] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201646) %>%                                                                                        count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 19] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201647) %>%                                                                                        count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 20] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201648) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i),  21] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201649) %>%
+                                                                                        count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 22] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201650) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 23] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201651) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 24] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201652) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 25] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201653) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 26] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201701) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 27] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201702) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 28] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201703) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 29] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201704) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 30] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201705) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 31] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201706) %>% 
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 32] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201707) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 33] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201708) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 34] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201709) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 35] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201710) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 36] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201711) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 37] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201712) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 38] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201713) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 39] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201714) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 40] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201715) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 41] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201716) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 42] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201717) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 43] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201718) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 44] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201719) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 45] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201720) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 46] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201721) %>%
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 47] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201722) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 48] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201723) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 49] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201724) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 50] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201725) %>% 
+                                                                                       count()
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 51] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201726) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 52] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201727) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 53] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201728) %>%
+                                                                                       count() 
+  )
+  
+  RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 54] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201729) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_16_17_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_16_17_SE_Notificados[17,2:54] <- apply(RS22_16_17_SE_Notificados[,2:54], 2, sum)
+
+RS22_16_17_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_16_17_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_16_17_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_16_17_GERAL$Município), 2]
+
+RS22_16_17_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_16_17_GERAL$Município), 5]
+
+RS22_16_17_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_16_17_GERAL$Município), 1]
+
+RS22_16_17_GERAL <- RS22_16_17_GERAL[,c(4, 1, 2, 3)]
+
+RS22_16_17_GERAL$Notificados <- NA
+
+RS22_16_17_GERAL$Dengue <- NA
+
+RS22_16_17_GERAL$D_S_A <- NA
+
+RS22_16_17_GERAL$Dengue_Grave <- NA
+
+RS22_16_17_GERAL$Descartados <- NA
+
+RS22_16_17_GERAL$Autoctones <- NA
+
+RS22_16_17_GERAL$Incidencia <- NA
+
+RS22_16_17_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_16_17_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_16_17_GERAL$DENV_I <- NA
+
+RS22_16_17_GERAL$DENV_II <- NA
+
+RS22_16_17_GERAL$DENV_III <- NA
+
+RS22_16_17_GERAL$DENV_IV <- NA
+
+RS22_16_17_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_16_17_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_16_17_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_16_17_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_16_17_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_16_17_GERAL[which(RS22_16_17_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_16_17_GERAL$Incidencia <- (RS22_16_17_GERAL$Autoctones/RS22_16_17_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_16_17_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_16_17_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_16_17_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_16_17_EXTRA$Menos_1_ano <- NA
+
+RS22_16_17_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_16_17_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_16_17_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_16_17_EXTRA$Maior_Dezoito <- NA
+
+RS22_16_17_EXTRA$Area_Urbana <- NA
+
+RS22_16_17_EXTRA$Area_Rural <- NA
+
+RS22_16_17_EXTRA$Sexo_Feminino <- NA
+
+RS22_16_17_EXTRA$Sexo_Masculino <- NA
+
+RS22_16_17_EXTRA$Analfabeto <- NA
+
+RS22_16_17_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_16_17_EXTRA$Fundamental <- NA
+
+RS22_16_17_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_16_17_EXTRA$Ens_Medio<- NA
+
+RS22_16_17_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_16_17_EXTRA$Ens_Superior<- NA
+
+RS22_16_17_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_16_17_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_16_17_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_16_17_EXTRA[which(RS22_16_17_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_16_17_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_16_17_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_16_17_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_16_17_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_16_17_SINAIS$Febre <- NA
+
+RS22_16_17_SINAIS$Cefaleia <- NA
+
+RS22_16_17_SINAIS$Mialgia <- NA
+
+RS22_16_17_SINAIS$Exantema <- NA
+
+RS22_16_17_SINAIS$Vomitos <- NA
+
+RS22_16_17_SINAIS$Nausea <- NA
+
+RS22_16_17_SINAIS$Dor_nas_Costas <- NA
+
+RS22_16_17_SINAIS$Conjuntivite <- NA
+
+RS22_16_17_SINAIS$Artrite  <- NA
+
+RS22_16_17_SINAIS$Artralgia <- NA
+
+RS22_16_17_SINAIS$Petequias <- NA
+
+RS22_16_17_SINAIS$Leucopenia <- NA
+
+RS22_16_17_SINAIS$Dor_Retroorbital <- NA
+
+RS22_16_17_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_16_17_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_16_17_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_16_17_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_16_17_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_16_17_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_16_17_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_16_17_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_16_17_SINAIS[which(RS22_16_17_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_16_17_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_16_17_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_16_17_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_16_17_DOENCAS_PRE_EXISTENTES[which(RS22_16_17_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_16_17_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_16_17_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_16_17_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_16_17_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_16_17_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_16_17_SINAIS_DE_ALARME[which(RS22_16_17_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_16_17_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_16_17_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_16_17_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_16_17_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_16_17_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_16_17_DENGUE_GRAVE$TPC <- NA
+
+RS22_16_17_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_16_17_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_16_17_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_16_17_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_16_17_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_16_17_DENGUE_GRAVE$Melena <- NA
+
+RS22_16_17_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_16_17_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_16_17_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_16_17_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_16_17_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_16_17_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_16_17_DENGUE_GRAVE[which(RS22_16_17_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_16_17_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+#####################################################################################################################
+########################################         2017/2018        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_17_18_AUX01 <- DENGON2017 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201730)
+
+RS22_17_18_AUX02 <- DENGON2018 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201829)
+
+RS22_17_18_SINAN <- rbind(RS22_17_18_AUX01, RS22_17_18_AUX02)
+
+rm(RS22_17_18_AUX01, RS22_17_18_AUX02)
+
+###Removendo tabela DENGON2017 já utilizada###
+
+rm (DENGON2017)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_17_18_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_17_18_SE_Notificados <- as.data.frame(RS22_17_18_SE_Notificados)
+
+colnames(RS22_17_18_SE_Notificados)[1] <- "Município" 
+
+RS22_17_18_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_17_18_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_17_18_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 2] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201730)%>%
+                                                                                      count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 3] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201731) %>% 
+                                                                                      count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 4] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201732) %>% 
+                                                                                      count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i),5] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201733) %>% 
+                                                                                     count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 6] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201734) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 7] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201735) %>%
+                                                                                      count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 8] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201736) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 9] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201737) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 10] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201738) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 11] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201739) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 12] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201740) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 13] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201741) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 14] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201742) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 15] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201743) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 16] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201744) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 17] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201745) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 18] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201746) %>%                                                                                        count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 19] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201747) %>%                                                                                        count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 20] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201748) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i),  21] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201749) %>%
+                                                                                        count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 22] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201750) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 23] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201751) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 24] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201752) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 25] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201753) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 26] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201801) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 27] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201802) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 28] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201803) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 29] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201804) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 30] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201805) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 31] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201806) %>% 
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 32] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201807) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 33] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201808) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 34] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201809) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 35] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201810) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 36] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201811) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 37] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201812) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 38] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201813) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 39] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201814) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 40] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201815) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 41] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201816) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 42] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201817) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 43] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201818) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 44] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201819) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 45] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201820) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 46] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201821) %>%
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 47] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201822) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 48] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201823) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 49] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201824) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 50] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201825) %>% 
+                                                                                       count()
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 51] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201826) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 52] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201827) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 53] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201828) %>%
+                                                                                       count() 
+  )
+  
+  RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 54] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201829) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_17_18_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_17_18_SE_Notificados[17,2:54] <- apply(RS22_17_18_SE_Notificados[,2:54], 2, sum)
+
+RS22_17_18_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_17_18_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_17_18_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_17_18_GERAL$Município), 2]
+
+RS22_17_18_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_17_18_GERAL$Município), 5]
+
+RS22_17_18_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_17_18_GERAL$Município), 1]
+
+RS22_17_18_GERAL <- RS22_17_18_GERAL[,c(4, 1, 2, 3)]
+
+RS22_17_18_GERAL$Notificados <- NA
+
+RS22_17_18_GERAL$Dengue <- NA
+
+RS22_17_18_GERAL$D_S_A <- NA
+
+RS22_17_18_GERAL$Dengue_Grave <- NA
+
+RS22_17_18_GERAL$Descartados <- NA
+
+RS22_17_18_GERAL$Autoctones <- NA
+
+RS22_17_18_GERAL$Incidencia <- NA
+
+RS22_17_18_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_17_18_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_17_18_GERAL$DENV_I <- NA
+
+RS22_17_18_GERAL$DENV_II <- NA
+
+RS22_17_18_GERAL$DENV_III <- NA
+
+RS22_17_18_GERAL$DENV_IV <- NA
+
+RS22_17_18_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_17_18_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_17_18_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_17_18_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_17_18_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_17_18_GERAL[which(RS22_17_18_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_17_18_GERAL$Incidencia <- (RS22_17_18_GERAL$Autoctones/RS22_17_18_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_17_18_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_17_18_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_17_18_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_17_18_EXTRA$Menos_1_ano <- NA
+
+RS22_17_18_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_17_18_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_17_18_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_17_18_EXTRA$Maior_Dezoito <- NA
+
+RS22_17_18_EXTRA$Area_Urbana <- NA
+
+RS22_17_18_EXTRA$Area_Rural <- NA
+
+RS22_17_18_EXTRA$Sexo_Feminino <- NA
+
+RS22_17_18_EXTRA$Sexo_Masculino <- NA
+
+RS22_17_18_EXTRA$Analfabeto <- NA
+
+RS22_17_18_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_17_18_EXTRA$Fundamental <- NA
+
+RS22_17_18_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_17_18_EXTRA$Ens_Medio<- NA
+
+RS22_17_18_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_17_18_EXTRA$Ens_Superior<- NA
+
+RS22_17_18_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_17_18_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_17_18_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_17_18_EXTRA[which(RS22_17_18_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_17_18_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_17_18_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_17_18_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_17_18_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_17_18_SINAIS$Febre <- NA
+
+RS22_17_18_SINAIS$Cefaleia <- NA
+
+RS22_17_18_SINAIS$Mialgia <- NA
+
+RS22_17_18_SINAIS$Exantema <- NA
+
+RS22_17_18_SINAIS$Vomitos <- NA
+
+RS22_17_18_SINAIS$Nausea <- NA
+
+RS22_17_18_SINAIS$Dor_nas_Costas <- NA
+
+RS22_17_18_SINAIS$Conjuntivite <- NA
+
+RS22_17_18_SINAIS$Artrite  <- NA
+
+RS22_17_18_SINAIS$Artralgia <- NA
+
+RS22_17_18_SINAIS$Petequias <- NA
+
+RS22_17_18_SINAIS$Leucopenia <- NA
+
+RS22_17_18_SINAIS$Dor_Retroorbital <- NA
+
+RS22_17_18_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_17_18_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_17_18_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_17_18_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_17_18_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_17_18_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_17_18_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_17_18_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_17_18_SINAIS[which(RS22_17_18_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_17_18_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_17_18_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_17_18_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_17_18_DOENCAS_PRE_EXISTENTES[which(RS22_17_18_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_17_18_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_17_18_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_17_18_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_17_18_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_17_18_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_17_18_SINAIS_DE_ALARME[which(RS22_17_18_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_17_18_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_17_18_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_17_18_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_17_18_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_17_18_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_17_18_DENGUE_GRAVE$TPC <- NA
+
+RS22_17_18_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_17_18_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_17_18_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_17_18_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_17_18_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_17_18_DENGUE_GRAVE$Melena <- NA
+
+RS22_17_18_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_17_18_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_17_18_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_17_18_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_17_18_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_17_18_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_17_18_DENGUE_GRAVE[which(RS22_17_18_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_17_18_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+#####################################################################################################################
+########################################         2018/2019        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_18_19_AUX01 <- DENGON2018 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201830)
+
+RS22_18_19_AUX02 <- DENGON2019 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=201929)
+
+RS22_18_19_SINAN <- rbind(RS22_18_19_AUX01, RS22_18_19_AUX02)
+
+rm(RS22_18_19_AUX01, RS22_18_19_AUX02)
+
+###Removendo tabela DENGON2018 já utilizada###
+
+rm (DENGON2018)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_18_19_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_18_19_SE_Notificados <- as.data.frame(RS22_18_19_SE_Notificados)
+
+colnames(RS22_18_19_SE_Notificados)[1] <- "Município" 
+
+RS22_18_19_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_18_19_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_18_19_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 2] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201830)%>%
+                                                                                      count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 3] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201831) %>% 
+                                                                                      count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 4] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201832) %>% 
+                                                                                      count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i),5] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201833) %>% 
+                                                                                     count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 6] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201834) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 7] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201835) %>%
+                                                                                      count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 8] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201836) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 9] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201837) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 10] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201838) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 11] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201839) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 12] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201840) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 13] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201841) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 14] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201842) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 15] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201843) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 16] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201844) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 17] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201845) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 18] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201846) %>%                                                                                        count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 19] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201847) %>%                                                                                        count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 20] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201848) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i),  21] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201849) %>%
+                                                                                        count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 22] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201850) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 23] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201851) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 24] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201852) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 25] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201853) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 26] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201901) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 27] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201902) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 28] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201903) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 29] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201904) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 30] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201905) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 31] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201906) %>% 
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 32] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201907) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 33] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201908) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 34] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201909) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 35] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201910) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 36] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201911) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 37] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201912) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 38] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201913) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 39] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201914) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 40] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201915) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 41] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201916) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 42] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201917) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 43] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201918) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 44] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201919) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 45] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201920) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 46] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201921) %>%
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 47] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201922) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 48] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201923) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 49] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201924) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 50] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201925) %>% 
+                                                                                       count()
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 51] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201926) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 52] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201927) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 53] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201928) %>%
+                                                                                       count() 
+  )
+  
+  RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 54] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201929) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_18_19_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_18_19_SE_Notificados[17,2:54] <- apply(RS22_18_19_SE_Notificados[,2:54], 2, sum)
+
+RS22_18_19_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_18_19_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_18_19_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_18_19_GERAL$Município), 2]
+
+RS22_18_19_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_18_19_GERAL$Município), 5]
+
+RS22_18_19_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_18_19_GERAL$Município), 1]
+
+RS22_18_19_GERAL <- RS22_18_19_GERAL[,c(4, 1, 2, 3)]
+
+RS22_18_19_GERAL$Notificados <- NA
+
+RS22_18_19_GERAL$Dengue <- NA
+
+RS22_18_19_GERAL$D_S_A <- NA
+
+RS22_18_19_GERAL$Dengue_Grave <- NA
+
+RS22_18_19_GERAL$Descartados <- NA
+
+RS22_18_19_GERAL$Autoctones <- NA
+
+RS22_18_19_GERAL$Incidencia <- NA
+
+RS22_18_19_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_18_19_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_18_19_GERAL$DENV_I <- NA
+
+RS22_18_19_GERAL$DENV_II <- NA
+
+RS22_18_19_GERAL$DENV_III <- NA
+
+RS22_18_19_GERAL$DENV_IV <- NA
+
+RS22_18_19_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_18_19_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_18_19_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_18_19_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_18_19_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_18_19_GERAL[which(RS22_18_19_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_18_19_GERAL$Incidencia <- (RS22_18_19_GERAL$Autoctones/RS22_18_19_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_18_19_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_18_19_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_18_19_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_18_19_EXTRA$Menos_1_ano <- NA
+
+RS22_18_19_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_18_19_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_18_19_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_18_19_EXTRA$Maior_Dezoito <- NA
+
+RS22_18_19_EXTRA$Area_Urbana <- NA
+
+RS22_18_19_EXTRA$Area_Rural <- NA
+
+RS22_18_19_EXTRA$Sexo_Feminino <- NA
+
+RS22_18_19_EXTRA$Sexo_Masculino <- NA
+
+RS22_18_19_EXTRA$Analfabeto <- NA
+
+RS22_18_19_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_18_19_EXTRA$Fundamental <- NA
+
+RS22_18_19_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_18_19_EXTRA$Ens_Medio<- NA
+
+RS22_18_19_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_18_19_EXTRA$Ens_Superior<- NA
+
+RS22_18_19_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_18_19_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_18_19_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_18_19_EXTRA[which(RS22_18_19_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_18_19_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_18_19_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_18_19_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_18_19_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_18_19_SINAIS$Febre <- NA
+
+RS22_18_19_SINAIS$Cefaleia <- NA
+
+RS22_18_19_SINAIS$Mialgia <- NA
+
+RS22_18_19_SINAIS$Exantema <- NA
+
+RS22_18_19_SINAIS$Vomitos <- NA
+
+RS22_18_19_SINAIS$Nausea <- NA
+
+RS22_18_19_SINAIS$Dor_nas_Costas <- NA
+
+RS22_18_19_SINAIS$Conjuntivite <- NA
+
+RS22_18_19_SINAIS$Artrite  <- NA
+
+RS22_18_19_SINAIS$Artralgia <- NA
+
+RS22_18_19_SINAIS$Petequias <- NA
+
+RS22_18_19_SINAIS$Leucopenia <- NA
+
+RS22_18_19_SINAIS$Dor_Retroorbital <- NA
+
+RS22_18_19_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_18_19_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_18_19_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_18_19_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_18_19_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_18_19_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_18_19_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_18_19_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_18_19_SINAIS[which(RS22_18_19_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_18_19_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_18_19_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_18_19_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_18_19_DOENCAS_PRE_EXISTENTES[which(RS22_18_19_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_18_19_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_18_19_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_18_19_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_18_19_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_18_19_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_18_19_SINAIS_DE_ALARME[which(RS22_18_19_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_18_19_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_18_19_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_18_19_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_18_19_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_18_19_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_18_19_DENGUE_GRAVE$TPC <- NA
+
+RS22_18_19_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_18_19_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_18_19_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_18_19_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_18_19_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_18_19_DENGUE_GRAVE$Melena <- NA
+
+RS22_18_19_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_18_19_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_18_19_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_18_19_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_18_19_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_18_19_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_18_19_DENGUE_GRAVE[which(RS22_18_19_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_18_19_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+#####################################################################################################################
+########################################         2019/2020        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_19_20_AUX01 <- DENGON2019 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 201930)
+
+RS22_19_20_AUX02 <- DENGON2020 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=202029)
+
+RS22_19_20_SINAN <- rbind(RS22_19_20_AUX01, RS22_19_20_AUX02)
+
+rm(RS22_19_20_AUX01, RS22_19_20_AUX02)
+
+###Removendo tabela DENGON2019 já utilizada###
+
+rm (DENGON2019)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_19_20_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_19_20_SE_Notificados <- as.data.frame(RS22_19_20_SE_Notificados)
+
+colnames(RS22_19_20_SE_Notificados)[1] <- "Município" 
+
+RS22_19_20_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_19_20_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_19_20_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 2] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201930)%>%
+                                                                                      count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 3] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201931) %>% 
+                                                                                      count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 4] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201932) %>% 
+                                                                                      count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i),5] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==201933) %>% 
+                                                                                     count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 6] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==201934) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 7] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201935) %>%
+                                                                                      count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 8] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201936) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 9] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==201937) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 10] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201938) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 11] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201939) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 12] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201940) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 13] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==201941) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 14] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201942) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 15] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201943) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 16] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201944) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 17] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201945) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 18] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201946) %>%                                                                                        count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 19] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201947) %>%                                                                                        count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 20] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201948) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i),  21] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==201949) %>%
+                                                                                        count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 22] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201950) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 23] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201951) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 24] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201952) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 25] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==201953) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 26] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202001) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 27] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202002) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 28] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202003) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 29] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202004) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 30] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202005) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 31] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202006) %>% 
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 32] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202007) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 33] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202008) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 34] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202009) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 35] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202010) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 36] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202011) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 37] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202012) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 38] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202013) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 39] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202014) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 40] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202015) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 41] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202016) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 42] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202017) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 43] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202018) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 44] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202019) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 45] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202020) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 46] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202021) %>%
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 47] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202022) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 48] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202023) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 49] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202024) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 50] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202025) %>% 
+                                                                                       count()
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 51] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202026) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 52] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202027) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 53] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202028) %>%
+                                                                                       count() 
+  )
+  
+  RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 54] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202029) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_19_20_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_19_20_SE_Notificados[17,2:54] <- apply(RS22_19_20_SE_Notificados[,2:54], 2, sum)
+
+RS22_19_20_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_19_20_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_19_20_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_19_20_GERAL$Município), 2]
+
+RS22_19_20_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_19_20_GERAL$Município), 5]
+
+RS22_19_20_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_19_20_GERAL$Município), 1]
+
+RS22_19_20_GERAL <- RS22_19_20_GERAL[,c(4, 1, 2, 3)]
+
+RS22_19_20_GERAL$Notificados <- NA
+
+RS22_19_20_GERAL$Dengue <- NA
+
+RS22_19_20_GERAL$D_S_A <- NA
+
+RS22_19_20_GERAL$Dengue_Grave <- NA
+
+RS22_19_20_GERAL$Descartados <- NA
+
+RS22_19_20_GERAL$Autoctones <- NA
+
+RS22_19_20_GERAL$Incidencia <- NA
+
+RS22_19_20_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_19_20_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_19_20_GERAL$DENV_I <- NA
+
+RS22_19_20_GERAL$DENV_II <- NA
+
+RS22_19_20_GERAL$DENV_III <- NA
+
+RS22_19_20_GERAL$DENV_IV <- NA
+
+RS22_19_20_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_19_20_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_19_20_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_19_20_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_19_20_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_19_20_GERAL[which(RS22_19_20_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_19_20_GERAL$Incidencia <- (RS22_19_20_GERAL$Autoctones/RS22_19_20_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_19_20_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_19_20_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_19_20_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_19_20_EXTRA$Menos_1_ano <- NA
+
+RS22_19_20_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_19_20_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_19_20_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_19_20_EXTRA$Maior_Dezoito <- NA
+
+RS22_19_20_EXTRA$Area_Urbana <- NA
+
+RS22_19_20_EXTRA$Area_Rural <- NA
+
+RS22_19_20_EXTRA$Sexo_Feminino <- NA
+
+RS22_19_20_EXTRA$Sexo_Masculino <- NA
+
+RS22_19_20_EXTRA$Analfabeto <- NA
+
+RS22_19_20_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_19_20_EXTRA$Fundamental <- NA
+
+RS22_19_20_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_19_20_EXTRA$Ens_Medio<- NA
+
+RS22_19_20_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_19_20_EXTRA$Ens_Superior<- NA
+
+RS22_19_20_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_19_20_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_19_20_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_19_20_EXTRA[which(RS22_19_20_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_19_20_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_19_20_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_19_20_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_19_20_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_19_20_SINAIS$Febre <- NA
+
+RS22_19_20_SINAIS$Cefaleia <- NA
+
+RS22_19_20_SINAIS$Mialgia <- NA
+
+RS22_19_20_SINAIS$Exantema <- NA
+
+RS22_19_20_SINAIS$Vomitos <- NA
+
+RS22_19_20_SINAIS$Nausea <- NA
+
+RS22_19_20_SINAIS$Dor_nas_Costas <- NA
+
+RS22_19_20_SINAIS$Conjuntivite <- NA
+
+RS22_19_20_SINAIS$Artrite  <- NA
+
+RS22_19_20_SINAIS$Artralgia <- NA
+
+RS22_19_20_SINAIS$Petequias <- NA
+
+RS22_19_20_SINAIS$Leucopenia <- NA
+
+RS22_19_20_SINAIS$Dor_Retroorbital <- NA
+
+RS22_19_20_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_19_20_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_19_20_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_19_20_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_19_20_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_19_20_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_19_20_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_19_20_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_19_20_SINAIS[which(RS22_19_20_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_19_20_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_19_20_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_19_20_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_19_20_DOENCAS_PRE_EXISTENTES[which(RS22_19_20_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_19_20_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_19_20_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_19_20_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_19_20_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_19_20_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_19_20_SINAIS_DE_ALARME[which(RS22_19_20_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_19_20_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_19_20_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_19_20_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_19_20_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_19_20_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_19_20_DENGUE_GRAVE$TPC <- NA
+
+RS22_19_20_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_19_20_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_19_20_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_19_20_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_19_20_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_19_20_DENGUE_GRAVE$Melena <- NA
+
+RS22_19_20_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_19_20_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_19_20_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_19_20_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_19_20_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_19_20_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_19_20_DENGUE_GRAVE[which(RS22_19_20_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_19_20_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+#####################################################################################################################
+########################################         2020/2021        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_20_21_AUX01 <- DENGON2020 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 202030)
+
+RS22_20_21_AUX02 <- DENGON2021 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=202129)
+
+RS22_20_21_SINAN <- rbind(RS22_20_21_AUX01, RS22_20_21_AUX02)
+
+rm(RS22_20_21_AUX01, RS22_20_21_AUX02)
+
+###Removendo tabela DENGON2020 já utilizada###
+
+rm (DENGON2020)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_20_21_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_20_21_SE_Notificados <- as.data.frame(RS22_20_21_SE_Notificados)
+
+colnames(RS22_20_21_SE_Notificados)[1] <- "Município" 
+
+RS22_20_21_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_20_21_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_20_21_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 2] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202030)%>%
+                                                                                      count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 3] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202031) %>% 
+                                                                                      count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 4] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202032) %>% 
+                                                                                      count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i),5] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==202033) %>% 
+                                                                                     count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 6] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202034) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 7] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202035) %>%
+                                                                                      count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 8] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202036) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 9] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202037) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 10] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202038) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 11] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202039) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 12] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202040) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 13] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202041) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 14] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202042) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 15] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202043) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 16] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202044) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 17] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202045) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 18] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202046) %>%                                                                                        count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 19] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202047) %>%                                                                                        count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 20] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202048) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i),  21] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==202049) %>%
+                                                                                        count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 22] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202050) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 23] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202051) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 24] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202052) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 25] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202053) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 26] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202101) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 27] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202102) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 28] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202103) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 29] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202104) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 30] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202105) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 31] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202106) %>% 
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 32] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202107) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 33] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202108) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 34] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202109) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 35] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202110) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 36] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202111) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 37] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202112) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 38] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202113) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 39] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202114) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 40] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202115) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 41] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202116) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 42] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202117) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 43] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202118) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 44] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202119) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 45] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202120) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 46] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202121) %>%
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 47] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202122) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 48] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202123) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 49] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202124) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 50] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202125) %>% 
+                                                                                       count()
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 51] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202126) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 52] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202127) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 53] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202128) %>%
+                                                                                       count() 
+  )
+  
+  RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 54] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202129) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_20_21_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_20_21_SE_Notificados[17,2:54] <- apply(RS22_20_21_SE_Notificados[,2:54], 2, sum)
+
+RS22_20_21_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_20_21_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_20_21_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_20_21_GERAL$Município), 2]
+
+RS22_20_21_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_20_21_GERAL$Município), 5]
+
+RS22_20_21_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_20_21_GERAL$Município), 1]
+
+RS22_20_21_GERAL <- RS22_20_21_GERAL[,c(4, 1, 2, 3)]
+
+RS22_20_21_GERAL$Notificados <- NA
+
+RS22_20_21_GERAL$Dengue <- NA
+
+RS22_20_21_GERAL$D_S_A <- NA
+
+RS22_20_21_GERAL$Dengue_Grave <- NA
+
+RS22_20_21_GERAL$Descartados <- NA
+
+RS22_20_21_GERAL$Autoctones <- NA
+
+RS22_20_21_GERAL$Incidencia <- NA
+
+RS22_20_21_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_20_21_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_20_21_GERAL$DENV_I <- NA
+
+RS22_20_21_GERAL$DENV_II <- NA
+
+RS22_20_21_GERAL$DENV_III <- NA
+
+RS22_20_21_GERAL$DENV_IV <- NA
+
+RS22_20_21_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_20_21_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_20_21_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_20_21_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_20_21_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_20_21_GERAL[which(RS22_20_21_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_20_21_GERAL$Incidencia <- (RS22_20_21_GERAL$Autoctones/RS22_20_21_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_20_21_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_20_21_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_20_21_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_20_21_EXTRA$Menos_1_ano <- NA
+
+RS22_20_21_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_20_21_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_20_21_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_20_21_EXTRA$Maior_Dezoito <- NA
+
+RS22_20_21_EXTRA$Area_Urbana <- NA
+
+RS22_20_21_EXTRA$Area_Rural <- NA
+
+RS22_20_21_EXTRA$Sexo_Feminino <- NA
+
+RS22_20_21_EXTRA$Sexo_Masculino <- NA
+
+RS22_20_21_EXTRA$Analfabeto <- NA
+
+RS22_20_21_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_20_21_EXTRA$Fundamental <- NA
+
+RS22_20_21_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_20_21_EXTRA$Ens_Medio<- NA
+
+RS22_20_21_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_20_21_EXTRA$Ens_Superior<- NA
+
+RS22_20_21_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_20_21_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_20_21_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_20_21_EXTRA[which(RS22_20_21_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_20_21_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_20_21_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_20_21_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_20_21_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_20_21_SINAIS$Febre <- NA
+
+RS22_20_21_SINAIS$Cefaleia <- NA
+
+RS22_20_21_SINAIS$Mialgia <- NA
+
+RS22_20_21_SINAIS$Exantema <- NA
+
+RS22_20_21_SINAIS$Vomitos <- NA
+
+RS22_20_21_SINAIS$Nausea <- NA
+
+RS22_20_21_SINAIS$Dor_nas_Costas <- NA
+
+RS22_20_21_SINAIS$Conjuntivite <- NA
+
+RS22_20_21_SINAIS$Artrite  <- NA
+
+RS22_20_21_SINAIS$Artralgia <- NA
+
+RS22_20_21_SINAIS$Petequias <- NA
+
+RS22_20_21_SINAIS$Leucopenia <- NA
+
+RS22_20_21_SINAIS$Dor_Retroorbital <- NA
+
+RS22_20_21_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_20_21_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_20_21_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_20_21_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_20_21_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_20_21_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_20_21_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_20_21_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_20_21_SINAIS[which(RS22_20_21_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_20_21_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_20_21_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_20_21_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_20_21_DOENCAS_PRE_EXISTENTES[which(RS22_20_21_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_20_21_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_20_21_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_20_21_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_20_21_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_20_21_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_20_21_SINAIS_DE_ALARME[which(RS22_20_21_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_20_21_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_20_21_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_20_21_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_20_21_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_20_21_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_20_21_DENGUE_GRAVE$TPC <- NA
+
+RS22_20_21_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_20_21_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_20_21_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_20_21_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_20_21_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_20_21_DENGUE_GRAVE$Melena <- NA
+
+RS22_20_21_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_20_21_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_20_21_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_20_21_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_20_21_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_20_21_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_20_21_DENGUE_GRAVE[which(RS22_20_21_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_20_21_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+#####################################################################################################################
+########################################         2021/2022        ###################################################
+#####################################################################################################################
+
+####Tabela de notificações SINAN###
+
+RS22_21_22_AUX01 <- DENGON2021 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI >= 202130)
+
+RS22_21_22_AUX02 <- DENGON2022 %>% 
+  filter(ID_REGIONA == 1376 | ID_RG_RESI == 1376, 
+         SEM_PRI <=202229)
+
+RS22_21_22_SINAN <- rbind(RS22_21_22_AUX01, RS22_21_22_AUX02)
+
+rm(RS22_21_22_AUX01, RS22_21_22_AUX02)
+
+###Removendo tabela DENGON2021 já utilizada###
+
+rm (DENGON2021)
+
+###Construindo um for loop para realizar a tabela de notificados por semana epidemiológica###
+
+RS22_21_22_SE_Notificados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_21_22_SE_Notificados <- as.data.frame(RS22_21_22_SE_Notificados)
+
+colnames(RS22_21_22_SE_Notificados)[1] <- "Município" 
+
+RS22_21_22_SE_Notificados[,1] <- BASE_IBGE[,2]
+
+colnames (RS22_21_22_SE_Notificados)[2:25] <- c(30:53)
+
+colnames (RS22_21_22_SE_Notificados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 2] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202130)%>%
+                                                                                      count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 3] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202131) %>% 
+                                                                                      count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 4] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202132) %>% 
+                                                                                      count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i),5] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==202133) %>% 
+                                                                                     count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 6] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202134) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 7] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202135) %>%
+                                                                                      count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 8] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202136) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 9] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202137) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 10] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202138) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 11] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202139) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 12] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202140) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 13] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202141) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 14] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202142) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 15] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202143) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 16] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202144) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 17] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202145) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 18] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202146) %>%                                                                                        count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 19] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202147) %>%                                                                                        count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 20] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202148) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i),  21] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==202149) %>%
+                                                                                        count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 22] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202150) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 23] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202151) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 24] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202152) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 25] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202153) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 26] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202201) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 27] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202202) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 28] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202203) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 29] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202204) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 30] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202205) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 31] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202206) %>% 
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 32] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202207) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 33] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202208) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 34] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202209) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 35] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202210) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 36] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202211) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 37] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202212) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 38] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202213) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 39] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202214) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 40] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202215) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 41] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202216) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 42] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202217) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 43] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202218) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 44] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202219) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 45] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202220) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 46] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202221) %>%
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 47] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202222) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 48] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202223) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 49] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202224) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 50] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202225) %>% 
+                                                                                       count()
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 51] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202226) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 52] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202227) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 53] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202228) %>%
+                                                                                       count() 
+  )
+  
+  RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 54] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202229) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_21_22_SE_Notificados[,1] <- BASE_IBGE[,3]
+
+RS22_21_22_SE_Notificados[17,2:54] <- apply(RS22_21_22_SE_Notificados[,2:54], 2, sum)
+
+RS22_21_22_SE_Notificados[17,1] <- "Total"
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+RS22_21_22_GERAL <- data.frame(Município = BASE_IBGE$Município_sem_Código)
+
+RS22_21_22_GERAL$COD_IBGE <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_21_22_GERAL$Município), 2]
+
+RS22_21_22_GERAL$Populacao <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_21_22_GERAL$Município), 5]
+
+RS22_21_22_GERAL$RS <- BASE_IBGE[which(BASE_IBGE$Município_sem_Código == RS22_21_22_GERAL$Município), 1]
+
+RS22_21_22_GERAL <- RS22_21_22_GERAL[,c(4, 1, 2, 3)]
+
+RS22_21_22_GERAL$Notificados <- NA
+
+RS22_21_22_GERAL$Dengue <- NA
+
+RS22_21_22_GERAL$D_S_A <- NA
+
+RS22_21_22_GERAL$Dengue_Grave <- NA
+
+RS22_21_22_GERAL$Descartados <- NA
+
+RS22_21_22_GERAL$Autoctones <- NA
+
+RS22_21_22_GERAL$Incidencia <- NA
+
+RS22_21_22_GERAL$Criterio_Encerramento_Lab <- NA
+
+RS22_21_22_GERAL$Criterio_Encerramento_Clin_Epid <- NA
+
+RS22_21_22_GERAL$DENV_I <- NA
+
+RS22_21_22_GERAL$DENV_II <- NA
+
+RS22_21_22_GERAL$DENV_III <- NA
+
+RS22_21_22_GERAL$DENV_IV <- NA
+
+RS22_21_22_GERAL$Hospitalizacao <- NA
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  ###Notiicações###  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 5] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i) %>%   
+                                                                             count()
+  )    
+  
+  ###Dengue###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 6] <-as.integer(RS22_21_22_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 10, 
+                                                                                   ID_MN_RESI == i) %>%
+                                                                            count() 
+  )
+  ###D.S.A.###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 7] <- as.integer(RS22_21_22_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 11, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Dengue Grave###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 8] <- as.integer(RS22_21_22_SINAN %>%  
+                                                                             filter(CLASSI_FIN == 12, 
+                                                                                    ID_MN_RESI == i) %>% 
+                                                                             count()
+  )
+  
+  ###Descartados###
+  
+  
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 9]<- as.integer(RS22_21_22_SINAN %>% 
+                                                                            filter(CLASSI_FIN == 5,
+                                                                                   ID_MN_RESI == i) %>% 
+                                                                            count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    TPAUTOCTO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###Encerrados Laboratório###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 12] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CRITERIO == 1) %>% 
+                                                                              count() 
+  )
+  
+  ###Encerrados Clínico-Epidemiológico###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 13] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CRITERIO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV I###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 14]<- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 1) %>% 
+                                                                             count() 
+  )
+  
+  ###DENV II###
+  
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 15] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 2) %>% 
+                                                                              count() 
+  )
+  
+  ###DENV III###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 16] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     SOROTIPO == 3) %>% 
+                                                                              count() 
+  )
+  ###DENV IV###                                     
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 17]<- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    SOROTIPO == 4) %>% 
+                                                                             count() 
+  )
+  ###Hospitalização###
+  
+  RS22_21_22_GERAL[which(RS22_21_22_GERAL$COD_IBGE == i), 18] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     HOSPITALIZ == 1) %>% 
+                                                                              count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+RS22_21_22_GERAL$Incidencia <- (RS22_21_22_GERAL$Autoctones/RS22_21_22_GERAL$Populacao)*100000  
+
+###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
+
+RS22_21_22_EXTRA <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_21_22_EXTRA$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_21_22_EXTRA$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_21_22_EXTRA$Menos_1_ano <- NA
+
+RS22_21_22_EXTRA$Um_a_Cinco_Anos <- NA
+
+RS22_21_22_EXTRA$Cinco_a_Doze_Anos <- NA
+
+RS22_21_22_EXTRA$Doze_a_Dezoito_Anos <- NA
+
+RS22_21_22_EXTRA$Maior_Dezoito <- NA
+
+RS22_21_22_EXTRA$Area_Urbana <- NA
+
+RS22_21_22_EXTRA$Area_Rural <- NA
+
+RS22_21_22_EXTRA$Sexo_Feminino <- NA
+
+RS22_21_22_EXTRA$Sexo_Masculino <- NA
+
+RS22_21_22_EXTRA$Analfabeto <- NA
+
+RS22_21_22_EXTRA$Fundamental_Incompleto <- NA
+
+RS22_21_22_EXTRA$Fundamental <- NA
+
+RS22_21_22_EXTRA$Ens_Medio_Incompleto <- NA
+
+RS22_21_22_EXTRA$Ens_Medio<- NA
+
+RS22_21_22_EXTRA$Ens_Superior_Incompleto<- NA
+
+RS22_21_22_EXTRA$Ens_Superior<- NA
+
+RS22_21_22_EXTRA$Escolaridade_Ignorada<- NA
+
+###For Loop para geração da tabela RS22_Extra###
+
+for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 4] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N <=3012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 5] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,  
+                                                                                    NU_IDADE_N > 4000 & NU_IDADE_N <=4005) %>% 
+                                                                             count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 6] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    NU_IDADE_N > 4005 & NU_IDADE_N <=4012) %>% 
+                                                                             count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 7] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4012 & NU_IDADE_N <=4018) %>% 
+                                                                             count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 8] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    NU_IDADE_N > 4018) %>%
+                                                                             count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 9] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i,
+                                                                                    CS_ZONA == 1) %>% 
+                                                                             count() 
+  )
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 10] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     CS_ZONA == 2) %>% 
+                                                                              count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 11]  <- as.integer(RS22_21_22_SINAN %>% 
+                                                                               filter(ID_MN_RESI == i, 
+                                                                                      CS_SEXO == "F") %>% 
+                                                                               count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 12] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_SEXO == "M") %>% 
+                                                                              count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 13]<- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 0) %>% 
+                                                                             count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 14] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 1 | CS_ESCOL_N == 2 | CS_ESCOL_N == 3) %>%
+                                                                              count()
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 15] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 4) %>% 
+                                                                              count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 16] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 5) %>% 
+                                                                              count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 17] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 6) %>% 
+                                                                              count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 18] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 7) %>% 
+                                                                              count() 
+  )
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 19] <- as.integer(RS22_21_22_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     CS_ESCOL_N == 8) %>% 
+                                                                              count() 
+  )
+  
+  
+  RS22_21_22_EXTRA[which(RS22_21_22_EXTRA$COD_IBGE == i), 20]<- as.integer(RS22_21_22_SINAN %>% 
+                                                                             filter(ID_MN_RESI == i, 
+                                                                                    CS_ESCOL_N == 9) %>% 
+                                                                             count() 
+  )
+}                                             
+
+###Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.###
+
+RS22_21_22_SINAIS <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_21_22_SINAIS$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_21_22_SINAIS$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_21_22_SINAIS$Febre <- NA
+
+RS22_21_22_SINAIS$Cefaleia <- NA
+
+RS22_21_22_SINAIS$Mialgia <- NA
+
+RS22_21_22_SINAIS$Exantema <- NA
+
+RS22_21_22_SINAIS$Vomitos <- NA
+
+RS22_21_22_SINAIS$Nausea <- NA
+
+RS22_21_22_SINAIS$Dor_nas_Costas <- NA
+
+RS22_21_22_SINAIS$Conjuntivite <- NA
+
+RS22_21_22_SINAIS$Artrite  <- NA
+
+RS22_21_22_SINAIS$Artralgia <- NA
+
+RS22_21_22_SINAIS$Petequias <- NA
+
+RS22_21_22_SINAIS$Leucopenia <- NA
+
+RS22_21_22_SINAIS$Dor_Retroorbital <- NA
+
+RS22_21_22_SINAIS$Prova_do_Laco_Positiva <- NA
+
+###Elaborando for loop para sinais e sintomas.###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 4] <- as.integer(RS22_21_22_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      FEBRE == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 5] <- as.integer(RS22_21_22_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      CEFALEIA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 6] <- as.integer(RS22_21_22_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      MIALGIA == 1) %>%
+                                                                               count()
+  )
+  
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 7] <- as.integer(RS22_21_22_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      EXANTEMA == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 8] <- as.integer(RS22_21_22_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      VOMITO == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 9]<- as.integer(RS22_21_22_SINAN %>%
+                                                                              filter(ID_MN_RESI == i,
+                                                                                     NAUSEA == 1) %>%
+                                                                              count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 10]<- as.integer(RS22_21_22_SINAN %>%
+                                                                               filter(ID_MN_RESI == i,
+                                                                                      DOR_COSTAS == 1) %>%
+                                                                               count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 11] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       CONJUNTVIT == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 12] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRITE == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 13] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       ARTRALGIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 14] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       PETEQUIA_N == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 15] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LEUCOPENIA == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 16] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       DOR_RETRO == 1) %>%
+                                                                                count()
+  )
+  
+  RS22_21_22_SINAIS[which(RS22_21_22_SINAIS$COD_IBGE == i), 17] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                filter(ID_MN_RESI == i,
+                                                                                       LACO == 1) %>%
+                                                                                count()
+  )
+}
+
+###Montando tabela de doenças pré-existentes###
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Município <- BASE_IBGE$Município_sem_Código
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Diabetes <- NA
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Doencas_Hematologicas <- NA
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Hepatopatias <- NA
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$DRC <- NA
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Hipertensao <- NA
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Doenca_Acido_Peptica <- NA
+
+RS22_21_22_DOENCAS_PRE_EXISTENTES$Doenca_Auto_Imune <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 4] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i, 
+                                                                                                                      DIABETES == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 5] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEMATOLOG == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 6] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      HEPATOPAT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 7]<- as.integer(RS22_21_22_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     RENAL == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 8]<- as.integer(RS22_21_22_SINAN %>%
+                                                                                                              filter(ID_MN_RESI == i,
+                                                                                                                     HIPERTENSA == 1) %>%
+                                                                                                              count()
+  )
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 9] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                               filter(ID_MN_RESI == i,
+                                                                                                                      ACIDO_PEPT == 1) %>%
+                                                                                                               count()
+  )
+  
+  RS22_21_22_DOENCAS_PRE_EXISTENTES[which(RS22_21_22_DOENCAS_PRE_EXISTENTES$COD_IBGE == i), 10] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                                filter(ID_MN_RESI == i,
+                                                                                                                       AUTO_IMUNE == 1) %>%
+                                                                                                                count()
+  )
+}
+
+###Construindo tabela sinais de alarme###
+
+RS22_21_22_SINAIS_DE_ALARME <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_21_22_SINAIS_DE_ALARME$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_21_22_SINAIS_DE_ALARME$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_21_22_SINAIS_DE_ALARME$Hipotensao_Lipotimia <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Queda_Abrupta_Plaquetas <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Vomitos_Persistentes <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Dor_Abdominal <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Letargia <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Aumento_Hematocrito <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$hemorragias <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Hepatomegalia <- NA
+
+RS22_21_22_SINAIS_DE_ALARME$Acumulo_Liquidos <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 4] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HIPOT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 5] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_PLAQ == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 6] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_VOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 7] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_ABDOM == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 8] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_LETAR == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 9] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                   filter(ID_MN_RESI == i,
+                                                                                                          ALRM_HEMAT == 1) %>%
+                                                                                                   count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 10] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_SANG == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 11] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_HEPAT == 1) %>%
+                                                                                                    count()
+  )
+  
+  RS22_21_22_SINAIS_DE_ALARME[which(RS22_21_22_SINAIS_DE_ALARME$COD_IBGE == i), 12] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                                    filter(ID_MN_RESI == i,
+                                                                                                           ALRM_LIQ == 1) %>%
+                                                                                                    count()
+                                                                                                  
+  )
+}
+
+###Construindo tabela Dengue Grave###
+
+RS22_21_22_DENGUE_GRAVE <- data.frame(RS = BASE_IBGE$RS)
+
+RS22_21_22_DENGUE_GRAVE$Municipio <- BASE_IBGE$Município_sem_Código
+
+RS22_21_22_DENGUE_GRAVE$COD_IBGE <- BASE_IBGE$Código_IBGE
+
+RS22_21_22_DENGUE_GRAVE$Pulso_Debil <- NA
+
+RS22_21_22_DENGUE_GRAVE$PA_Convergente <- NA
+
+RS22_21_22_DENGUE_GRAVE$TPC <- NA
+
+RS22_21_22_DENGUE_GRAVE$Acumulo_Liquidos_Insuf_Respiratoria <- NA
+
+RS22_21_22_DENGUE_GRAVE$Taquicardia <- NA
+
+RS22_21_22_DENGUE_GRAVE$Extremidades_Frias <- NA
+
+RS22_21_22_DENGUE_GRAVE$Hipotensão_Arterial <- NA
+
+RS22_21_22_DENGUE_GRAVE$Hematemese <- NA
+
+RS22_21_22_DENGUE_GRAVE$Melena <- NA
+
+RS22_21_22_DENGUE_GRAVE$Metrorragia <- NA
+
+RS22_21_22_DENGUE_GRAVE$Sangramento_SNC <- NA
+
+RS22_21_22_DENGUE_GRAVE$Aumento_ALT_AST <- NA
+
+RS22_21_22_DENGUE_GRAVE$Miocardite <- NA
+
+RS22_21_22_DENGUE_GRAVE$Alteracao_Consciencia <- NA
+
+###Construindo o for loop###
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 4] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_PULSO == 1) %>%
+                                                                                           count()
+  )     
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 5] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_CONV == 1) %>%
+                                                                                           count()
+  )   
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 6] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_ENCH == 1) %>%
+                                                                                           count()
+  )  
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 7] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_INSUF == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 8] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_TAQUI == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 9] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_EXTRE == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 10] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HIPOT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 11] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_HEMAT == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 12]<- as.integer(RS22_21_22_SINAN %>%
+                                                                                           filter(ID_MN_RESI == i,
+                                                                                                  GRAV_MELEN == 1) %>%
+                                                                                           count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 13] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_METRO == 1) %>%
+                                                                                            count()
+  ) 
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 14] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_SANG == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 15] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_AST == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 16] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_MIOC == 1) %>%
+                                                                                            count()
+  )
+  
+  RS22_21_22_DENGUE_GRAVE[which(RS22_21_22_DENGUE_GRAVE$COD_IBGE == i), 17] <- as.integer(RS22_21_22_SINAN %>%
+                                                                                            filter(ID_MN_RESI == i,
+                                                                                                   GRAV_CONSC == 1) %>%
+                                                                                            count()
+  )
+}
+
+############Gravando as tabelas para uso posterior#########
+
+write.csv (RS22_09_10_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_09_10_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_09_10_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_09_10_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_09_10_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_09_10_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_09_10_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_09_10_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_10_11_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_10_11_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_10_11_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_10_11_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_10_11_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_10_11_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_10_11_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_10_11_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_11_12_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_11_12_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_11_12_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_11_12_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_11_12_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_11_12_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_11_12_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_11_12_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_12_13_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_12_13_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_12_13_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_12_13_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_12_13_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_12_13_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_12_13_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_12_13_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_13_14_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_13_14_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_13_14_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_13_14_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_13_14_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_13_14_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_13_14_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_13_14_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_14_15_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_14_15_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_14_15_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_14_15_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_14_15_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_14_15_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_14_15_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_14_15_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_15_16_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_15_16_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_16_17_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_16_17_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_17_18_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_17_18_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_18_19_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_18_19_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_SE_Noificados.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_19_20_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_19_20_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_SE.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_20_21_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_20_21_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_GERAL, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_GERAL.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_EXTRA, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_EXTRA.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_SE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_SE_Notificados.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_SINAN, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_SINAN.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_SINAIS, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_SINAIS.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_SINAIS_DE_ALARME, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_SINAIS_DE_ALARME.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_DENGUE_GRAVE, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_DENGUE_GRAVE.csv", row.names = FALSE)
+
+write.csv (RS22_21_22_DOENCAS_PRE_EXISTENTES, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_21_22_DOENCAS_PRE_EXISTENTES.csv", row.names = FALSE)
+
+###########################################################################################################################
+###########################Elaborando tabelas especiais para serem utilizadas no Informe Epidemiológico####################
+###########################################################################################################################
+
+RS22_Serie_Historica <- data.frame(RS22 = "RS22", RS22_2009_10 = NA, RS22_2010_11 = NA, RS22_2011_12 = NA, RS22_2012_13 = NA, RS22_2013_14 = NA, RS22_2014_15 = NA, RS22_2015_16 = NA, RS22_2016_17 = NA, RS22_2017_18 = NA, RS22_2018_19 = NA, RS22_2019_20 = NA, RS22_2020_21 = NA, RS22_2021_22 = NA)
+
+RS22_Serie_Historica[1, 1] <- "Notificados"
+RS22_Serie_Historica[2, 1] <- "Dengue"
+RS22_Serie_Historica[3, 1] <- "D.S.A."
+RS22_Serie_Historica[4, 1] <- "Dengue_Grave"
+RS22_Serie_Historica[5, 1] <- "Hospitalizados"
+RS22_Serie_Historica[6, 1] <- "Autóctones"
+RS22_Serie_Historica[7, 1] <- "DENV_I"
+RS22_Serie_Historica[8, 1] <- "DENV_II"
+RS22_Serie_Historica[9, 1] <- "DENV_III"
+RS22_Serie_Historica[10, 1] <- "DENV_IV"
+
+RS22_Serie_Historica[1, 2] <- sum(RS22_09_10_GERAL$Notificados)
+RS22_Serie_Historica[2, 2] <- sum(RS22_09_10_GERAL$Dengue)
+RS22_Serie_Historica[3, 2] <- sum(RS22_09_10_GERAL$D_S_A)
+RS22_Serie_Historica[4, 2] <- sum(RS22_09_10_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 2] <- sum(RS22_09_10_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 2] <- sum(RS22_09_10_GERAL$Autoctones)
+RS22_Serie_Historica[7, 2] <- sum(RS22_09_10_GERAL$DENV_I)
+RS22_Serie_Historica[8, 2] <- sum(RS22_09_10_GERAL$DENV_II)
+RS22_Serie_Historica[9, 2] <- sum(RS22_09_10_GERAL$DENV_III)
+RS22_Serie_Historica[10, 2] <- sum(RS22_09_10_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 3] <- sum(RS22_10_11_GERAL$Notificados)
+RS22_Serie_Historica[2, 3] <- sum(RS22_10_11_GERAL$Dengue)
+RS22_Serie_Historica[3, 3] <- sum(RS22_10_11_GERAL$D_S_A)
+RS22_Serie_Historica[4, 3] <- sum(RS22_10_11_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 3] <- sum(RS22_10_11_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 3] <- sum(RS22_10_11_GERAL$Autoctones)
+RS22_Serie_Historica[7, 3] <- sum(RS22_10_11_GERAL$DENV_I)
+RS22_Serie_Historica[8, 3] <- sum(RS22_10_11_GERAL$DENV_II)
+RS22_Serie_Historica[9, 3] <- sum(RS22_10_11_GERAL$DENV_III)
+RS22_Serie_Historica[10, 3] <- sum(RS22_10_11_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 4] <- sum(RS22_11_12_GERAL$Notificados)
+RS22_Serie_Historica[2, 4] <- sum(RS22_11_12_GERAL$Dengue)
+RS22_Serie_Historica[3, 4] <- sum(RS22_11_12_GERAL$D_S_A)
+RS22_Serie_Historica[4, 4] <- sum(RS22_11_12_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 4] <- sum(RS22_11_12_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 4] <- sum(RS22_11_12_GERAL$Autoctones)
+RS22_Serie_Historica[7, 4] <- sum(RS22_11_12_GERAL$DENV_I)
+RS22_Serie_Historica[8, 4] <- sum(RS22_11_12_GERAL$DENV_II)
+RS22_Serie_Historica[9, 4] <- sum(RS22_11_12_GERAL$DENV_III)
+RS22_Serie_Historica[10, 4] <- sum(RS22_11_12_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 5] <- sum(RS22_12_13_GERAL$Notificados)
+RS22_Serie_Historica[2, 5] <- sum(RS22_12_13_GERAL$Dengue)
+RS22_Serie_Historica[3, 5] <- sum(RS22_12_13_GERAL$D_S_A)
+RS22_Serie_Historica[4, 5] <- sum(RS22_12_13_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 5] <- sum(RS22_12_13_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 5] <- sum(RS22_12_13_GERAL$Autoctones)
+RS22_Serie_Historica[7, 5] <- sum(RS22_12_13_GERAL$DENV_I)
+RS22_Serie_Historica[8, 5] <- sum(RS22_12_13_GERAL$DENV_II)
+RS22_Serie_Historica[9, 5] <- sum(RS22_12_13_GERAL$DENV_III)
+RS22_Serie_Historica[10, 5] <- sum(RS22_12_13_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 6] <- sum(RS22_13_14_GERAL$Notificados)
+RS22_Serie_Historica[2, 6] <- sum(RS22_13_14_GERAL$Dengue)
+RS22_Serie_Historica[3, 6] <- sum(RS22_13_14_GERAL$D_S_A)
+RS22_Serie_Historica[4, 6] <- sum(RS22_13_14_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 6] <- sum(RS22_13_14_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 6] <- sum(RS22_13_14_GERAL$Autoctones)
+RS22_Serie_Historica[7, 6] <- sum(RS22_13_14_GERAL$DENV_I)
+RS22_Serie_Historica[8, 6] <- sum(RS22_13_14_GERAL$DENV_II)
+RS22_Serie_Historica[9, 6] <- sum(RS22_13_14_GERAL$DENV_III)
+RS22_Serie_Historica[10, 6] <- sum(RS22_13_14_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 7] <- sum(RS22_14_15_GERAL$Notificados)
+RS22_Serie_Historica[2, 7] <- sum(RS22_14_15_GERAL$Dengue)
+RS22_Serie_Historica[3, 7] <- sum(RS22_14_15_GERAL$D_S_A)
+RS22_Serie_Historica[4, 7] <- sum(RS22_14_15_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 7] <- sum(RS22_14_15_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 7] <- sum(RS22_14_15_GERAL$Autoctones)
+RS22_Serie_Historica[7, 7] <- sum(RS22_14_15_GERAL$DENV_I)
+RS22_Serie_Historica[8, 7] <- sum(RS22_14_15_GERAL$DENV_II)
+RS22_Serie_Historica[9, 7] <- sum(RS22_14_15_GERAL$DENV_III)
+RS22_Serie_Historica[10, 7] <- sum(RS22_14_15_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 8] <- sum(RS22_15_16_GERAL$Notificados)
+RS22_Serie_Historica[2, 8] <- sum(RS22_15_16_GERAL$Dengue)
+RS22_Serie_Historica[3, 8] <- sum(RS22_15_16_GERAL$D_S_A)
+RS22_Serie_Historica[4, 8] <- sum(RS22_15_16_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 8] <- sum(RS22_15_16_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 8] <- sum(RS22_15_16_GERAL$Autoctones)
+RS22_Serie_Historica[7, 8] <- sum(RS22_15_16_GERAL$DENV_I)
+RS22_Serie_Historica[8, 8] <- sum(RS22_15_16_GERAL$DENV_II)
+RS22_Serie_Historica[9, 8] <- sum(RS22_15_16_GERAL$DENV_III)
+RS22_Serie_Historica[10, 8] <- sum(RS22_15_16_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 9] <- sum(RS22_16_17_GERAL$Notificados)
+RS22_Serie_Historica[2, 9] <- sum(RS22_16_17_GERAL$Dengue)
+RS22_Serie_Historica[3, 9] <- sum(RS22_16_17_GERAL$D_S_A)
+RS22_Serie_Historica[4, 9] <- sum(RS22_16_17_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 9] <- sum(RS22_16_17_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 9] <- sum(RS22_16_17_GERAL$Autoctones)
+RS22_Serie_Historica[7, 9] <- sum(RS22_16_17_GERAL$DENV_I)
+RS22_Serie_Historica[8, 9] <- sum(RS22_16_17_GERAL$DENV_II)
+RS22_Serie_Historica[9, 9] <- sum(RS22_16_17_GERAL$DENV_III)
+RS22_Serie_Historica[10, 9] <- sum(RS22_16_17_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 10] <- sum(RS22_17_18_GERAL$Notificados)
+RS22_Serie_Historica[2, 10] <- sum(RS22_17_18_GERAL$Dengue)
+RS22_Serie_Historica[3, 10] <- sum(RS22_17_18_GERAL$D_S_A)
+RS22_Serie_Historica[4, 10] <- sum(RS22_17_18_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 10] <- sum(RS22_17_18_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 10] <- sum(RS22_17_18_GERAL$Autoctones)
+RS22_Serie_Historica[7, 10] <- sum(RS22_17_18_GERAL$DENV_I)
+RS22_Serie_Historica[8, 10] <- sum(RS22_17_18_GERAL$DENV_II)
+RS22_Serie_Historica[9, 10] <- sum(RS22_17_18_GERAL$DENV_III)
+RS22_Serie_Historica[10, 10] <- sum(RS22_17_18_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 11] <- sum(RS22_18_19_GERAL$Notificados)
+RS22_Serie_Historica[2, 11] <- sum(RS22_18_19_GERAL$Dengue)
+RS22_Serie_Historica[3, 11] <- sum(RS22_18_19_GERAL$D_S_A)
+RS22_Serie_Historica[4, 11] <- sum(RS22_18_19_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 11] <- sum(RS22_18_19_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 11] <- sum(RS22_18_19_GERAL$Autoctones)
+RS22_Serie_Historica[7, 11] <- sum(RS22_18_19_GERAL$DENV_I)
+RS22_Serie_Historica[8, 11] <- sum(RS22_18_19_GERAL$DENV_II)
+RS22_Serie_Historica[9, 11] <- sum(RS22_18_19_GERAL$DENV_III)
+RS22_Serie_Historica[10, 11] <- sum(RS22_18_19_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 12] <- sum(RS22_19_20_GERAL$Notificados)
+RS22_Serie_Historica[2, 12] <- sum(RS22_19_20_GERAL$Dengue)
+RS22_Serie_Historica[3, 12] <- sum(RS22_19_20_GERAL$D_S_A)
+RS22_Serie_Historica[4, 12] <- sum(RS22_19_20_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 12] <- sum(RS22_19_20_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 12] <- sum(RS22_19_20_GERAL$Autoctones)
+RS22_Serie_Historica[7, 12] <- sum(RS22_19_20_GERAL$DENV_I)
+RS22_Serie_Historica[8, 12] <- sum(RS22_19_20_GERAL$DENV_II)
+RS22_Serie_Historica[9, 12] <- sum(RS22_19_20_GERAL$DENV_III)
+RS22_Serie_Historica[10, 12] <- sum(RS22_19_20_GERAL$DENV_IV)
+
+RS22_Serie_Historica[1, 13] <- sum(RS22_20_21_GERAL$Notificados)
+RS22_Serie_Historica[2, 13] <- sum(RS22_20_21_GERAL$Dengue)
+RS22_Serie_Historica[3, 13] <- sum(RS22_20_21_GERAL$D_S_A)
+RS22_Serie_Historica[4, 13] <- sum(RS22_20_21_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 13] <- sum(RS22_20_21_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 13] <- sum(RS22_20_21_GERAL$Autoctones)
+RS22_Serie_Historica[7, 13] <- sum(RS22_20_21_GERAL$DENV_I)
+RS22_Serie_Historica[8, 13] <- sum(RS22_20_21_GERAL$DENV_II)
+RS22_Serie_Historica[9, 13] <- sum(RS22_20_21_GERAL$DENV_III)
+RS22_Serie_Historica[10, 13] <- sum(RS22_20_21_GERAL$DENV_IV)
+
+#####Gravando tabela de série histórica#####
+
+write.csv (RS22_Serie_Historica, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_Serie_Historica.csv", row.names = FALSE)
+
+###Construindo tabela para Canal Endêmico####
+
+RS22_CE_Notificados <- data.frame("Periodo Sazonal" = NA)
+
+RS22_CE_Notificados[1, 1] <- "2009/10"
+RS22_CE_Notificados[1, 2:54] <- as.integer(data.frame(RS22_09_10_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[2, 1] <- "2010/11"
+RS22_CE_Notificados[2, 2:54] <- as.integer(data.frame(RS22_10_11_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[3, 1] <- "2011/12"
+RS22_CE_Notificados[3, 2:54] <- as.integer(data.frame(RS22_11_12_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[4, 1] <- "2012/13"
+RS22_CE_Notificados[4, 2:54] <- as.integer(data.frame(RS22_12_13_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[5, 1] <- "2013/14"
+RS22_CE_Notificados[5, 2:54] <- as.integer(data.frame(RS22_13_14_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[6, 1] <- "2014/15"
+RS22_CE_Notificados[6, 2:54] <- as.integer(data.frame(RS22_14_15_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[7, 1] <- "2015/16"
+RS22_CE_Notificados[7, 2:54] <- as.integer(data.frame(RS22_15_16_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[8, 1] <- "2016/17"
+RS22_CE_Notificados[8, 2:54] <- as.integer(data.frame(RS22_16_17_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[9, 1] <- "2017/18"
+RS22_CE_Notificados[9, 2:54] <- as.integer(data.frame(RS22_17_18_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[10, 1] <- "2018/19"
+RS22_CE_Notificados[10, 2:54] <- as.integer(data.frame(RS22_18_19_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[11, 1] <- "2019/20"
+RS22_CE_Notificados[11, 2:54] <- as.integer(data.frame(RS22_19_20_SE_Notificados[17, 2:54]))
+
+RS22_CE_Notificados[12, 1] <- "2020/21"
+RS22_CE_Notificados[12, 2:54] <- as.integer(data.frame(RS22_20_21_SE_Notificados[17, 2:54]))
+
+colnames (RS22_CE_Notificados)[1] <- "Periodo Sazonal"
+colnames (RS22_CE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_CE_Notificados)[26:54] <- c(1:29)
+
+#####Gravando tabela base do canal endêmico NOTIFICADOS#####
+
+write.csv (RS22_CE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_CE_Notificados.csv", row.names = FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
