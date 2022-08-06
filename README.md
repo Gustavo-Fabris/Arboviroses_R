@@ -13,3 +13,10 @@ Inicialmente a equipe técnica utilizava o SIG Arboviroses Regional como aglutin
 Com a determinação de um processo fixo e simplificado de obtenção de dados entomológicos (planilhas Google Sheet municipais), as BASES DBF de casos notificados no SINAN (um arquivo por ano) e a utilização da linguagem R, é possível para a Regional de Saúde centralizar de forma ágil todos os dados dos Programas Municipais de Controle de Arboviroses e redistribuir estes dados, já como informações, de volta aos municípios.  
 
 ## Metodologia de Obtenção de Dados
+### Diretório Análise_de_Dados  
+Para a utilização do conjunto de scripts é necessário um diretório nomeado **Análise_de_Dados** na área de trabalho do computador. Este diretório deve, obrigatóriamente conter a seguinte árvore de diretórios:
+
+ARVORE  
+
+O conjunto de scrits funciona fundamentado na premissa de que os arquivos da BASE DBF requisitados no SINAN online serão alocados no subdiretório DBF, assim como o SIG Arboviroses Regional somente funciona com a premissa de que os shapefiles e os arquivos CSV trabalhados pelo R foram salvos em subdiretórios corretos.  
+Aqui cabe ressaltar que o Arboviroses_R está sendo escrito em ambiente Linux, devendo ser corrigido em caso de utilização em ambiente Windows.
