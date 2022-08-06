@@ -5,7 +5,9 @@ Trata-se de um conjunto de scripts (em desenvolvimento) com a função de, a par
 2. Conjunto de tabelas com informações que servirão de base para dashboards municipais (a serem desenvolvidos utilizando Data Studio);  
 3. Conjunto de tabelas com informações que servirão de base para Sistema Regional de Informações Geográficas de Dados de Saúde - Arboviroses (Já desenvolvido).    
 
-A utilização da linguagem R e o QGIS vêm de encontro à necessidade das equipes de Vigilância em Saúde municipais e regionais de melhor gerenciarem seus processos de trabalho priorizando a análise de informações ao invés da obtenção e tratamento de dados. Esse melhor gerenciamento de processos de trabalho, aliado a um melhor conjunto de informações sobre a situação dos Programas Municipais de Controle de Arboviroses e ferramentas tecnológicas proporciona uma oportunidade única dessas equipes começarem a atuar com o conceito de epidemiologia de precisão, visando tomar as decisões corretas, nos locais apropriados, no tempo exato.
+A utilização da linguagem R e o QGIS vêm de encontro à necessidade das equipes de Vigilância em Saúde municipais e regionais de melhor gerenciarem seus processos de trabalho priorizando a análise de informações ao invés da obtenção e tratamento de dados. Esse melhor gerenciamento de processos de trabalho, aliado a um melhor conjunto de informações sobre a situação dos Programas Municipais de Controle de Arboviroses e ferramentas tecnológicas proporciona uma oportunidade única dessas equipes começarem a atuar com o conceito de epidemiologia de precisão, visando tomar as decisões corretas, nos locais apropriados, no tempo exato.  
+
+https://journals.sagepub.com/doi/pdf/10.1177/1535370220919349
 
 ## Contexto de Elaboração do Conjunto de Scripts  
 Os scripts Arboviroses_R estão sendo elaborados para agilizarem o processo de obtenção e tratamento de dados em uma regional de saúde permitindo que os técnicos servidores da regional possam otimizar o gasto de tempo priorizando a análise dos dados.  
