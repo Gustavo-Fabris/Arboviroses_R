@@ -2,8 +2,6 @@
 ###Indicando área de trabalho###
 ##
 
-getwd()
-
 setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
 
 ##
@@ -13,13 +11,28 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
 library(dplyr)
 library(foreign)
 
-##
-###Importação da Base de Dados e Criação de Objetos Primários e seleção com DPLYR %>% select de colunas de interesse. É necessário atenção para a mudança da ficha do SINAN em 2015.###
-##
+#######################################################################################################################
+###Importação da Base de Dados e Criação de Objetos Primários e seleção com DPLYR %>% select de colunas de interesse. É ###necessário atenção para a mudança da ficha do SINAN em 2015.########################################################
+###O arquivo Planilha_Base_IBGE.CSV possui os municípios e seus respectivos códigos do IBGE. É uma planilha que serve##
+###de "engrenagem" para os loops#######################################################################################
+#######################################################################################################################
 
 BASE_IBGE<-read.table(file="/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/CSV/Planilha_Base_IBGE.csv", 
                       header=TRUE, 
                       sep=",")
+
+#######################################################################################################################
+#######Os arquivos .DBF devem ser requisitados no SINAN online com os dados de notificações e dados do paciente########
+#######por ano, a partir de 2009 até o ano atual. Após baixar os arquivos, os mesmos devem ser renomeados para ########
+#######DENGON2009.dbf, DENGON2010.dbf,..., DENGON2022.dbf e alocados em diretório correto: ############################
+############## /home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/##########################
+#######################################################################################################################
+
+#######################################################################################################################
+######Por não ser necessário todas as variáveis contidas na BASE DBF baixada do SINAN online, #########################
+######é feito um select de variáveis após o read.dbf para atribuir ao respectivo objeto somente########################
+###### as variáveis de interesse ao script. Isso poupa memória RAM#####################################################
+#######################################################################################################################
 
 DENGON2009 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2009.dbf", 
                        as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
@@ -38,6 +51,8 @@ DENGON2013 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados
 
 DENGON2014 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2014.dbf", 
                        as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, DT_OBITO, DT_ENCERRA, HOSPITALIZ, DT_INTERNA, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM, LACO_N, PLASMATICO, EVIDENCIA, CON_FHD, COMPLICA, DS_OBS)
+
+######### Em 2015 houve a mudança da ficha de investigação do SINAN. Mais variáveis foram incluídas###################
 
 DENGON2015 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2015.dbf", 
                        as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
