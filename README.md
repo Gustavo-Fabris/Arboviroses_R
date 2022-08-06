@@ -1,11 +1,11 @@
 # Arboviroses_R
-Trata-se de um conjunto de scripts (em desenvolvimento) com a função de, a partir de base DBF (de 2009 ao ano atual) obtidos do SINAN e dados entomológicos (obtidos de planilhas Google Sheets), atingir os seguintes produtos finais:
+Trata-se de um conjunto de scripts (em desenvolvimento) com a função de, a partir de base DBF (de 2009 ao ano atual) obtidos do SINAN online e dados entomológicos (obtidos de planilhas Google Sheets preenchidas pelas equipes de vigilâncias entomológica municipais), atuar como centralizador e manipulador desses dados e atingir os seguintes produtos finais:
 
 1. Informe Epidemiológico Regional ( a ser prodzido em RMarkDown);  
-2. Conjunto de tabelas com informações que servirão de base para dashboards municipais (a serem desenvolvidos utilizando Data Studio;  
-3. Conjunto de tabelas com informações que servirão de base para Sistema de Informações Geográficas de Dados de Saúde - Arboviroses (Já desenvolvido).    
+2. Conjunto de tabelas com informações que servirão de base para dashboards municipais (a serem desenvolvidos utilizando Data Studio);  
+3. Conjunto de tabelas com informações que servirão de base para Sistema Regional de Informações Geográficas de Dados de Saúde - Arboviroses (Já desenvolvido).    
 
-A utilização da linguagem R e o QGIS vêm de encontro à necessidade das equipes de Vigilância em Saúde municipais e regionais de melhor gerenciarem seus processos de trabalho priorizando a análise de informações ao invés da obtenção e tratamento de dados.
+A utilização da linguagem R e o QGIS vêm de encontro à necessidade das equipes de Vigilância em Saúde municipais e regionais de melhor gerenciarem seus processos de trabalho priorizando a análise de informações ao invés da obtenção e tratamento de dados. Esse melhor gerenciamento de processos de trabalho, aliado a um melhor conjunto de informações sobre a situação dos Programas Municipais de Controle de Arboviroses e ferramentas tecnológicas proporciona uma oportunidade única dessas equipes começarem a atuar com o conceito de epidemiologia de precisão, visando tomar as decisões corretas, nos locais apropriados, no tempo exato.
 
 ## Contexto de Elaboração do Conjunto de Scripts  
 Os scripts Arboviroses_R estão sendo elaborados para agilizarem o processo de obtenção e tratamento de dados em uma regional de saúde permitindo que os técnicos servidores da regional possam otimizar o gasto de tempo priorizando a análise dos dados.  
