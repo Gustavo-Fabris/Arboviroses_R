@@ -1,4 +1,4 @@
-# Arboviroses_R
+# Arboviroses_R (readme em elaboração)    
 Trata-se de um conjunto de scripts (em desenvolvimento) com a função de, a partir de base DBF (de 2009 ao ano atual) obtidos do SINAN online e dados entomológicos (obtidos de planilhas Google Sheets preenchidas pelas equipes de vigilâncias entomológica municipais), atuar como centralizador e manipulador desses dados e atingir os seguintes produtos finais:
 
 1. Informe Epidemiológico Regional ( a ser prodzido em RMarkDown);  
