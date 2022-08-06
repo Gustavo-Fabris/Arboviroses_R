@@ -1,9 +1,9 @@
 # Arboviroses_R
 Trata-se de um conjunto de scripts (em desenvolvimento) com a função de, a partir de base DBF (de 2009 ao ano atual) obtidos do SINAN e dados entomológicos (obtidos de planilhas Google Sheets), atingir os seguintes produtos finais:
 
-1. Informe Epidemiológico Regional ( a ser prodzido em RMarkDown;  
-2. Conjunto de tabelas com informações que servirão de base para dashboards municipais;  
-3. Conjunto de tabelas com informações que servirão de base para Sistema de Informações Geográficas de Dados de Saúde - Arboviroses (SIG Arboviroses Regional).  
+1. Informe Epidemiológico Regional ( a ser prodzido em RMarkDown);  
+2. Conjunto de tabelas com informações que servirão de base para dashboards municipais (a serem desenvolvidos utilizando Data Studio;  
+3. Conjunto de tabelas com informações que servirão de base para Sistema de Informações Geográficas de Dados de Saúde - Arboviroses (Já desenvolvido).    
 
 A utilização da linguagem R e o QGIS vêm de encontro à necessidade das equipes de Vigilância em Saúde municipais e regionais de melhor gerenciarem seus processos de trabalho priorizando a análise de informações ao invés da obtenção e tratamento de dados.
 
