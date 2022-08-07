@@ -1,0 +1,36 @@
+---
+output: pdf_document
+---
+
+# Governo do Estado do Paraná
+## Secretaria de Estado de Saúde
+## 22ª Regional de Saúde de Ivaiporã
+## Divisão de Vigilância em Saúde
+
+
+
+# Informe Epidemiológico Arboviroses 22ª RS
+## Nº 00-2022/23
+## Semanas Epidemiológicas 30 de agosto de 2022 a
+### Atualizado em  
+
+
+
+
+### Ivaiporã
+### 2022
+
+
+## 1. Séries Históricas  
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+
+RS22_Serie_Historica <- read.csv(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_Serie_Historica.csv",
+                                 sep = ",",
+                                 header = TRUE)
+```
+
+
