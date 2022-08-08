@@ -2022,4 +2022,11 @@ write.csv (RS22_CE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dad
 ########################################################################################################################
 ######Códigos a serem trabalhados####
 
+AUX <- as.data.frame(t(RS22_Serie_Historica))
+colnames(AUX) <- AUX[1,]
+AUX <- AUX[-1,]
+AUX[,11] <- c("2009/10", "2010/11", "2011/12", "2012/13", "2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22")
+colnames(AUX)[11] <- "Período_Sazonal"
+AUX <- AUX[,c(11, 1:10)]
+rownames(AUX) <- c(1:13)
 

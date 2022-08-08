@@ -1874,6 +1874,721 @@ RS22_10_11_SE_Notificados[17,2:54] <- apply(RS22_10_11_SE_Notificados[,2:54], 2,
 
 RS22_10_11_SE_Notificados[17,1] <- "Total"
 
+###Construindo um for loop para realizar a tabela de confirmados por semana epidemiológica###
+
+RS22_10_11_SE_Confirmados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_10_11_SE_Confirmados <- as.data.frame(RS22_10_11_SE_Confirmados)
+
+colnames(RS22_10_11_SE_Confirmados)[1] <- "Município" 
+
+RS22_10_11_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
+
+colnames (RS22_10_11_SE_Confirmados)[2:25] <- c(30:53)
+
+colnames (RS22_10_11_SE_Confirmados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 2] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201030) %>% 
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 3] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201031) %>%
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 4] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201032) %>% 
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i),5] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i, 
+                                                                                            CLASSI_FIN == 1 
+                                                                                            | 
+                                                                                              CLASSI_FIN == 2 
+                                                                                            |
+                                                                                              CLASSI_FIN == 3
+                                                                                            |
+                                                                                              CLASSI_FIN == 4,
+                                                                                            SEM_PRI ==201033) %>% 
+                                                                                     count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 6] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201034) %>%
+                                                                                      count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 7] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201035) %>% 
+                                                                                      count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 8] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201036) %>%
+                                                                                      count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 9] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201037) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 10] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201038) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 11] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201039) %>%
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 12] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201040) %>%
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 13] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201041) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 14] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201042) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 15] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201043) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 16] <- as.integer(RS22_10_11_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201044) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 17] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201045) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 18] <- as.integer(RS22_10_11_SINAN %>%  
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201046) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 19] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201047) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 20] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201048) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i),  21] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               CLASSI_FIN == 1 
+                                                                                               | 
+                                                                                                 CLASSI_FIN == 2 
+                                                                                               |
+                                                                                                 CLASSI_FIN == 3
+                                                                                               |
+                                                                                                 CLASSI_FIN == 4,
+                                                                                               SEM_PRI ==201049) %>%
+                                                                                        count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 22] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201050) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 23] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201051) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 24] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201052) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 25] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201053) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 26] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201101) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 27] <- as.integer(RS22_10_11_SINAN %>%  
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201102) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 28] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201103) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 29] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201104) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 30] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201105) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 31] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201106) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 32] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201107) %>%
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 33] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201108) %>%
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 34] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201109) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 35] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201110) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 36] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201111) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 37] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201112) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 38] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201113) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 39] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201114) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 40] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201115) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 41] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201116) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 42] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201117) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 43] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201118) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 44] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201119) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 45] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201120) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 46] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201121) %>% 
+                                                                                       count()
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 47] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201122) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 48] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201123) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 49] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201124) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 50] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201125) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 51] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201126) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 52] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201127) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 53] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201128) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_10_11_SE_Confirmados[which(RS22_10_11_SE_Confirmados == i), 54] <- as.integer(RS22_10_11_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201129) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_10_11_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 3]
+
+RS22_10_11_SE_Confirmados[17,2:54] <- apply(RS22_10_11_SE_Confirmados[,2:54], 2, sum)
+
+RS22_10_11_SE_Confirmados[17,1] <- "Total"
+
+
 ####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
 
 RS22_10_11_GERAL <- data.frame(Município = BASE_IBGE[which(BASE_IBGE$RS == 22), 3])
@@ -2537,6 +3252,719 @@ RS22_11_12_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 3]
 RS22_11_12_SE_Notificados[17,2:54] <- apply(RS22_11_12_SE_Notificados[,2:54], 2, sum)
 
 RS22_11_12_SE_Notificados[17,1] <- "Total"
+
+###Construindo um for loop para realizar a tabela de confirmados por semana epidemiológica###
+
+RS22_11_12_SE_Confirmados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_11_12_SE_Confirmados <- as.data.frame(RS22_11_12_SE_Confirmados)
+
+colnames(RS22_11_12_SE_Confirmados)[1] <- "Município" 
+
+RS22_11_12_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
+
+colnames (RS22_11_12_SE_Confirmados)[2:25] <- c(30:53)
+
+colnames (RS22_11_12_SE_Confirmados)[26:54] <- c(1:29)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 2] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201130)%>%
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 3] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201131) %>% 
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 4] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201132) %>% 
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i),5] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            CLASSI_FIN == 1 
+                                                                                            | 
+                                                                                              CLASSI_FIN == 2 
+                                                                                            |
+                                                                                              CLASSI_FIN == 3
+                                                                                            |
+                                                                                              CLASSI_FIN == 4,
+                                                                                            SEM_PRI ==201133) %>% 
+                                                                                     count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 6] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201134) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 7] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201135) %>%
+                                                                                      count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 8] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201136) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 9] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             CLASSI_FIN == 1 
+                                                                                             | 
+                                                                                               CLASSI_FIN == 2 
+                                                                                             |
+                                                                                               CLASSI_FIN == 3
+                                                                                             |
+                                                                                               CLASSI_FIN == 4,
+                                                                                             SEM_PRI ==201137) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 10] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201138) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 11] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201139) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 12] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201140) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 13] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201141) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 14] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201142) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 15] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201143) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 16] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201144) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 17] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201145) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 18] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201146) %>%                                                                                        count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 19] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201147) %>%                                                                                        count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 20] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201148) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i),  21] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               CLASSI_FIN == 1 
+                                                                                               | 
+                                                                                                 CLASSI_FIN == 2 
+                                                                                               |
+                                                                                                 CLASSI_FIN == 3
+                                                                                               |
+                                                                                                 CLASSI_FIN == 4,
+                                                                                               SEM_PRI ==201149) %>%
+                                                                                        count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 22] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201150) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 23] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201151) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 24] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201152) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 25] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201153) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 26] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201201) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 27] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201202) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 28] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201203) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 29] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201204) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 30] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201205) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 31] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201206) %>% 
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 32] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201207) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 33] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201208) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 34] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201209) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 35] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201210) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 36] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201211) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 37] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201212) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 38] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201213) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 39] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201214) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 40] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201215) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 41] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201216) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 42] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201217) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 43] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201218) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 44] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201219) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 45] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201220) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 46] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201221) %>%
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 47] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201222) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 48] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201223) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 49] <- as.integer(RS22_11_12_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201224) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 50] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201225) %>% 
+                                                                                       count()
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 51] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201226) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 52] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201227) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 53] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201228) %>%
+                                                                                       count() 
+  )
+  
+  RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 54] <- as.integer(RS22_11_12_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              CLASSI_FIN == 1 
+                                                                                              | 
+                                                                                                CLASSI_FIN == 2 
+                                                                                              |
+                                                                                                CLASSI_FIN == 3
+                                                                                              |
+                                                                                                CLASSI_FIN == 4,
+                                                                                              SEM_PRI ==201229) %>% 
+                                                                                       count() 
+  )
+}
+
+RS22_11_12_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 3]
+
+RS22_11_12_SE_Confirmados[17,2:54] <- apply(RS22_11_12_SE_Confirmados[,2:54], 2, sum)
+
+RS22_11_12_SE_Confirmados[17,1] <- "Total"
+
 
 ####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
 
