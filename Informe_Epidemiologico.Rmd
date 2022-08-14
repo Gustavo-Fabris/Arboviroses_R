@@ -1,10 +1,66 @@
 ---
-output: pdf_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Governo do Estado do
+
+## Secretaría de Saúde do Estado do
+
+## yyª Regional de Saúde de
+
+## Divisão de Vigilância em Saúde
+
+ 
+
+ 
+
+ 
+
+   
+  
+\  
+  
+\  
+  
+\  
+
+# Informe Epidemiológico Arboviroses 22ª Regional de Saúde
+
+## Nº XX - 2022/23
+
+ 
+
+ 
+
+ 
+
+ 
+
+   
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+  
+\  
+
+
 
 ```{r libraries, echo=FALSE, include=FALSE}
 library(dplyr)
@@ -14,39 +70,7 @@ RS22_Serie_Historica <- read.csv(file = "/home/gustavo/Área de trabalho/Anális
                                  header = TRUE)
 ```
 
-
-# Governo do Estado do Paraná
-
-## Secretaria de Estado de Saúde
-
-## 22ª Regional de Saúde de Ivaiporã
-
-## Divisão de Vigilância em Saúde
-
-# Informe Epidemiológico Arboviroses 22ª RS
-
-## Nº 00-2022/23
-
-## Semanas Epidemiológicas 30 de agosto de 2022 a
-
-### Atualizado em
-
-### Ivaiporã
-
-### 2022
-
 ## 1. Séries Históricas
-
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r Notificados, echo=FALSE}
-ggplot(data = AUX, aes(y = Notificados, x = Período_Sazonal)) + geom_bar(stat = "identity")
+```{r séries históricas, echo=FALSE, include=FALSE}
+ggplot(RS22_Serie_Historica, aes(y = Notificados, x = Período_Sazonal)) + geom_bar(stat = "identity")
 ```
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
