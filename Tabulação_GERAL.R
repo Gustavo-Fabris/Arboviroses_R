@@ -79,6 +79,9 @@ DENGON2021 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados
 DENGON2022 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2022.dbf", 
                        as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
 
+DENGON2023 <- read.dbf(file = "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Arboviroses/DBF/DENGON2022.dbf", 
+                       as.is = FALSE) %>% select(ID_REGIONA, NU_NOTIFIC, ID_AGRAVO, ID_REGIONA, DT_NOTIFIC, NU_ANO, SEM_NOT, DT_SIN_PRI, SEM_PRI,  SG_UF_NOT, ID_MUNICIP, NM_PACIENT, DT_NASC, NU_IDADE_N, CS_SEXO, CS_GESTANT, CS_ESCOL_N, NM_MAE_PAC, ID_MN_RESI, SG_UF, ID_RG_RESI, NM_LOGRADO, NU_NUMERO, NM_BAIRRO, NU_CEP, CS_ZONA, DT_DIGITA, DT_INVEST, FEBRE, MIALGIA, CEFALEIA, EXANTEMA, VOMITO, NAUSEA, DOR_COSTAS, CONJUNTVIT, ARTRITE, ARTRALGIA, PETEQUIA_N, LEUCOPENIA, LACO, DOR_RETRO, DIABETES, HEMATOLOG, HEPATOPAT, RENAL, HIPERTENSA, ACIDO_PEPT, AUTO_IMUNE, DT_SORO, RESUL_SORO, DT_PCR, RESUL_PCR_, SOROTIPO, CLASSI_FIN, CRITERIO, TPAUTOCTO, COUFINF, COMUNINF, CO_BAINF, EVOLUCAO, HOSPITALIZ, DT_INTERNA, DT_OBITO, DT_ENCERRA, DT_ALRM, ALRM_LETAR, ALRM_HEPAT, ALRM_LIQ, ALRM_HIPOT, ALRM_PLAQ, ALRM_VOM, ALRM_SANG, ALRM_HEMAT, ALRM_ABDOM, DT_GRAV, GRAV_PULSO, GRAV_CONV, GRAV_ENCH, GRAV_INSUF, GRAV_TAQUI, GRAV_EXTRE, GRAV_HIPOT, GRAV_HEMAT, GRAV_MELEN, GRAV_METRO, GRAV_SANG, GRAV_AST, GRAV_MIOC, GRAV_CONSC, GRAV_ORGAO, MANI_HEMOR, EPISTAXE, GENGIVO, METRO, PETEQUIAS, HEMATURA, SANGRAM)
+
 ##########################################################################################################################
 #########Transformando coluna de semana epidemiológica de fator para numérica (passando por texto,########################
 ######### se for direto, ela transforma 200905 em 06. Seria possível realizar busca de SE passando########################
@@ -115,6 +118,8 @@ DENGON2020$SEM_PRI <-as.numeric(as.character(DENGON2020$SEM_PRI))
 DENGON2021$SEM_PRI <-as.numeric(as.character(DENGON2021$SEM_PRI))
 
 DENGON2022$SEM_PRI <-as.numeric(as.character(DENGON2022$SEM_PRI))
+
+DENGON2023$SEM_PRI <-as.numeric(as.character(DENGON2023$SEM_PRI))
 
 ##
 ###Construindo o conjunto de tabelas necessárias por período sazonal####
@@ -15366,6 +15371,17 @@ RS22_Serie_Historica[8, 13] <- sum(RS22_20_21_GERAL$DENV_II)
 RS22_Serie_Historica[9, 13] <- sum(RS22_20_21_GERAL$DENV_III)
 RS22_Serie_Historica[10, 13] <- sum(RS22_20_21_GERAL$DENV_IV)
 
+RS22_Serie_Historica[1, 14] <- sum(RS22_21_22_GERAL$Notificados)
+RS22_Serie_Historica[2, 14] <- sum(RS22_21_22_GERAL$Dengue)
+RS22_Serie_Historica[3, 14] <- sum(RS22_21_22_GERAL$D_S_A)
+RS22_Serie_Historica[4, 14] <- sum(RS22_21_22_GERAL$Dengue_Grave)
+RS22_Serie_Historica[5, 14] <- sum(RS22_21_22_GERAL$Hospitalizados)
+RS22_Serie_Historica[6, 14] <- sum(RS22_21_22_GERAL$Autoctones)
+RS22_Serie_Historica[7, 14] <- sum(RS22_21_22_GERAL$DENV_I)
+RS22_Serie_Historica[8, 14] <- sum(RS22_21_22_GERAL$DENV_II)
+RS22_Serie_Historica[9, 14] <- sum(RS22_21_22_GERAL$DENV_III)
+RS22_Serie_Historica[10, 14] <- sum(RS22_21_22_GERAL$DENV_IV)
+
 #####Gravando tabela de série histórica#####
 
 write.csv (RS22_Serie_Historica, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_Serie_Historica_Base.csv", row.names = FALSE)
@@ -15409,6 +15425,9 @@ RS22_CE_Base_Notificados[11, 2:54] <- as.integer(data.frame(RS22_19_20_SE_Notifi
 
 RS22_CE_Base_Notificados[12, 1] <- "2020/21"
 RS22_CE_Base_Notificados[12, 2:54] <- as.integer(data.frame(RS22_20_21_SE_Notificados[17, 2:54]))
+
+RS22_CE_Base_Notificados[13, 1] <- "2021/22"
+RS22_CE_Base_Notificados[13, 2:54] <- as.integer(data.frame(RS22_21_22_SE_Notificados[17, 2:54]))
 
 colnames (RS22_CE_Base_Notificados)[1] <- "Período Sazonal"
 colnames (RS22_CE_Base_Notificados)[2:25] <- c(30:53)
