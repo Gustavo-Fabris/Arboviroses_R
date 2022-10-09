@@ -2,8 +2,10 @@
 
 setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/")
 
+
 library(foreign)
 library (dplyr)
+library (googlesheets4)
 
 ####Importando as tabelas da Tabulação Primária para construção das tabelas base do Informe Epidemiológico ###
 
@@ -22,7 +24,7 @@ RS22_Serie_Historica_Base <- read.csv(file = "RS22_Serie_Historica_Base.csv",
                                  header = TRUE,
                                  sep = ",")
 
-RS22_CE_Base_Notificados <- read.csv(file = "RS22_CE_Base_Notificados.csv",
+RS22_CE_Notificados_Base <- read.csv(file = "RS22_CE_Notificados_Base.csv",
                                 header = TRUE,
                                 sep = ",")
 
@@ -1061,6 +1063,8 @@ RS22_22_23_GERAL$DENV_IV <- NA
 
 RS22_22_23_GERAL$Hospitalizacao <- NA
 
+RS22_22_23_GERAL$Obitos <- NA
+
 for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   ###Notiicações###  
@@ -1107,7 +1111,8 @@ for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_22_23_GERAL[which(RS22_22_23_GERAL$COD_IBGE == i), 10]<- as.integer(RS22_22_23_SINAN %>% 
                                                                              filter(ID_MN_RESI == i, 
-                                                                                    TPAUTOCTO == 1) %>% 
+                                                                                    TPAUTOCTO == 1,
+                                                                                    CLASSI_FIN == 10) %>% 
                                                                              count() 
   )
   
@@ -1165,6 +1170,13 @@ for(i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                      HOSPITALIZ == 1) %>% 
                                                                               count() 
   )
+  ###Óbitos###
+  
+  RS22_22_23_GERAL[which(RS22_22_23_GERAL$COD_IBGE == i), 19] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                              filter(ID_MN_RESI == i, 
+                                                                                     EVOLUCAO == 2) %>% 
+                                                                              count() 
+  )
 }
 
 ###Incidência###FORA DO LOOP###
@@ -1179,8 +1191,6 @@ RS22_22_23_GERAL$Incidencia <- (RS22_22_23_GERAL$Autoctones/RS22_22_23_GERAL$Pop
 ######################################################################
 
 RS22_22_23_GERAL$Em_Investigacao <- as.integer(RS22_22_23_GERAL$Notificados) - as.integer(RS22_22_23_GERAL$Dengue + RS22_22_23_GERAL$D_S_A + RS22_22_23_GERAL$Dengue_Grave + RS22_22_23_GERAL$Descartados)
-
-RS22_22_23_GERAL$Obitos <- NA
 
 ###Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade#####
 
@@ -1751,25 +1761,38 @@ RS22_Serie_Historica_Base[1, 15] <- sum(RS22_22_23_GERAL$Notificados)
 RS22_Serie_Historica_Base[2, 15] <- sum(RS22_22_23_GERAL$Dengue)
 RS22_Serie_Historica_Base[3, 15] <- sum(RS22_22_23_GERAL$D_S_A)
 RS22_Serie_Historica_Base[4, 15] <- sum(RS22_22_23_GERAL$Dengue_Grave)
-RS22_Serie_Historica_Base[5, 15] <- sum(RS22_22_23_GERAL$Hospitalizados)
+RS22_Serie_Historica_Base[5, 15] <- sum(RS22_22_23_GERAL$Hospitalizacao)
 RS22_Serie_Historica_Base[6, 15] <- sum(RS22_22_23_GERAL$Autoctones)
 RS22_Serie_Historica_Base[7, 15] <- sum(RS22_22_23_GERAL$DENV_I)
 RS22_Serie_Historica_Base[8, 15] <- sum(RS22_22_23_GERAL$DENV_II)
 RS22_Serie_Historica_Base[9, 15] <- sum(RS22_22_23_GERAL$DENV_III)
 RS22_Serie_Historica_Base[10, 15] <- sum(RS22_22_23_GERAL$DENV_IV)
+RS22_Serie_Historica_Base[11, 15] <- sum(RS22_22_23_GERAL$Obitos)
 
 AUX <- as.data.frame(t(RS22_Serie_Historica_Base))
 colnames(AUX) <- AUX[1,]
 AUX <- AUX[-1,]
-AUX[,11] <- c("2009/10", "2010/11", "2011/12", "2012/13", "2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23")
-colnames(AUX)[11] <- "Periodo"
-AUX <- AUX[,c(11, 1:10)]
+AUX[,12] <- c("2009/10", "2010/11", "2011/12", "2012/13", "2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23")
+colnames(AUX)[12] <- "Periodo"
+AUX <- AUX[,c(12, 1:11)]
 rownames(AUX) <- c(1:14)
 RS22_Serie_Historica <- AUX
 
-rm(AUX)
+rm(AUX, RS22_Serie_Historica_Base)
 
-write.csv (RS22_Serie_Historica_Base, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_Serie_Historica.csv", row.names = FALSE)
+RS22_Serie_Historica[,2] <- as.numeric(RS22_Serie_Historica[,2])
+RS22_Serie_Historica[,3] <- as.numeric(RS22_Serie_Historica[,3])
+RS22_Serie_Historica[,4] <- as.numeric(RS22_Serie_Historica[,4])
+RS22_Serie_Historica[,5] <- as.numeric(RS22_Serie_Historica[,5])
+RS22_Serie_Historica[,6] <- as.numeric(RS22_Serie_Historica[,6])
+RS22_Serie_Historica[,7] <- as.numeric(RS22_Serie_Historica[,7])
+RS22_Serie_Historica[,8] <- as.numeric(RS22_Serie_Historica[,8])
+RS22_Serie_Historica[,9] <- as.numeric(RS22_Serie_Historica[,9])
+RS22_Serie_Historica[,10] <- as.numeric(RS22_Serie_Historica[,10])
+RS22_Serie_Historica[,11] <- as.numeric(RS22_Serie_Historica[,11])
+RS22_Serie_Historica[,12] <- as.numeric(RS22_Serie_Historica[,12])
+
+write.csv (RS22_Serie_Historica, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_Serie_Historica.csv", row.names = FALSE)
 
 
 ####Trabalhando com a tabela RS22_SINAN do período atual. Realizando a decodificação dos fatores em linguagem mais acessível aos municípios####
@@ -1983,20 +2006,26 @@ RS22_22_23_SINAN_DECODIFICADO$ALRM_ABDOM <- factor(RS22_22_23_SINAN_DECODIFICADO
 )
 ####RS22_22_23_SINAN_DECODIFICADO$Municipio 
 
-RS22_22_23_SINAN_DECODIFICADO_AUX <- data.frame(COD = RS22_22_23_SINAN_DECODIFICADO[,10], Municipio = NA)
+RS22_22_23_SINAN_DECODIFICADO_AUX <- data.frame(COD = RS22_22_23_SINAN_DECODIFICADO[,10], 
+                                                Municipio = NA)
+
 for (i in RS22_22_23_SINAN_DECODIFICADO[,10]){
   RS22_22_23_SINAN_DECODIFICADO_AUX[which(RS22_22_23_SINAN_DECODIFICADO_AUX$COD == i), 2] <- BASE_IBGE[which(BASE_IBGE$Código_IBGE == i),3]
   
 }
+
 RS22_22_23_SINAN_DECODIFICADO[,10] <- RS22_22_23_SINAN_DECODIFICADO_AUX[, 2]
 
 ####Município de Residência
 
-RS22_22_23_SINAN_DECODIFICADO_AUX <- data.frame(COD = RS22_22_23_SINAN_DECODIFICADO[,18], Municipio = NA)
+RS22_22_23_SINAN_DECODIFICADO_AUX <- data.frame(COD = RS22_22_23_SINAN_DECODIFICADO[,18], 
+                                                Municipio = NA)
+
 for (i in RS22_22_23_SINAN_DECODIFICADO[,18]){
   RS22_22_23_SINAN_DECODIFICADO_AUX[which(RS22_22_23_SINAN_DECODIFICADO_AUX$COD == i), 2] <- BASE_IBGE[which(BASE_IBGE$Código_IBGE == i),3]
   
 }
+
 RS22_22_23_SINAN_DECODIFICADO[,18] <- RS22_22_23_SINAN_DECODIFICADO_AUX[, 2]
 
 rm (RS22_22_23_SINAN_DECODIFICADO_AUX)
@@ -2008,18 +2037,18 @@ colnames(RS22_22_23_SINAN_DECODIFICADO)<- c("RS", "SINAN", "Agravo", "Data_Notif
 ################Trabalhando a tabela base do Canal Endêmico#########################################################
 ####################################################################################################################
 
-RS22_CE_Base_Notificados[14, 1] <- "2022/23"
-RS22_CE_Base_Notificados[14, 2:54] <- as.integer(data.frame(RS22_22_23_SE_Notificados[17, 2:54]))
+RS22_CE_Notificados_Base[14, 1] <- "2022/23"
+RS22_CE_Notificados_Base[14, 2:54] <- as.integer(data.frame(RS22_22_23_SE_Notificados[17, 2:54]))
 
 #####Utilizando objetos auxiliares porque se transpor o data frame direto ele transforma as variáveis em#############
 #####caracter.            NÃO FOI DESCARTADO AINDA OS PERÍODOS EPIDÊMICOS                               #############
 ##### VERIFICAR SE PODE-SE UTILIZAR A MÉDIA COMO LIMITE INFERIOR.                                       #############
 
-AUX <- RS22_CE_Base_Notificados[,-1]
+AUX <- RS22_CE_Notificados_Base[,-1]
 
 AUX <- t(AUX)
 
-AUX2 <- RS22_CE_Base_Notificados[,1]
+AUX2 <- RS22_CE_Notificados_Base[,1]
 
 colnames(AUX) <- AUX2
 
@@ -2055,10 +2084,101 @@ colnames(RS22_CE_Notificados)[1] <- "Semana_Epidemiológica"
 
 rownames(RS22_CE_Notificados) <- c(1:nrow(RS22_CE_Notificados))
 
-rm(AUX, AUX2, RS22_CE_Base_Notificados)
+rm(AUX, AUX2, RS22_CE_Notificados_Base)
 
 write.csv (RS22_CE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_CE_Notificados.csv", row.names = FALSE)
 
+#####Planilhas Google Sheets. Realizando o download das planilhas do google sheets e fazendo o upload da planilha de notificações######
+
+RS22_22_23_CICLOS_LOCALIDADES <- read_sheet("https://docs.google.com/spreadsheets/d/18hJMQnlFcRHeqNbtJObD0UCx8L-lOcJpOTYkn849Fcs/edit#gid=764914932")
+
+###Substituindo NA por 200 na planilha. O QGIS não está reconhecendo NA e as variáveis ficam como String no SIG.###
+
+RS22_22_23_CICLOS_LOCALIDADES[is.na(RS22_22_23_CICLOS_LOCALIDADES)] <- 200
+
+write.csv(RS22_22_23_CICLOS_LOCALIDADES, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_CICLOS_LOCALIDADES.csv",
+          row.names = FALSE)
+
+RS22_22_23_CICLOS_MUNICIPIOS <- read_sheet("https://docs.google.com/spreadsheets/d/1P1fC2Z3R8yyaF2_P7wUcDEtwKqfq8MWcf2R5vmmw-kM/edit#gid=1734395963")
+
+RS22_22_23_CICLOS_MUNICIPIOS[is.na(RS22_22_23_CICLOS_MUNICIPIOS)] <- 200
+
+write.csv(RS22_22_23_CICLOS_MUNICIPIOS, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_CICLOS_MUNICIPIOS.csv",
+          row.names = FALSE)
+
+RS22_22_23_RG_MUNICIPIOS <- read_sheet("https://docs.google.com/spreadsheets/d/1QILHWnVa1m2Lr4qqf02VejbCrPQaqkr1w51QNbxkaXk/edit#gid=1585473376")
+
+RS22_22_23_RG_MUNICIPIOS <- as.data.frame(lapply(RS22_22_23_RG_MUNICIPIOS, 
+                                                 unlist))
+
+write.csv(RS22_22_23_RG_MUNICIPIOS, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_RG_MUNICIPIOS.csv",
+          row.names = FALSE)
+
+RS22_22_23_RG_LOCALIDADES <- read_sheet("https://docs.google.com/spreadsheets/d/1js80T20EU2FvfqTLsjutPI7Zg93AaOhhbl8-wBD18FA/edit#gid=877642872")
+
+write.csv(RS22_22_23_RG_LOCALIDADES, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_RG_LOCALIDADES.csv",
+          row.names = FALSE)
+
+RS22_22_23_PE <- read_sheet("https://docs.google.com/spreadsheets/d/1fW7nGY_h17JqeuV37rnk71sZvxyB1_D0rynci5m-dI8/edit#gid=863361484")
+
+RS22_22_23_PE <- as.data.frame(lapply(RS22_22_23_PE, 
+                                      unlist))
+
+write.csv(RS22_22_23_PE, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_PE.csv",
+          row.names = FALSE)
+
+RS22_22_23_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1Ov9yeYwy-Xu7fkpxnxJG_AD_crHClGuk8OVFRi9FlPo/edit#gid=497857259")
+
+write.csv(RS22_22_23_ASSISTENCIA, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_ASSISTENCIA.csv",
+          row.names = FALSE)
+
+####Gravando os arquivos CSV#####
+
+write.csv(RS22_22_23_GERAL, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_GERAL.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_EXTRA, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_EXTRA.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_SINAN, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SINAN.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_SINAN_DECODIFICADO, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SINAN_DECODIFICADO.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_SINAIS_DE_ALARME, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SINAIS_DE_ALARME.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_SINAIS, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SINAIS.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_SE_Confirmados, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SE_Confirmados.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_SE_Notificados, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SE_Notificados.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_DENGUE_GRAVE, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_SE_DENGUE_GRAVE.csv",
+          row.names = FALSE)
+
+write.csv(RS22_22_23_DOENCAS_PRE_EXISTENTES, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_DOENCAS_PRE_EXISTENTES.csv",
+          row.names = FALSE)
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
@@ -2070,4 +2190,7 @@ write.csv (RS22_CE_Notificados, "/home/gustavo/Área de trabalho/Análise_de_Dad
 ######Códigos a serem trabalhados####
 
 
+library ("ggplot2")
+RS22_Serie_Historica$Notificados <- as.numeric(RS22_Serie_Historica$Notificados)
+ggplot (RS22_Serie_Historica, aes(x = Periodo, y = Notificados)) + geom_bar(stat = "identity")
 
