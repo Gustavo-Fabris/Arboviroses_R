@@ -9,12 +9,11 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoe
 #######################################E DATA DA BASE DBF####################################################
 #############################################################################################################
 
-Fonte <- "SINAN. BASE DBF: Acesso em 28/10/2022"
+Fonte <- "SINAN. BASE DBF: Acesso em 04/11/2022"
 
-SE <- as.data.frame("40")
+SE <- as.data.frame("44")
 
 SE <- as.numeric(SE)
-
 
 
 #############################################################################################################
@@ -2426,6 +2425,12 @@ write.csv(PR_22_23_ZIKA_MUNICIPIOS,
           "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/PR_22_23_ZIKA_MUNICIPIOS.csv",
           row.names = FALSE)
 
+RS22_22_23_REDE_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1mAiDoUdGgVsTB1DK5LumL2oStZZvIkbCp5XsuafaEvE/edit#gid=863361484", sheet = "Consolidado")
+
+write.csv(RS22_22_23_REDE_OVITRAMPAS, 
+          "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_REDE_OVITRAMPAS.csv",
+          row.names = FALSE)
+
 RS22_22_23_CICLOS_LOCALIDADES <- read_sheet("https://docs.google.com/spreadsheets/d/18hJMQnlFcRHeqNbtJObD0UCx8L-lOcJpOTYkn849Fcs/edit#gid=764914932")
 
 ###Substituindo NA por 200 na planilha. O QGIS não está reconhecendo NA e as variáveis ficam como String no SIG.###
@@ -2468,7 +2473,8 @@ write.csv(RS22_22_23_PE,
           "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_PE.csv",
           row.names = FALSE)
 
-RS22_22_23_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1Ov9yeYwy-Xu7fkpxnxJG_AD_crHClGuk8OVFRi9FlPo/edit#gid=497857259")
+RS22_22_23_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1SCe_xImlW3cExZ2AzbfCQc51OPo9JETqAJkSvbGn8rk/edit#gid=863361484",
+                                     sheet = "Consolidado")
 
 write.csv(RS22_22_23_ASSISTENCIA, 
           "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_22_23_ASSISTENCIA.csv",
@@ -2559,10 +2565,10 @@ RS22_Serie_Historica_GRAF_Not_Conf <- ggplot (AUX_GRAF,
                                    vjust = .5,
                                    face = "bold",
                                    size = 14)) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
+  labs(caption = Fonte, 
        x = "Período Sazonal",
        y = "Número de Casos",
-       title = "1.1. Casos NOTIFICADOS (2009/10 - 2022/23) 22ªRS") +
+       title = "CASOS NOTIFICADOS/CONFIRMADOS 22ªRS (2009/10 - 2022/23)") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2604,16 +2610,16 @@ RS22_Serie_Historica_GRAF_Hospitalizados <- ggplot (RS22_Serie_Historica,
   theme(axis.text.x = element_text(angle = 50, 
                                    vjust = .5,
                                    face = "bold",
-                                   size = 14)) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
+                                   size = 12)) +
+  labs(caption = Fonte, 
        x = "Período Sazonal",
        y = "Número de Casos",
-       title = "Casos HOSPITALIZADOS (2009/10 - 2022/23) 22ªRS") +
+       title = "CASOS HOSPITALIZADOS 22ªRS (2009/10 - 2022/23)") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
          plot.title = element_text(face = "bold",
-                                   size = 19,
+                                   size = 14,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity", 
            fill = "#BDB76B",
@@ -2631,16 +2637,16 @@ RS22_Serie_Historica_GRAF_Sorotipo <- ggplot (RS22_Serie_Historica,
   theme(axis.text.x = element_text(angle = 50, 
                                    vjust = .5,
                                    face = "bold",
-                                   size = 14)) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
+                                   size = 12)) +
+  labs(caption = Fonte, 
        x = "Período Sazonal",
        y = "Número de Casos",
-       title = "Sorotipo Circulante (2009/10 - 2022/23) 22ªRS") +
+       title = "SOROTIPO CIRCULANTE 22ªRS (2009/10 - 2022/23)") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
          plot.title = element_text(face = "bold",
-                                   size = 19,
+                                   size = 14,
                                    colour = "#556B2F")) +
   geom_bar(
     aes( y = DENV_I, fill = "DENV I"),
@@ -2708,14 +2714,14 @@ AUX_GRAF[14,3] <- sum(RS22_22_23_SINAIS_Confirmados[, 17])
 
 RS22_22_23_GRAF_SINAIS <- ggplot (AUX_GRAF, 
                                   aes(x = Sintomas)) + 
-  theme(axis.text.x = element_text(angle = 50, 
+  theme(axis.text.x = element_text(angle = 80, 
                                    vjust = .5,
                                    face = "bold",
                                    size = 14)) +
   labs(caption = Fonte, 
        x = "Sintomas",
        y = "Número de Casos",
-       title = "Sorotipo Circulante (2009/10 - 2022/23) 22ªRS") +
+       title = "SINTOMAS CASOS NOTIFICADOS/CONFIRMADOS 22ªRS - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2762,10 +2768,10 @@ RS22_22_23_GRAF_Notificados <- ggplot (RS22_22_23_GERAL,
   theme(axis.text.x = element_text(angle = 50, 
                                    vjust = .5,
                                    face = "bold")) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
-       x = "Período Sazonal",
+  labs(caption = Fonte, 
+       x = "Municípios",
        y = "Número de Casos",
-       title = "Casos Notificados por Município - 2022/23") +
+       title = "CASOS NOTIFICADOS/MUNICÍPIO - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2780,14 +2786,44 @@ RS22_22_23_GRAF_Notificados <- ggplot (RS22_22_23_GERAL,
              alpha = 0.5,
              nudge_y = 0.7)  
 
+
+AUX_GRAF <- data.frame (Municípios = RS22_22_23_GERAL[, 2],
+                        Confirmados = (RS22_22_23_GERAL[, 6] + RS22_22_23_GERAL[, 7] + RS22_22_23_GERAL[, 8])
+                        )
+RS22_22_23_GRAF_Confirmados <- ggplot (AUX_GRAF, 
+                                       aes(x = Municípios, 
+                                           y = Confirmados)) + 
+  theme(axis.text.x = element_text(angle = 50, 
+                                   vjust = .5,
+                                   face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Municípios",
+       y = "Número de Casos",
+       title = "CASOS CONFIRMADOS/MUNICÍPIO - 2022/23") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 19,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#D2B48C") + 
+  geom_label(aes(label = Confirmados), 
+             size = 3, 
+             alpha = 0.5,
+             nudge_y = 0.2)  
+
 RS22_22_23_GRAF_Autoctones <- ggplot (RS22_22_23_GERAL, 
                                       aes(x = Município, 
                                           y = Autoctones)) + 
-  theme(axis.text.x = element_text(angle = 50, vjust = .5)) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
-       x = "Período Sazonal",
+  theme(axis.text.x = element_text(angle = 50, 
+                                   vjust = .5,
+                                   face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Municípios",
        y = "Número de Casos",
-       title = "Casos Autóctones/Município - 2022/23") +
+       title = "CASOS AUTÓCTONES/MUNICÍPIO - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2805,11 +2841,13 @@ RS22_22_23_GRAF_Autoctones <- ggplot (RS22_22_23_GERAL,
 RS22_22_23_GRAF_Investigacao <- ggplot (RS22_22_23_GERAL, 
                                         aes(x = Município, 
                                             y = Em_Investigacao)) + 
-  theme(axis.text.x = element_text(angle = 50, vjust = .5)) +
+  theme(axis.text.x = element_text(angle = 50, 
+                                   vjust = .5,
+                                   face = "bold")) +
   labs(caption = Fonte, 
-       x = "Período Sazonal",
+       x = "Municípios",
        y = "Número de Casos",
-       title = "Casos Autóctones/Município - 2022/23") +
+       title = "CASOS EM INVESTIGAÇÃO/MUNICÍPIO - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2827,11 +2865,13 @@ RS22_22_23_GRAF_Investigacao <- ggplot (RS22_22_23_GERAL,
 RS22_22_23_GRAF_Incidencia <- ggplot (RS22_22_23_GERAL, 
                                       aes(x = Município, 
                                           y = Incidencia)) + 
-  theme(axis.text.x = element_text(angle = 50, vjust = .5)) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
-       x = "Período Sazonal",
+  theme(axis.text.x = element_text(angle = 50, 
+                                   vjust = .5,
+                                   face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Municípios",
        y = "Número de Casos",
-       title = "Incidência/Município - 2022/23") +
+       title = "INCIDÊNCIA/MUNICÍPIO - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2852,10 +2892,10 @@ RS22_22_23_GRAF_Descartados <- ggplot (RS22_22_23_GERAL,
   theme(axis.text.x = element_text(angle = 50, 
                                    vjust = .5,
                                    face = "bold")) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
-       x = "Período Sazonal",
+  labs(caption = Fonte, 
+       x = "Municípios",
        y = "Número de Casos",
-       title = "Casos Descartados/Município - 2022/23") +
+       title = "CASOS DESCARTADOS/MUNICÍPIO - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -2873,9 +2913,11 @@ RS22_22_23_GRAF_Descartados <- ggplot (RS22_22_23_GERAL,
 RS22_22_23_GRAF_Hospitalizados <- ggplot (RS22_22_23_GERAL, 
                                           aes(x = Município, 
                                               y = Hospitalizacao)) + 
-  theme(axis.text.x = element_text(angle = 50, vjust = .5)) +
-  labs(caption = "Fonte: SINAN. Base DBF", 
-       x = "Período Sazonal",
+  theme(axis.text.x = element_text(angle = 50, 
+                                   vjust = .5,
+                                   face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Municípios",
        y = "Número de Casos",
        title = "Casos Hospitalizados/Município - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
@@ -3076,7 +3118,7 @@ SE_HIST_NOT_CANDIDO <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Cândido_de_Abreu),
              alpha = 0.5,
-             nudge_y = 0.01)
+             nudge_y = 1)
 
 SE_HIST_NOT_CRUZMALTINA <- ggplot (AUX_GRAF, 
                                    aes(x = SE, 
@@ -3118,7 +3160,7 @@ SE_HIST_NOT_GODOY <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Godoy_Moreira),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_IVAIPORA <- ggplot (AUX_GRAF, 
                                 aes(x = SE, 
@@ -3139,7 +3181,7 @@ SE_HIST_NOT_IVAIPORA <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Ivaiporã),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_JARDIM <- ggplot (AUX_GRAF, 
                               aes(x = SE, 
@@ -3160,7 +3202,7 @@ SE_HIST_NOT_JARDIM <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Jardim_Alegre),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_LIDIANÓPOLIS <- ggplot (AUX_GRAF, 
                                     aes(x = SE, 
@@ -3181,7 +3223,7 @@ SE_HIST_NOT_LIDIANÓPOLIS <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Lidianópolis),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 RS22_22_23_GRAF_Histograma_Notificados_01 <- (SE_HIST_NOT_ARAPUÃ + SE_HIST_NOT_ARIRANHA) / (SE_HIST_NOT_CANDIDO + SE_HIST_NOT_CRUZMALTINA) / (SE_HIST_NOT_GODOY + SE_HIST_NOT_IVAIPORA) / (SE_HIST_NOT_JARDIM + SE_HIST_NOT_LIDIANÓPOLIS) 
 
@@ -3204,7 +3246,7 @@ SE_HIST_NOT_LUNARDELLI <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Lunardelli),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_MANOEL_RIBAS <- ggplot (AUX_GRAF, 
                                     aes(x = SE, 
@@ -3225,7 +3267,7 @@ SE_HIST_NOT_MANOEL_RIBAS <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Manoel_Ribas),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_MATO_RICO <- ggplot (AUX_GRAF, 
                                  aes(x = SE, 
@@ -3246,7 +3288,7 @@ SE_HIST_NOT_MATO_RICO <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Mato_Rico),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_NOVA_TEBAS <- ggplot (AUX_GRAF, 
                                   aes(x = SE, 
@@ -3267,7 +3309,7 @@ SE_HIST_NOT_NOVA_TEBAS <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Nova_Tebas),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_RBI <- ggplot (AUX_GRAF, 
                            aes(x = SE, 
@@ -3288,7 +3330,7 @@ SE_HIST_NOT_RBI <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Rio_Branco_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_RSI <- ggplot (AUX_GRAF, 
                            aes(x = SE, 
@@ -3309,7 +3351,7 @@ SE_HIST_NOT_RSI <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Rosário_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_SMO <- ggplot (AUX_GRAF, 
                            aes(x = SE, 
@@ -3330,7 +3372,7 @@ SE_HIST_NOT_SMO <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = Santa_Maria_do_Oeste),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_NOT_SJI <- ggplot (AUX_GRAF, 
                            aes(x = SE, 
@@ -3351,7 +3393,7 @@ SE_HIST_NOT_SJI <- ggplot (AUX_GRAF,
            fill = "#8FBC8F") + 
   geom_label(aes(label = São_João_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 RS22_22_23_GRAF_Histograma_Notificados_02 <- (SE_HIST_NOT_LUNARDELLI + SE_HIST_NOT_MANOEL_RIBAS) / (SE_HIST_NOT_MATO_RICO + SE_HIST_NOT_NOVA_TEBAS) / (SE_HIST_NOT_RBI + SE_HIST_NOT_RSI) / (SE_HIST_NOT_SMO + SE_HIST_NOT_SJI) 
 
@@ -3439,10 +3481,10 @@ SE_HIST_CONF_ARAPUÃ <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Arapuã),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_ARIRANHA <- ggplot (AUX_GRAF, 
                           aes(x = SE, 
@@ -3460,10 +3502,10 @@ SE_HIST_CONF_ARIRANHA <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Ariranha_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_CANDIDO <- ggplot (AUX_GRAF, 
                             aes(x = SE, 
@@ -3481,10 +3523,10 @@ SE_HIST_CONF_CANDIDO <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Cândido_de_Abreu),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_CRUZMALTINA <- ggplot (AUX_GRAF, 
                            aes(x = SE, 
@@ -3502,10 +3544,10 @@ SE_HIST_CONF_CRUZMALTINA <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Cruzmaltina),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_GODOY <- ggplot (AUX_GRAF, 
                           aes(x = SE, 
@@ -3523,10 +3565,10 @@ SE_HIST_CONF_GODOY <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Godoy_Moreira),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_IVAIPORA <- ggplot (AUX_GRAF, 
                         aes(x = SE, 
@@ -3544,10 +3586,10 @@ SE_HIST_CONF_IVAIPORA <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Ivaiporã),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_JARDIM <- ggplot (AUX_GRAF, 
                            aes(x = SE, 
@@ -3565,10 +3607,10 @@ SE_HIST_CONF_JARDIM <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Jardim_Alegre),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_LIDIANÓPOLIS <- ggplot (AUX_GRAF, 
         aes(x = SE, 
@@ -3586,10 +3628,10 @@ SE_HIST_CONF_LIDIANÓPOLIS <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Lidianópolis),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 RS22_22_23_GRAF_Histograma_Confirmados_01 <- (SE_HIST_CONF_ARAPUÃ + SE_HIST_CONF_ARIRANHA) / (SE_HIST_CONF_CANDIDO + SE_HIST_CONF_CRUZMALTINA) / (SE_HIST_CONF_GODOY + SE_HIST_CONF_IVAIPORA) / (SE_HIST_CONF_JARDIM + SE_HIST_CONF_LIDIANÓPOLIS) 
 
@@ -3609,10 +3651,10 @@ SE_HIST_CONF_LUNARDELLI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Lunardelli),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_MANOEL_RIBAS <- ggplot (AUX_GRAF, 
                                      aes(x = SE, 
@@ -3630,10 +3672,10 @@ SE_HIST_CONF_MANOEL_RIBAS <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Manoel_Ribas),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_MATO_RICO <- ggplot (AUX_GRAF, 
                                   aes(x = SE, 
@@ -3651,10 +3693,10 @@ SE_HIST_CONF_MATO_RICO <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Mato_Rico),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_NOVA_TEBAS <- ggplot (AUX_GRAF, 
                                    aes(x = SE, 
@@ -3672,10 +3714,10 @@ SE_HIST_CONF_NOVA_TEBAS <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Nova_Tebas),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_RBI <- ggplot (AUX_GRAF, 
                             aes(x = SE, 
@@ -3693,10 +3735,10 @@ SE_HIST_CONF_RBI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Rio_Branco_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_RSI <- ggplot (AUX_GRAF, 
                             aes(x = SE, 
@@ -3714,10 +3756,10 @@ SE_HIST_CONF_RSI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Rosário_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_SMO <- ggplot (AUX_GRAF, 
                             aes(x = SE, 
@@ -3735,10 +3777,10 @@ SE_HIST_CONF_SMO <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = Santa_Maria_do_Oeste),
              alpha = 0.5,
-             nudge_y = 1)
+             nudge_y = 0.01)
 
 SE_HIST_CONF_SJI <- ggplot (AUX_GRAF, 
                             aes(x = SE, 
@@ -3756,10 +3798,10 @@ SE_HIST_CONF_SJI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#8FBC8F") + 
+           fill = "#98FB98") + 
   geom_label(aes(label = São_João_do_Ivaí),
              alpha = 0.5,
-             nudge_y = 0.1)
+             nudge_y = 0.01)
 
 RS22_22_23_GRAF_Histograma_Confirmados_02 <- (SE_HIST_CONF_LUNARDELLI + SE_HIST_CONF_MANOEL_RIBAS) / (SE_HIST_CONF_MATO_RICO + SE_HIST_CONF_NOVA_TEBAS) / (SE_HIST_CONF_RBI + SE_HIST_CONF_RSI) / (SE_HIST_CONF_SMO + SE_HIST_CONF_SJI) 
 
@@ -3820,24 +3862,13 @@ RS22_22_23_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
 
 ###Série Histórica
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Serie_Historica_Not_Conf.png", 
-       plot = RS22_Serie_Historica_GRAF_Not_Conf,
-       width = 15.51,
-       height = 8.51)
+RS22_22_23_GRAF_SERIES_HISTORICAS <- (RS22_Serie_Historica_GRAF_Not_Conf / (RS22_Serie_Historica_GRAF_Sorotipo + RS22_Serie_Historica_GRAF_Hospitalizados))
 
-###Série Histórica Sorotipos
+ggsave(filename = "/home/gustavo/Área de trabalho/Serie_Historica.png", 
+       plot = RS22_22_23_GRAF_SERIES_HISTORICAS,
+       width = 12.51,
+       height = 15.51)
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Serie_Historica_Sorotipo.png", 
-       plot = RS22_Serie_Historica_GRAF_Sorotipo,
-       width = 15.51,
-       height = 8.51) 
-
-###Série Histórica Hospitalizados
-
-ggsave(filename = "/home/gustavo/Área de trabalho/Serie_Historica_Hospitalizados.png", 
-       plot = RS22_Serie_Historica_GRAF_Hospitalizados,
-       width = 15.51,
-       height = 8.51) 
 
 ###Notificados/Municípios
 
@@ -3860,6 +3891,13 @@ ggsave(filename = "/home/gustavo/Área de trabalho/RS22_GRAF_22_23_Investigacao_
        width = 15.51,
        height = 8.51) 
 
+###Confirmados
+
+ggsave(filename = "/home/gustavo/Área de trabalho/RS22_GRAF_22_23_IConfirmados_.png", 
+       plot = RS22_22_23_GRAF_Confirmados,
+       width = 15.51,
+       height = 8.51) 
+
 ###Incidência
 
 ggsave(filename = "/home/gustavo/Área de trabalho/RS22_GRAF_22_23_Incidencia_.png", 
@@ -3878,6 +3916,13 @@ ggsave(filename = "/home/gustavo/Área de trabalho/RS22_GRAF_22_23_Descartados_.
 
 ggsave(filename = "/home/gustavo/Área de trabalho/RS22_GRAF_22_23_Hospitalizados_.png", 
        plot = RS22_22_23_GRAF_Hospitalizados,
+       width = 15.51,
+       height = 8.51) 
+
+###Sintomas
+
+ggsave(filename = "/home/gustavo/Área de trabalho/RS22_GRAF_22_23_SINAIS_.png", 
+       plot = RS22_22_23_GRAF_SINAIS,
        width = 15.51,
        height = 8.51) 
 
@@ -3915,14 +3960,10 @@ ggsave(filename = "/home/gustavo/Área de trabalho/RS22_22_23_GRAF_Histograma_Co
 
 ###Canal Endêmicos Notificados
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Canal_Endemico_22_23_Notificados.png", 
-       plot = RS22_22_23_GRAF_CE_Notificados,
-       width = 15.51,
-       height = 8.51)
+RS22_22_23_GRAF_CANAIS_ENDEMICOS <- (RS22_22_23_GRAF_CE_Notificados / RS22_22_23_GRAF_CE_Confirmados)
 
-###Canal Endêmico Confirmados
+ggsave(filename = "/home/gustavo/Área de trabalho/Canal_Endemico_22_23_CE.png", 
+       plot = RS22_22_23_GRAF_CANAIS_ENDEMICOS,
+       width = 12.51,
+       height = 15.51)
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Canal_Endemico_22_23_Confirmados.png", 
-       plot = RS22_22_23_GRAF_CE_Confirmados,
-       width = 15.51,
-       height = 8.51)
