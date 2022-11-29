@@ -169,327 +169,327 @@ colnames(RS22_09_10_SE_Notificados)[1] <- "Município"
 
 RS22_09_10_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_09_10_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_09_10_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_09_10_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_09_10_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 2] <- as.integer(RS22_09_10_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200930)%>%
+                                                                                             SEM_PRI ==200931)%>%
                                                                                       count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 3] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200931) %>% 
+                                                                                             SEM_PRI ==200932) %>% 
                                                                                       count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 4] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200932) %>% 
+                                                                                             SEM_PRI ==200933) %>% 
                                                                                       count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i),5] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i, 
-                                                                                            SEM_PRI ==200933) %>% 
+                                                                                            SEM_PRI ==200934) %>% 
                                                                                      count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 6] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200934) %>% 
+                                                                                             SEM_PRI ==200935) %>% 
                                                                                       count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 7] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200935) %>% 
+                                                                                             SEM_PRI ==200936) %>% 
                                                                                       count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 8] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200936) %>% 
+                                                                                             SEM_PRI ==200937) %>% 
                                                                                       count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 9] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==200937) %>% 
+                                                                                             SEM_PRI ==200938) %>% 
                                                                                       count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 10] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200938) %>%
+                                                                                              SEM_PRI ==200939) %>%
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 11] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200939) %>%
+                                                                                              SEM_PRI ==200940) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 12] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==200940) %>%
+                                                                                              SEM_PRI ==200941) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 13] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200941) %>%
+                                                                                              SEM_PRI ==200942) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 14] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200942) %>% 
+                                                                                              SEM_PRI ==200943) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 15] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200943) %>%
+                                                                                              SEM_PRI ==200944) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 16] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200944) %>%
+                                                                                              SEM_PRI ==200945) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 17] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200945) %>%
+                                                                                              SEM_PRI ==200946) %>%
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 18] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200946) %>% 
+                                                                                              SEM_PRI ==200947) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 19] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200947) %>%
+                                                                                              SEM_PRI ==200948) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 20] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200948) %>%
+                                                                                              SEM_PRI ==200949) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i),  21] <- as.integer(RS22_09_10_SINAN %>%
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==200949) %>%
+                                                                                               SEM_PRI ==200950) %>%
                                                                                         count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 22] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==200950) %>%
+                                                                                              SEM_PRI ==200951) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 23] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==200951) %>%
+                                                                                              SEM_PRI ==200952) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 24] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==200952) %>%
+                                                                                              SEM_PRI ==200953) %>%
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 25] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==200953) %>%
+                                                                                              SEM_PRI ==201001) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 26] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201001) %>%
+                                                                                              SEM_PRI ==201002) %>%
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 27] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201002) %>%
+                                                                                              SEM_PRI ==201003) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 28] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201003) %>%
+                                                                                              SEM_PRI ==201004) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 29] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201004) %>%
+                                                                                              SEM_PRI ==201005) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 30] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201005) %>% 
+                                                                                              SEM_PRI ==201006) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 31] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201006) %>%
+                                                                                              SEM_PRI ==201007) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 32] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201007) %>% 
+                                                                                              SEM_PRI ==201008) %>% 
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 33] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201008) %>% 
+                                                                                              SEM_PRI ==201009) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 34] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201009) %>% 
+                                                                                              SEM_PRI ==201010) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 35] <- as.integer(RS22_09_10_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201010) %>% 
+                                                                                              SEM_PRI ==201011) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 36] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201011) %>%
+                                                                                              SEM_PRI ==201012) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 37] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201012) %>%
+                                                                                              SEM_PRI ==201013) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 38] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201013) %>% 
+                                                                                              SEM_PRI ==201014) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 39] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201014) %>% 
+                                                                                              SEM_PRI ==201015) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 40] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201015) %>% 
+                                                                                              SEM_PRI ==201016) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 41] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201016) %>% 
+                                                                                              SEM_PRI ==201017) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 42] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201017) %>% 
+                                                                                              SEM_PRI ==201018) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 43] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201018) %>% 
+                                                                                              SEM_PRI ==201019) %>% 
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 44] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201019) %>% 
+                                                                                              SEM_PRI ==201020) %>% 
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 45] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201020) %>%
+                                                                                              SEM_PRI ==201021) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 46] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201021) %>% 
+                                                                                              SEM_PRI ==201022) %>% 
                                                                                        count()
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 47] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201022) %>% 
+                                                                                              SEM_PRI ==201023) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 48] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201023) %>% 
+                                                                                              SEM_PRI ==201024) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 49] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201024) %>%
+                                                                                              SEM_PRI ==201025) %>%
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 50] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201025) %>% 
+                                                                                              SEM_PRI ==201026) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 51] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201026) %>% 
+                                                                                              SEM_PRI ==201027) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 52] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201027) %>% 
+                                                                                              SEM_PRI ==201028) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 53] <- as.integer(RS22_09_10_SINAN %>%  
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201028) %>% 
+                                                                                              SEM_PRI ==201029) %>% 
                                                                                        count() 
   )
   
   RS22_09_10_SE_Notificados[which(RS22_09_10_SE_Notificados == i), 54] <- as.integer(RS22_09_10_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201029) %>% 
+                                                                                              SEM_PRI ==201030) %>% 
                                                                                        count() 
   )
 }
@@ -512,9 +512,9 @@ colnames(RS22_09_10_SE_Confirmados)[1] <- "Município"
 
 RS22_09_10_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_09_10_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_09_10_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_09_10_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_09_10_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
   
@@ -527,7 +527,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200930)%>%
+                                                                                             SEM_PRI ==200931)%>%
                                                                                       count()
   )
   
@@ -540,7 +540,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200931) %>% 
+                                                                                             SEM_PRI ==200932) %>% 
                                                                                       count()
   )
   
@@ -553,7 +553,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200932) %>% 
+                                                                                             SEM_PRI ==200933) %>% 
                                                                                       count()
   )
   
@@ -566,7 +566,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                               CLASSI_FIN == 3
                                                                                             |
                                                                                               CLASSI_FIN == 4,
-                                                                                            SEM_PRI ==200933) %>% 
+                                                                                            SEM_PRI ==200934) %>% 
                                                                                      count()
   )
   
@@ -579,7 +579,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200934) %>% 
+                                                                                             SEM_PRI ==200935) %>% 
                                                                                       count() 
   )
   
@@ -592,7 +592,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200935) %>% 
+                                                                                             SEM_PRI ==200936) %>% 
                                                                                       count()
   )
   
@@ -605,7 +605,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200936) %>% 
+                                                                                             SEM_PRI ==200937) %>% 
                                                                                       count() 
   )
   
@@ -618,7 +618,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==200937) %>% 
+                                                                                             SEM_PRI ==200938) %>% 
                                                                                       count() 
   )
   
@@ -631,7 +631,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200938) %>%
+                                                                                              SEM_PRI ==200939) %>%
                                                                                        count()
   )
   
@@ -644,7 +644,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200939) %>%
+                                                                                              SEM_PRI ==200940) %>%
                                                                                        count() 
   )
   
@@ -657,7 +657,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200940) %>%
+                                                                                              SEM_PRI ==200941) %>%
                                                                                        count() 
   )
   
@@ -670,7 +670,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200941) %>%
+                                                                                              SEM_PRI ==200942) %>%
                                                                                        count() 
   )
   
@@ -683,7 +683,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200942) %>% 
+                                                                                              SEM_PRI ==200943) %>% 
                                                                                        count() 
   )
   
@@ -696,7 +696,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200943) %>%
+                                                                                              SEM_PRI ==200944) %>%
                                                                                        count() 
   )
   
@@ -709,7 +709,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200944) %>%
+                                                                                              SEM_PRI ==200945) %>%
                                                                                        count() 
   )
   
@@ -722,7 +722,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200945) %>%
+                                                                                              SEM_PRI ==200946) %>%
                                                                                        count()
   )
   
@@ -735,7 +735,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200946) %>% 
+                                                                                              SEM_PRI ==200947) %>% 
                                                                                        count() 
   )
   
@@ -748,7 +748,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200947) %>%
+                                                                                              SEM_PRI ==200948) %>%
                                                                                        count() 
   )
   
@@ -761,7 +761,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200948) %>%
+                                                                                              SEM_PRI ==200949) %>%
                                                                                        count() 
   )
   
@@ -774,7 +774,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                  CLASSI_FIN == 3
                                                                                                |
                                                                                                  CLASSI_FIN == 4,
-                                                                                               SEM_PRI ==200949) %>%
+                                                                                               SEM_PRI ==200950) %>%
                                                                                         count() 
   )
   
@@ -787,7 +787,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200950) %>%
+                                                                                              SEM_PRI ==200951) %>%
                                                                                        count() 
   )
   
@@ -800,7 +800,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200951) %>%
+                                                                                              SEM_PRI ==200952) %>%
                                                                                        count() 
   )
   
@@ -813,7 +813,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200952) %>%
+                                                                                              SEM_PRI ==200953) %>%
                                                                                        count()
   )
   
@@ -826,7 +826,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==200953) %>%
+                                                                                              SEM_PRI ==201001) %>%
                                                                                        count() 
   )
   
@@ -839,7 +839,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201001) %>%
+                                                                                              SEM_PRI ==201002) %>%
                                                                                        count()
   )
   
@@ -852,7 +852,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201002) %>%
+                                                                                              SEM_PRI ==201003) %>%
                                                                                        count() 
   )
   
@@ -865,7 +865,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201003) %>%
+                                                                                              SEM_PRI ==201004) %>%
                                                                                        count() 
   )
   
@@ -878,7 +878,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201004) %>%
+                                                                                              SEM_PRI ==201005) %>%
                                                                                        count() 
   )
   
@@ -891,7 +891,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201005) %>% 
+                                                                                              SEM_PRI ==201006) %>% 
                                                                                        count() 
   )
   
@@ -904,7 +904,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201006) %>%
+                                                                                              SEM_PRI ==201007) %>%
                                                                                        count() 
   )
   
@@ -917,7 +917,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201007) %>% 
+                                                                                              SEM_PRI ==201008) %>% 
                                                                                        count()
   )
   
@@ -930,7 +930,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201008) %>% 
+                                                                                              SEM_PRI ==201009) %>% 
                                                                                        count() 
   )
   
@@ -943,7 +943,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201009) %>% 
+                                                                                              SEM_PRI ==201010) %>% 
                                                                                        count() 
   )
   
@@ -956,7 +956,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201010) %>% 
+                                                                                              SEM_PRI ==201011) %>% 
                                                                                        count() 
   )
   
@@ -969,7 +969,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201011) %>%
+                                                                                              SEM_PRI ==201012) %>%
                                                                                        count() 
   )
   
@@ -982,7 +982,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201012) %>%
+                                                                                              SEM_PRI ==201013) %>%
                                                                                        count() 
   )
   
@@ -995,7 +995,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201013) %>% 
+                                                                                              SEM_PRI ==201014) %>% 
                                                                                        count() 
   )
   
@@ -1008,7 +1008,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201014) %>% 
+                                                                                              SEM_PRI ==201015) %>% 
                                                                                        count() 
   )
   
@@ -1021,7 +1021,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201015) %>% 
+                                                                                              SEM_PRI ==201016) %>% 
                                                                                        count() 
   )
   
@@ -1034,7 +1034,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201016) %>% 
+                                                                                              SEM_PRI ==201017) %>% 
                                                                                        count() 
   )
   
@@ -1047,7 +1047,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201017) %>% 
+                                                                                              SEM_PRI ==201018) %>% 
                                                                                        count() 
   )
   
@@ -1060,7 +1060,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201018) %>% 
+                                                                                              SEM_PRI ==201019) %>% 
                                                                                        count()
   )
   
@@ -1073,7 +1073,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201019) %>% 
+                                                                                              SEM_PRI ==201020) %>% 
                                                                                        count()
   )
   
@@ -1086,7 +1086,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201020) %>%
+                                                                                              SEM_PRI ==201021) %>%
                                                                                        count() 
   )
   
@@ -1099,7 +1099,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201021) %>% 
+                                                                                              SEM_PRI ==201022) %>% 
                                                                                        count()
   )
   
@@ -1112,7 +1112,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201022) %>% 
+                                                                                              SEM_PRI ==201023) %>% 
                                                                                        count() 
   )
   
@@ -1125,7 +1125,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201023) %>% 
+                                                                                              SEM_PRI ==201024) %>% 
                                                                                        count() 
   )
   
@@ -1138,7 +1138,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201024) %>%
+                                                                                              SEM_PRI ==201025) %>%
                                                                                        count() 
   )
   
@@ -1151,7 +1151,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201025) %>% 
+                                                                                              SEM_PRI ==201026) %>% 
                                                                                        count() 
   )
   
@@ -1164,7 +1164,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201026) %>% 
+                                                                                              SEM_PRI ==201027) %>% 
                                                                                        count() 
   )
   
@@ -1177,7 +1177,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201027) %>% 
+                                                                                              SEM_PRI ==201028) %>% 
                                                                                        count() 
   )
   
@@ -1190,7 +1190,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201028) %>% 
+                                                                                              SEM_PRI ==201029) %>% 
                                                                                        count() 
   )
   
@@ -1203,7 +1203,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)),2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201029) %>% 
+                                                                                              SEM_PRI ==201030) %>% 
                                                                                        count() 
   )
 }
@@ -1557,327 +1557,327 @@ colnames(RS22_10_11_SE_Notificados)[1] <- "Município"
 
 RS22_10_11_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_10_11_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_10_11_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_10_11_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_10_11_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 2] <- as.integer(RS22_10_11_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201030) %>% 
+                                                                                             SEM_PRI ==201031) %>% 
                                                                                       count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 3] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,  
-                                                                                             SEM_PRI ==201031) %>%
+                                                                                             SEM_PRI ==201032) %>%
                                                                                       count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 4] <- as.integer(RS22_10_11_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201032) %>% 
+                                                                                             SEM_PRI ==201033) %>% 
                                                                                       count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i),5] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i, 
-                                                                                            SEM_PRI ==201033) %>% 
+                                                                                            SEM_PRI ==201034) %>% 
                                                                                      count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 6] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201034) %>%
+                                                                                             SEM_PRI ==201035) %>%
                                                                                       count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 7] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201035) %>% 
+                                                                                             SEM_PRI ==201036) %>% 
                                                                                       count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 8] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201036) %>%
+                                                                                             SEM_PRI ==201037) %>%
                                                                                       count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 9] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201037) %>% 
+                                                                                             SEM_PRI ==201038) %>% 
                                                                                       count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 10] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201038) %>% 
+                                                                                              SEM_PRI ==201039) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 11] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201039) %>%
+                                                                                              SEM_PRI ==201040) %>%
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 12] <- as.integer(RS22_10_11_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201040) %>%
+                                                                                              SEM_PRI ==201041) %>%
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 13] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201041) %>% 
+                                                                                              SEM_PRI ==201042) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 14] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201042) %>% 
+                                                                                              SEM_PRI ==201043) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 15] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201043) %>% 
+                                                                                              SEM_PRI ==201044) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 16] <- as.integer(RS22_10_11_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201044) %>% 
+                                                                                              SEM_PRI ==201045) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 17] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201045) %>% 
+                                                                                              SEM_PRI ==201046) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 18] <- as.integer(RS22_10_11_SINAN %>%  
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201046) %>% 
+                                                                                              SEM_PRI ==201047) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 19] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201047) %>% 
+                                                                                              SEM_PRI ==201048) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 20] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201048) %>% 
+                                                                                              SEM_PRI ==201049) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i),  21] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201049) %>%
+                                                                                               SEM_PRI ==201050) %>%
                                                                                         count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 22] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201050) %>% 
+                                                                                              SEM_PRI ==201051) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 23] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201051) %>% 
+                                                                                              SEM_PRI ==201052) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 24] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201052) %>% 
+                                                                                              SEM_PRI ==201053) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 25] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201053) %>% 
+                                                                                              SEM_PRI ==201101) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 26] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201101) %>% 
+                                                                                              SEM_PRI ==201102) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 27] <- as.integer(RS22_10_11_SINAN %>%  
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201102) %>% 
+                                                                                              SEM_PRI ==201103) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 28] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201103) %>% 
+                                                                                              SEM_PRI ==201104) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 29] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201104) %>% 
+                                                                                              SEM_PRI ==201105) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 30] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201105) %>% 
+                                                                                              SEM_PRI ==201106) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 31] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201106) %>% 
+                                                                                              SEM_PRI ==201107) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 32] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201107) %>%
+                                                                                              SEM_PRI ==201108) %>%
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 33] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201108) %>%
+                                                                                              SEM_PRI ==201109) %>%
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 34] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201109) %>% 
+                                                                                              SEM_PRI ==201110) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 35] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201110) %>% 
+                                                                                              SEM_PRI ==201111) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 36] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201111) %>% 
+                                                                                              SEM_PRI ==201112) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 37] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201112) %>% 
+                                                                                              SEM_PRI ==201113) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 38] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201113) %>% 
+                                                                                              SEM_PRI ==201114) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 39] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201114) %>% 
+                                                                                              SEM_PRI ==201115) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 40] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201115) %>% 
+                                                                                              SEM_PRI ==201116) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 41] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201116) %>% 
+                                                                                              SEM_PRI ==201117) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 42] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201117) %>% 
+                                                                                              SEM_PRI ==201118) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 43] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201118) %>% 
+                                                                                              SEM_PRI ==201119) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 44] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201119) %>% 
+                                                                                              SEM_PRI ==201120) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 45] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201120) %>% 
+                                                                                              SEM_PRI ==201121) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 46] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201121) %>% 
+                                                                                              SEM_PRI ==201122) %>% 
                                                                                        count()
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 47] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201122) %>% 
+                                                                                              SEM_PRI ==201123) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 48] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201123) %>% 
+                                                                                              SEM_PRI ==201124) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 49] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201124) %>% 
+                                                                                              SEM_PRI ==201125) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 50] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201125) %>% 
+                                                                                              SEM_PRI ==201126) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 51] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201126) %>% 
+                                                                                              SEM_PRI ==201127) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 52] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201127) %>% 
+                                                                                              SEM_PRI ==201128) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 53] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201128) %>% 
+                                                                                              SEM_PRI ==201129) %>% 
                                                                                        count() 
   )
   
   RS22_10_11_SE_Notificados[which(RS22_10_11_SE_Notificados == i), 54] <- as.integer(RS22_10_11_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201129) %>% 
+                                                                                              SEM_PRI ==201130) %>% 
                                                                                        count() 
   )
 }
@@ -1900,9 +1900,9 @@ colnames(RS22_10_11_SE_Confirmados)[1] <- "Município"
 
 RS22_10_11_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_10_11_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_10_11_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_10_11_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_10_11_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -1915,7 +1915,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201030) %>% 
+                                                                                             SEM_PRI ==201031) %>% 
                                                                                       count()
   )
   
@@ -1928,7 +1928,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201031) %>%
+                                                                                             SEM_PRI ==201032) %>%
                                                                                       count()
   )
   
@@ -1941,7 +1941,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201032) %>% 
+                                                                                             SEM_PRI ==201033) %>% 
                                                                                       count()
   )
   
@@ -1954,7 +1954,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 3
                                                                                             |
                                                                                               CLASSI_FIN == 4,
-                                                                                            SEM_PRI ==201033) %>% 
+                                                                                            SEM_PRI ==201034) %>% 
                                                                                      count()
   )
   
@@ -1967,7 +1967,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201034) %>%
+                                                                                             SEM_PRI ==201035) %>%
                                                                                       count() 
   )
   
@@ -1980,7 +1980,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201035) %>% 
+                                                                                             SEM_PRI ==201036) %>% 
                                                                                       count()
   )
   
@@ -1993,7 +1993,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201036) %>%
+                                                                                             SEM_PRI ==201037) %>%
                                                                                       count() 
   )
   
@@ -2006,7 +2006,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201037) %>% 
+                                                                                             SEM_PRI ==201038) %>% 
                                                                                       count() 
   )
   
@@ -2019,7 +2019,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201038) %>% 
+                                                                                              SEM_PRI ==201039) %>% 
                                                                                        count()
   )
   
@@ -2032,7 +2032,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201039) %>%
+                                                                                              SEM_PRI ==201040) %>%
                                                                                        count() 
   )
   
@@ -2045,7 +2045,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201040) %>%
+                                                                                              SEM_PRI ==201041) %>%
                                                                                        count() 
   )
   
@@ -2058,7 +2058,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201041) %>% 
+                                                                                              SEM_PRI ==201042) %>% 
                                                                                        count() 
   )
   
@@ -2071,7 +2071,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201042) %>% 
+                                                                                              SEM_PRI ==201043) %>% 
                                                                                        count() 
   )
   
@@ -2084,7 +2084,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201043) %>% 
+                                                                                              SEM_PRI ==201044) %>% 
                                                                                        count() 
   )
   
@@ -2097,7 +2097,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201044) %>% 
+                                                                                              SEM_PRI ==201045) %>% 
                                                                                        count() 
   )
   
@@ -2110,7 +2110,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201045) %>% 
+                                                                                              SEM_PRI ==201046) %>% 
                                                                                        count()
   )
   
@@ -2123,7 +2123,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201046) %>% 
+                                                                                              SEM_PRI ==201047) %>% 
                                                                                        count() 
   )
   
@@ -2136,7 +2136,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201047) %>% 
+                                                                                              SEM_PRI ==201048) %>% 
                                                                                        count() 
   )
   
@@ -2149,7 +2149,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201048) %>% 
+                                                                                              SEM_PRI ==201049) %>% 
                                                                                        count() 
   )
   
@@ -2162,7 +2162,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 3
                                                                                                |
                                                                                                  CLASSI_FIN == 4,
-                                                                                               SEM_PRI ==201049) %>%
+                                                                                               SEM_PRI ==201050) %>%
                                                                                         count() 
   )
   
@@ -2175,7 +2175,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201050) %>% 
+                                                                                              SEM_PRI ==201051) %>% 
                                                                                        count() 
   )
   
@@ -2188,7 +2188,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201051) %>% 
+                                                                                              SEM_PRI ==201052) %>% 
                                                                                        count() 
   )
   
@@ -2201,7 +2201,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201052) %>% 
+                                                                                              SEM_PRI ==201053) %>% 
                                                                                        count()
   )
   
@@ -2214,7 +2214,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201053) %>% 
+                                                                                              SEM_PRI ==201101) %>% 
                                                                                        count() 
   )
   
@@ -2227,7 +2227,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201101) %>% 
+                                                                                              SEM_PRI ==201102) %>% 
                                                                                        count()
   )
   
@@ -2240,7 +2240,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201102) %>% 
+                                                                                              SEM_PRI ==201103) %>% 
                                                                                        count() 
   )
   
@@ -2253,7 +2253,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201103) %>% 
+                                                                                              SEM_PRI ==201104) %>% 
                                                                                        count() 
   )
   
@@ -2266,7 +2266,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201104) %>% 
+                                                                                              SEM_PRI ==201105) %>% 
                                                                                        count() 
   )
   
@@ -2279,7 +2279,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201105) %>% 
+                                                                                              SEM_PRI ==201106) %>% 
                                                                                        count() 
   )
   
@@ -2292,7 +2292,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201106) %>% 
+                                                                                              SEM_PRI ==201107) %>% 
                                                                                        count() 
   )
   
@@ -2305,7 +2305,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201107) %>%
+                                                                                              SEM_PRI ==201108) %>%
                                                                                        count()
   )
   
@@ -2318,7 +2318,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201108) %>%
+                                                                                              SEM_PRI ==201109) %>%
                                                                                        count() 
   )
   
@@ -2331,7 +2331,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201109) %>% 
+                                                                                              SEM_PRI ==201110) %>% 
                                                                                        count() 
   )
   
@@ -2344,7 +2344,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201110) %>% 
+                                                                                              SEM_PRI ==201111) %>% 
                                                                                        count() 
   )
   
@@ -2357,7 +2357,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201111) %>% 
+                                                                                              SEM_PRI ==201112) %>% 
                                                                                        count() 
   )
   
@@ -2370,7 +2370,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201112) %>% 
+                                                                                              SEM_PRI ==201113) %>% 
                                                                                        count() 
   )
   
@@ -2383,7 +2383,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201113) %>% 
+                                                                                              SEM_PRI ==201114) %>% 
                                                                                        count() 
   )
   
@@ -2396,7 +2396,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201114) %>% 
+                                                                                              SEM_PRI ==201115) %>% 
                                                                                        count() 
   )
   
@@ -2409,7 +2409,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201115) %>% 
+                                                                                              SEM_PRI ==201116) %>% 
                                                                                        count() 
   )
   
@@ -2422,7 +2422,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201116) %>% 
+                                                                                              SEM_PRI ==201117) %>% 
                                                                                        count() 
   )
   
@@ -2435,7 +2435,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201117) %>% 
+                                                                                              SEM_PRI ==201118) %>% 
                                                                                        count() 
   )
   
@@ -2448,7 +2448,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201118) %>% 
+                                                                                              SEM_PRI ==201119) %>% 
                                                                                        count()
   )
   
@@ -2461,7 +2461,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201119) %>% 
+                                                                                              SEM_PRI ==201120) %>% 
                                                                                        count()
   )
   
@@ -2474,7 +2474,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201120) %>% 
+                                                                                              SEM_PRI ==201121) %>% 
                                                                                        count() 
   )
   
@@ -2487,7 +2487,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201121) %>% 
+                                                                                              SEM_PRI ==201122) %>% 
                                                                                        count()
   )
   
@@ -2500,7 +2500,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201122) %>% 
+                                                                                              SEM_PRI ==201123) %>% 
                                                                                        count() 
   )
   
@@ -2513,7 +2513,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201123) %>% 
+                                                                                              SEM_PRI ==201124) %>% 
                                                                                        count() 
   )
   
@@ -2526,7 +2526,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201124) %>% 
+                                                                                              SEM_PRI ==201125) %>% 
                                                                                        count() 
   )
   
@@ -2539,7 +2539,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201125) %>% 
+                                                                                              SEM_PRI ==201126) %>% 
                                                                                        count() 
   )
   
@@ -2552,7 +2552,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201126) %>% 
+                                                                                              SEM_PRI ==201127) %>% 
                                                                                        count() 
   )
   
@@ -2565,7 +2565,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201127) %>% 
+                                                                                              SEM_PRI ==201128) %>% 
                                                                                        count() 
   )
   
@@ -2578,7 +2578,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201128) %>% 
+                                                                                              SEM_PRI ==201129) %>% 
                                                                                        count() 
   )
   
@@ -2591,7 +2591,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201129) %>% 
+                                                                                              SEM_PRI ==201130) %>% 
                                                                                        count() 
   )
 }
@@ -2947,325 +2947,325 @@ colnames(RS22_11_12_SE_Notificados)[1] <- "Município"
 
 RS22_11_12_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_11_12_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_11_12_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_11_12_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_11_12_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 2] <- as.integer(RS22_11_12_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201130)%>%
+                                                                                             SEM_PRI ==201131)%>%
                                                                                       count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 3] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201131) %>% 
+                                                                                             SEM_PRI ==201132) %>% 
                                                                                       count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 4] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201132) %>% 
+                                                                                             SEM_PRI ==201133) %>% 
                                                                                       count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i),5] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201133) %>% 
+                                                                                            SEM_PRI ==201134) %>% 
                                                                                      count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 6] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201134) %>% 
+                                                                                             SEM_PRI ==201135) %>% 
                                                                                       count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 7] <- as.integer(RS22_11_12_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201135) %>%
+                                                                                             SEM_PRI ==201136) %>%
                                                                                       count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 8] <- as.integer(RS22_11_12_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201136) %>% 
+                                                                                             SEM_PRI ==201137) %>% 
                                                                                       count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 9] <- as.integer(RS22_11_12_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201137) %>% 
+                                                                                             SEM_PRI ==201138) %>% 
                                                                                       count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 10] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201138) %>%
+                                                                                              SEM_PRI ==201139) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 11] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201139) %>%
+                                                                                              SEM_PRI ==201140) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 12] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201140) %>%
+                                                                                              SEM_PRI ==201141) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 13] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201141) %>%
+                                                                                              SEM_PRI ==201142) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 14] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201142) %>% 
+                                                                                              SEM_PRI ==201143) %>% 
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 15] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201143) %>%
+                                                                                              SEM_PRI ==201144) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 16] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201144) %>%
+                                                                                              SEM_PRI ==201145) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 17] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201145) %>%
+                                                                                              SEM_PRI ==201146) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 18] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201146) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201147) %>%                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 19] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201147) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201148) %>%                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 20] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201148) %>%
+                                                                                              SEM_PRI ==201149) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i),  21] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201149) %>%
+                                                                                               SEM_PRI ==201150) %>%
                                                                                         count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 22] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201150) %>%
+                                                                                              SEM_PRI ==201151) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 23] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201151) %>%
+                                                                                              SEM_PRI ==201152) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 24] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201152) %>%
+                                                                                              SEM_PRI ==201153) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 25] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201153) %>%
+                                                                                              SEM_PRI ==201201) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 26] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201201) %>%
+                                                                                              SEM_PRI ==201202) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 27] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201202) %>%
+                                                                                              SEM_PRI ==201203) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 28] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201203) %>%
+                                                                                              SEM_PRI ==201204) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 29] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201204) %>%
+                                                                                              SEM_PRI ==201205) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 30] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201205) %>%
+                                                                                              SEM_PRI ==201206) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 31] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201206) %>% 
+                                                                                              SEM_PRI ==201207) %>% 
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 32] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201207) %>%
+                                                                                              SEM_PRI ==201208) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 33] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201208) %>%
+                                                                                              SEM_PRI ==201209) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 34] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201209) %>% 
+                                                                                              SEM_PRI ==201210) %>% 
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 35] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201210) %>% 
+                                                                                              SEM_PRI ==201211) %>% 
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 36] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201211) %>%
+                                                                                              SEM_PRI ==201212) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 37] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201212) %>%
+                                                                                              SEM_PRI ==201213) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 38] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201213) %>% 
+                                                                                              SEM_PRI ==201214) %>% 
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 39] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201214) %>%
+                                                                                              SEM_PRI ==201215) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 40] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201215) %>%
+                                                                                              SEM_PRI ==201216) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 41] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201216) %>%
+                                                                                              SEM_PRI ==201217) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 42] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201217) %>%
+                                                                                              SEM_PRI ==201218) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 43] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201218) %>%
+                                                                                              SEM_PRI ==201219) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 44] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201219) %>%
+                                                                                              SEM_PRI ==201220) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 45] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201220) %>%
+                                                                                              SEM_PRI ==201221) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 46] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201221) %>%
+                                                                                              SEM_PRI ==201222) %>%
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 47] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201222) %>%
+                                                                                              SEM_PRI ==201223) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 48] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201223) %>%
+                                                                                              SEM_PRI ==201224) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 49] <- as.integer(RS22_11_12_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201224) %>%
+                                                                                              SEM_PRI ==201225) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 50] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201225) %>% 
+                                                                                              SEM_PRI ==201226) %>% 
                                                                                        count()
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 51] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201226) %>% 
+                                                                                              SEM_PRI ==201227) %>% 
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 52] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201227) %>%
+                                                                                              SEM_PRI ==201228) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 53] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201228) %>%
+                                                                                              SEM_PRI ==201229) %>%
                                                                                        count() 
   )
   
   RS22_11_12_SE_Notificados[which(RS22_11_12_SE_Notificados == i), 54] <- as.integer(RS22_11_12_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201229) %>% 
+                                                                                              SEM_PRI ==201230) %>% 
                                                                                        count() 
   )
 }
@@ -3288,9 +3288,9 @@ colnames(RS22_11_12_SE_Confirmados)[1] <- "Município"
 
 RS22_11_12_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_11_12_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_11_12_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_11_12_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_11_12_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -3303,7 +3303,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201130)%>%
+                                                                                             SEM_PRI ==201131)%>%
                                                                                       count()
   )
   
@@ -3316,7 +3316,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201131) %>% 
+                                                                                             SEM_PRI ==201132) %>% 
                                                                                       count()
   )
   
@@ -3329,7 +3329,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201132) %>% 
+                                                                                             SEM_PRI ==201133) %>% 
                                                                                       count()
   )
   
@@ -3342,7 +3342,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 3
                                                                                             |
                                                                                               CLASSI_FIN == 4,
-                                                                                            SEM_PRI ==201133) %>% 
+                                                                                            SEM_PRI ==201134) %>% 
                                                                                      count()
   )
   
@@ -3355,7 +3355,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201134) %>% 
+                                                                                             SEM_PRI ==201135) %>% 
                                                                                       count() 
   )
   
@@ -3368,7 +3368,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201135) %>%
+                                                                                             SEM_PRI ==201136) %>%
                                                                                       count()
   )
   
@@ -3381,7 +3381,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201136) %>% 
+                                                                                             SEM_PRI ==201137) %>% 
                                                                                       count() 
   )
   
@@ -3394,7 +3394,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201137) %>% 
+                                                                                             SEM_PRI ==201138) %>% 
                                                                                       count() 
   )
   
@@ -3407,7 +3407,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201138) %>%
+                                                                                              SEM_PRI ==201139) %>%
                                                                                        count()
   )
   
@@ -3420,7 +3420,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201139) %>%
+                                                                                              SEM_PRI ==201140) %>%
                                                                                        count() 
   )
   
@@ -3433,7 +3433,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201140) %>%
+                                                                                              SEM_PRI ==201141) %>%
                                                                                        count() 
   )
   
@@ -3446,7 +3446,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201141) %>%
+                                                                                              SEM_PRI ==201142) %>%
                                                                                        count() 
   )
   
@@ -3459,7 +3459,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201142) %>% 
+                                                                                              SEM_PRI ==201143) %>% 
                                                                                        count() 
   )
   
@@ -3472,7 +3472,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201143) %>%
+                                                                                              SEM_PRI ==201144) %>%
                                                                                        count() 
   )
   
@@ -3485,7 +3485,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201144) %>%
+                                                                                              SEM_PRI ==201145) %>%
                                                                                        count() 
   )
   
@@ -3498,7 +3498,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201145) %>%
+                                                                                              SEM_PRI ==201146) %>%
                                                                                        count()
   )
   
@@ -3511,7 +3511,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201146) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201147) %>%                                                                                        count() 
   )
   
   RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 19] <- as.integer(RS22_11_12_SINAN %>% 
@@ -3523,7 +3523,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201147) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201148) %>%                                                                                        count() 
   )
   
   RS22_11_12_SE_Confirmados[which(RS22_11_12_SE_Confirmados == i), 20] <- as.integer(RS22_11_12_SINAN %>% 
@@ -3535,7 +3535,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201148) %>%
+                                                                                              SEM_PRI ==201149) %>%
                                                                                        count() 
   )
   
@@ -3548,7 +3548,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 3
                                                                                                |
                                                                                                  CLASSI_FIN == 4,
-                                                                                               SEM_PRI ==201149) %>%
+                                                                                               SEM_PRI ==201150) %>%
                                                                                         count() 
   )
   
@@ -3561,7 +3561,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201150) %>%
+                                                                                              SEM_PRI ==201151) %>%
                                                                                        count() 
   )
   
@@ -3574,7 +3574,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201151) %>%
+                                                                                              SEM_PRI ==201152) %>%
                                                                                        count() 
   )
   
@@ -3587,7 +3587,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201152) %>%
+                                                                                              SEM_PRI ==201153) %>%
                                                                                        count()
   )
   
@@ -3600,7 +3600,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201153) %>%
+                                                                                              SEM_PRI ==201201) %>%
                                                                                        count() 
   )
   
@@ -3613,7 +3613,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201201) %>%
+                                                                                              SEM_PRI ==201202) %>%
                                                                                        count()
   )
   
@@ -3626,7 +3626,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201202) %>%
+                                                                                              SEM_PRI ==201203) %>%
                                                                                        count() 
   )
   
@@ -3639,7 +3639,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201203) %>%
+                                                                                              SEM_PRI ==201204) %>%
                                                                                        count() 
   )
   
@@ -3652,7 +3652,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201204) %>%
+                                                                                              SEM_PRI ==201205) %>%
                                                                                        count() 
   )
   
@@ -3665,7 +3665,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201205) %>%
+                                                                                              SEM_PRI ==201206) %>%
                                                                                        count() 
   )
   
@@ -3678,7 +3678,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201206) %>% 
+                                                                                              SEM_PRI ==201207) %>% 
                                                                                        count()
   )
   
@@ -3691,7 +3691,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201207) %>%
+                                                                                              SEM_PRI ==201208) %>%
                                                                                        count()
   )
   
@@ -3704,7 +3704,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201208) %>%
+                                                                                              SEM_PRI ==201209) %>%
                                                                                        count() 
   )
   
@@ -3717,7 +3717,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201209) %>% 
+                                                                                              SEM_PRI ==201210) %>% 
                                                                                        count() 
   )
   
@@ -3730,7 +3730,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201210) %>% 
+                                                                                              SEM_PRI ==201211) %>% 
                                                                                        count() 
   )
   
@@ -3743,7 +3743,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201211) %>%
+                                                                                              SEM_PRI ==201212) %>%
                                                                                        count() 
   )
   
@@ -3756,7 +3756,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201212) %>%
+                                                                                              SEM_PRI ==201213) %>%
                                                                                        count() 
   )
   
@@ -3769,7 +3769,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201213) %>% 
+                                                                                              SEM_PRI ==201214) %>% 
                                                                                        count() 
   )
   
@@ -3782,7 +3782,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201214) %>%
+                                                                                              SEM_PRI ==201215) %>%
                                                                                        count()
   )
   
@@ -3795,7 +3795,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201215) %>%
+                                                                                              SEM_PRI ==201216) %>%
                                                                                        count() 
   )
   
@@ -3808,7 +3808,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201216) %>%
+                                                                                              SEM_PRI ==201217) %>%
                                                                                        count() 
   )
   
@@ -3821,7 +3821,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201217) %>%
+                                                                                              SEM_PRI ==201218) %>%
                                                                                        count() 
   )
   
@@ -3834,7 +3834,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201218) %>%
+                                                                                              SEM_PRI ==201219) %>%
                                                                                        count()
   )
   
@@ -3847,7 +3847,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201219) %>%
+                                                                                              SEM_PRI ==201220) %>%
                                                                                        count()
   )
   
@@ -3860,7 +3860,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201220) %>%
+                                                                                              SEM_PRI ==201221) %>%
                                                                                        count() 
   )
   
@@ -3873,7 +3873,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201221) %>%
+                                                                                              SEM_PRI ==201222) %>%
                                                                                        count()
   )
   
@@ -3886,7 +3886,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201222) %>%
+                                                                                              SEM_PRI ==201223) %>%
                                                                                        count() 
   )
   
@@ -3899,7 +3899,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201223) %>%
+                                                                                              SEM_PRI ==201224) %>%
                                                                                        count() 
   )
   
@@ -3912,7 +3912,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201224) %>%
+                                                                                              SEM_PRI ==201225) %>%
                                                                                        count() 
   )
   
@@ -3925,7 +3925,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201225) %>% 
+                                                                                              SEM_PRI ==201226) %>% 
                                                                                        count()
   )
   
@@ -3938,7 +3938,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201226) %>% 
+                                                                                              SEM_PRI ==201227) %>% 
                                                                                        count() 
   )
   
@@ -3951,7 +3951,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201227) %>%
+                                                                                              SEM_PRI ==201228) %>%
                                                                                        count() 
   )
   
@@ -3964,7 +3964,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201228) %>%
+                                                                                              SEM_PRI ==201229) %>%
                                                                                        count() 
   )
   
@@ -3977,7 +3977,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201229) %>% 
+                                                                                              SEM_PRI ==201230) %>% 
                                                                                        count() 
   )
 }
@@ -4330,325 +4330,325 @@ colnames(RS22_12_13_SE_Notificados)[1] <- "Município"
 
 RS22_12_13_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_12_13_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_12_13_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_12_13_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_12_13_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 2] <- as.integer(RS22_12_13_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201230)%>%
+                                                                                             SEM_PRI ==201231)%>%
                                                                                       count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 3] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201231) %>% 
+                                                                                             SEM_PRI ==201232) %>% 
                                                                                       count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 4] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201232) %>% 
+                                                                                             SEM_PRI ==201233) %>% 
                                                                                       count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i),5] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201233) %>% 
+                                                                                            SEM_PRI ==201234) %>% 
                                                                                      count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 6] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201234) %>% 
+                                                                                             SEM_PRI ==201235) %>% 
                                                                                       count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 7] <- as.integer(RS22_12_13_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201235) %>%
+                                                                                             SEM_PRI ==201236) %>%
                                                                                       count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 8] <- as.integer(RS22_12_13_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201236) %>% 
+                                                                                             SEM_PRI ==201237) %>% 
                                                                                       count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 9] <- as.integer(RS22_12_13_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201237) %>% 
+                                                                                             SEM_PRI ==201238) %>% 
                                                                                       count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 10] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201238) %>%
+                                                                                              SEM_PRI ==201239) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 11] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201239) %>%
+                                                                                              SEM_PRI ==201240) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 12] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201240) %>%
+                                                                                              SEM_PRI ==201241) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 13] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201241) %>%
+                                                                                              SEM_PRI ==201242) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 14] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201242) %>% 
+                                                                                              SEM_PRI ==201243) %>% 
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 15] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201243) %>%
+                                                                                              SEM_PRI ==201244) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 16] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201244) %>%
+                                                                                              SEM_PRI ==201245) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 17] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201245) %>%
+                                                                                              SEM_PRI ==201246) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 18] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201246) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201247) %>%                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 19] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201247) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201248) %>%                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 20] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201248) %>%
+                                                                                              SEM_PRI ==201249) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i),  21] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201249) %>%
+                                                                                               SEM_PRI ==201250) %>%
                                                                                         count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 22] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201250) %>%
+                                                                                              SEM_PRI ==201251) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 23] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201251) %>%
+                                                                                              SEM_PRI ==201252) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 24] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201252) %>%
+                                                                                              SEM_PRI ==201253) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 25] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201253) %>%
+                                                                                              SEM_PRI ==201301) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 26] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201301) %>%
+                                                                                              SEM_PRI ==201302) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 27] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201302) %>%
+                                                                                              SEM_PRI ==201303) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 28] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201303) %>%
+                                                                                              SEM_PRI ==201304) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 29] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201304) %>%
+                                                                                              SEM_PRI ==201305) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 30] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201305) %>%
+                                                                                              SEM_PRI ==201306) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 31] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201306) %>% 
+                                                                                              SEM_PRI ==201307) %>% 
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 32] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201307) %>%
+                                                                                              SEM_PRI ==201308) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 33] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201308) %>%
+                                                                                              SEM_PRI ==201309) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 34] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201309) %>% 
+                                                                                              SEM_PRI ==201310) %>% 
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 35] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201310) %>% 
+                                                                                              SEM_PRI ==201311) %>% 
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 36] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201311) %>%
+                                                                                              SEM_PRI ==201312) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 37] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201312) %>%
+                                                                                              SEM_PRI ==201313) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 38] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201313) %>% 
+                                                                                              SEM_PRI ==201314) %>% 
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 39] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201314) %>%
+                                                                                              SEM_PRI ==201315) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 40] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201315) %>%
+                                                                                              SEM_PRI ==201316) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 41] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201316) %>%
+                                                                                              SEM_PRI ==201317) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 42] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201317) %>%
+                                                                                              SEM_PRI ==201318) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 43] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201318) %>%
+                                                                                              SEM_PRI ==201319) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 44] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201319) %>%
+                                                                                              SEM_PRI ==201320) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 45] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201320) %>%
+                                                                                              SEM_PRI ==201321) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 46] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201321) %>%
+                                                                                              SEM_PRI ==201322) %>%
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 47] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201322) %>%
+                                                                                              SEM_PRI ==201323) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 48] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201323) %>%
+                                                                                              SEM_PRI ==201324) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 49] <- as.integer(RS22_12_13_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201324) %>%
+                                                                                              SEM_PRI ==201325) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 50] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201325) %>% 
+                                                                                              SEM_PRI ==201326) %>% 
                                                                                        count()
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 51] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201326) %>% 
+                                                                                              SEM_PRI ==201327) %>% 
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 52] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201327) %>%
+                                                                                              SEM_PRI ==201328) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 53] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201328) %>%
+                                                                                              SEM_PRI ==201329) %>%
                                                                                        count() 
   )
   
   RS22_12_13_SE_Notificados[which(RS22_12_13_SE_Notificados == i), 54] <- as.integer(RS22_12_13_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201329) %>% 
+                                                                                              SEM_PRI ==201330) %>% 
                                                                                        count() 
   )
 }
@@ -4671,9 +4671,9 @@ colnames(RS22_12_13_SE_Confirmados)[1] <- "Município"
 
 RS22_12_13_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_12_13_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_12_13_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_12_13_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_12_13_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -4686,7 +4686,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201230)%>%
+                                                                                             SEM_PRI ==201231)%>%
                                                                                       count()
   )
   
@@ -4699,7 +4699,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201231) %>% 
+                                                                                             SEM_PRI ==201232) %>% 
                                                                                       count()
   )
   
@@ -4712,7 +4712,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201232) %>% 
+                                                                                             SEM_PRI ==201233) %>% 
                                                                                       count()
   )
   
@@ -4725,7 +4725,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 3
                                                                                             |
                                                                                               CLASSI_FIN == 4,
-                                                                                            SEM_PRI ==201233) %>% 
+                                                                                            SEM_PRI ==201234) %>% 
                                                                                      count()
   )
   
@@ -4738,7 +4738,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201234) %>% 
+                                                                                             SEM_PRI ==201235) %>% 
                                                                                       count() 
   )
   
@@ -4751,7 +4751,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201235) %>%
+                                                                                             SEM_PRI ==201236) %>%
                                                                                       count()
   )
   
@@ -4764,7 +4764,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201236) %>% 
+                                                                                             SEM_PRI ==201237) %>% 
                                                                                       count() 
   )
   
@@ -4777,7 +4777,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201237) %>% 
+                                                                                             SEM_PRI ==201238) %>% 
                                                                                       count() 
   )
   
@@ -4790,7 +4790,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201238) %>%
+                                                                                              SEM_PRI ==201239) %>%
                                                                                        count()
   )
   
@@ -4803,7 +4803,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201239) %>%
+                                                                                              SEM_PRI ==201240) %>%
                                                                                        count() 
   )
   
@@ -4816,7 +4816,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201240) %>%
+                                                                                              SEM_PRI ==201241) %>%
                                                                                        count() 
   )
   
@@ -4829,7 +4829,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201241) %>%
+                                                                                              SEM_PRI ==201242) %>%
                                                                                        count() 
   )
   
@@ -4842,7 +4842,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201242) %>% 
+                                                                                              SEM_PRI ==201243) %>% 
                                                                                        count() 
   )
   
@@ -4855,7 +4855,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201243) %>%
+                                                                                              SEM_PRI ==201244) %>%
                                                                                        count() 
   )
   
@@ -4868,7 +4868,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201244) %>%
+                                                                                              SEM_PRI ==201245) %>%
                                                                                        count() 
   )
   
@@ -4881,7 +4881,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201245) %>%
+                                                                                              SEM_PRI ==201246) %>%
                                                                                        count()
   )
   
@@ -4894,7 +4894,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201246) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201247) %>%                                                                                        count() 
   )
   
   RS22_12_13_SE_Confirmados[which(RS22_12_13_SE_Confirmados == i), 19] <- as.integer(RS22_12_13_SINAN %>% 
@@ -4906,7 +4906,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201247) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201248) %>%                                                                                        count() 
   )
   
   RS22_12_13_SE_Confirmados[which(RS22_12_13_SE_Confirmados == i), 20] <- as.integer(RS22_12_13_SINAN %>% 
@@ -4918,7 +4918,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201248) %>%
+                                                                                              SEM_PRI ==201249) %>%
                                                                                        count() 
   )
   
@@ -4931,7 +4931,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 3
                                                                                                |
                                                                                                  CLASSI_FIN == 4,
-                                                                                               SEM_PRI ==201249) %>%
+                                                                                               SEM_PRI ==201250) %>%
                                                                                         count() 
   )
   
@@ -4944,7 +4944,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201250) %>%
+                                                                                              SEM_PRI ==201251) %>%
                                                                                        count() 
   )
   
@@ -4957,7 +4957,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201251) %>%
+                                                                                              SEM_PRI ==201252) %>%
                                                                                        count() 
   )
   
@@ -4970,7 +4970,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201252) %>%
+                                                                                              SEM_PRI ==201253) %>%
                                                                                        count()
   )
   
@@ -4983,7 +4983,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201253) %>%
+                                                                                              SEM_PRI ==201301) %>%
                                                                                        count() 
   )
   
@@ -4996,7 +4996,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201301) %>%
+                                                                                              SEM_PRI ==201302) %>%
                                                                                        count()
   )
   
@@ -5009,7 +5009,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201302) %>%
+                                                                                              SEM_PRI ==201303) %>%
                                                                                        count() 
   )
   
@@ -5022,7 +5022,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201303) %>%
+                                                                                              SEM_PRI ==201304) %>%
                                                                                        count() 
   )
   
@@ -5035,7 +5035,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201304) %>%
+                                                                                              SEM_PRI ==201305) %>%
                                                                                        count() 
   )
   
@@ -5048,7 +5048,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201305) %>%
+                                                                                              SEM_PRI ==201306) %>%
                                                                                        count() 
   )
   
@@ -5061,7 +5061,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201306) %>% 
+                                                                                              SEM_PRI ==201307) %>% 
                                                                                        count()
   )
   
@@ -5074,7 +5074,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201307) %>%
+                                                                                              SEM_PRI ==201308) %>%
                                                                                        count()
   )
   
@@ -5087,7 +5087,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201308) %>%
+                                                                                              SEM_PRI ==201309) %>%
                                                                                        count() 
   )
   
@@ -5100,7 +5100,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201309) %>% 
+                                                                                              SEM_PRI ==201310) %>% 
                                                                                        count() 
   )
   
@@ -5113,7 +5113,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201310) %>% 
+                                                                                              SEM_PRI ==201311) %>% 
                                                                                        count() 
   )
   
@@ -5126,7 +5126,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201311) %>%
+                                                                                              SEM_PRI ==201312) %>%
                                                                                        count() 
   )
   
@@ -5139,7 +5139,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201312) %>%
+                                                                                              SEM_PRI ==201313) %>%
                                                                                        count() 
   )
   
@@ -5152,7 +5152,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201313) %>% 
+                                                                                              SEM_PRI ==201314) %>% 
                                                                                        count() 
   )
   
@@ -5165,7 +5165,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201314) %>%
+                                                                                              SEM_PRI ==201315) %>%
                                                                                        count()
   )
   
@@ -5178,7 +5178,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201315) %>%
+                                                                                              SEM_PRI ==201316) %>%
                                                                                        count() 
   )
   
@@ -5191,7 +5191,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201316) %>%
+                                                                                              SEM_PRI ==201317) %>%
                                                                                        count() 
   )
   
@@ -5204,7 +5204,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201317) %>%
+                                                                                              SEM_PRI ==201318) %>%
                                                                                        count() 
   )
   
@@ -5217,7 +5217,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201318) %>%
+                                                                                              SEM_PRI ==201319) %>%
                                                                                        count()
   )
   
@@ -5230,7 +5230,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201319) %>%
+                                                                                              SEM_PRI ==201320) %>%
                                                                                        count()
   )
   
@@ -5243,7 +5243,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201320) %>%
+                                                                                              SEM_PRI ==201321) %>%
                                                                                        count() 
   )
   
@@ -5256,7 +5256,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201321) %>%
+                                                                                              SEM_PRI ==201322) %>%
                                                                                        count()
   )
   
@@ -5269,7 +5269,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201322) %>%
+                                                                                              SEM_PRI ==201323) %>%
                                                                                        count() 
   )
   
@@ -5282,7 +5282,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201323) %>%
+                                                                                              SEM_PRI ==201324) %>%
                                                                                        count() 
   )
   
@@ -5295,7 +5295,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201324) %>%
+                                                                                              SEM_PRI ==201325) %>%
                                                                                        count() 
   )
   
@@ -5308,7 +5308,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201325) %>% 
+                                                                                              SEM_PRI ==201326) %>% 
                                                                                        count()
   )
   
@@ -5321,7 +5321,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201326) %>% 
+                                                                                              SEM_PRI ==201327) %>% 
                                                                                        count() 
   )
   
@@ -5334,7 +5334,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201327) %>%
+                                                                                              SEM_PRI ==201328) %>%
                                                                                        count() 
   )
   
@@ -5347,7 +5347,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201328) %>%
+                                                                                              SEM_PRI ==201329) %>%
                                                                                        count() 
   )
   
@@ -5360,7 +5360,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201329) %>% 
+                                                                                              SEM_PRI ==201330) %>% 
                                                                                        count() 
   )
 }
@@ -5713,325 +5713,325 @@ colnames(RS22_13_14_SE_Notificados)[1] <- "Município"
 
 RS22_13_14_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_13_14_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_13_14_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_13_14_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_13_14_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 2] <- as.integer(RS22_13_14_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201330)%>%
+                                                                                             SEM_PRI ==201331)%>%
                                                                                       count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 3] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201331) %>% 
+                                                                                             SEM_PRI ==201332) %>% 
                                                                                       count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 4] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201332) %>% 
+                                                                                             SEM_PRI ==201333) %>% 
                                                                                       count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i),5] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201333) %>% 
+                                                                                            SEM_PRI ==201334) %>% 
                                                                                      count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 6] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201334) %>% 
+                                                                                             SEM_PRI ==201335) %>% 
                                                                                       count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 7] <- as.integer(RS22_13_14_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201335) %>%
+                                                                                             SEM_PRI ==201336) %>%
                                                                                       count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 8] <- as.integer(RS22_13_14_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201336) %>% 
+                                                                                             SEM_PRI ==201337) %>% 
                                                                                       count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 9] <- as.integer(RS22_13_14_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201337) %>% 
+                                                                                             SEM_PRI ==201338) %>% 
                                                                                       count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 10] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201338) %>%
+                                                                                              SEM_PRI ==201339) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 11] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201339) %>%
+                                                                                              SEM_PRI ==201340) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 12] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201340) %>%
+                                                                                              SEM_PRI ==201341) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 13] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201341) %>%
+                                                                                              SEM_PRI ==201342) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 14] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201342) %>% 
+                                                                                              SEM_PRI ==201343) %>% 
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 15] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201343) %>%
+                                                                                              SEM_PRI ==201344) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 16] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201344) %>%
+                                                                                              SEM_PRI ==201345) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 17] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201345) %>%
+                                                                                              SEM_PRI ==201346) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 18] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201346) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201347) %>%                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 19] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201347) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201348) %>%                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 20] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201348) %>%
+                                                                                              SEM_PRI ==201349) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i),  21] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201349) %>%
+                                                                                               SEM_PRI ==201350) %>%
                                                                                         count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 22] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201350) %>%
+                                                                                              SEM_PRI ==201351) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 23] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201351) %>%
+                                                                                              SEM_PRI ==201352) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 24] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201352) %>%
+                                                                                              SEM_PRI ==201353) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 25] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201353) %>%
+                                                                                              SEM_PRI ==201401) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 26] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201401) %>%
+                                                                                              SEM_PRI ==201402) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 27] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201402) %>%
+                                                                                              SEM_PRI ==201403) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 28] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201403) %>%
+                                                                                              SEM_PRI ==201404) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 29] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201404) %>%
+                                                                                              SEM_PRI ==201405) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 30] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201405) %>%
+                                                                                              SEM_PRI ==201406) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 31] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201406) %>% 
+                                                                                              SEM_PRI ==201407) %>% 
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 32] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201407) %>%
+                                                                                              SEM_PRI ==201408) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 33] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201408) %>%
+                                                                                              SEM_PRI ==201409) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 34] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201409) %>% 
+                                                                                              SEM_PRI ==201410) %>% 
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 35] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201410) %>% 
+                                                                                              SEM_PRI ==201411) %>% 
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 36] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201411) %>%
+                                                                                              SEM_PRI ==201412) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 37] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201412) %>%
+                                                                                              SEM_PRI ==201413) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 38] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201413) %>% 
+                                                                                              SEM_PRI ==201414) %>% 
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 39] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201414) %>%
+                                                                                              SEM_PRI ==201415) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 40] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201415) %>%
+                                                                                              SEM_PRI ==201416) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 41] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201416) %>%
+                                                                                              SEM_PRI ==201417) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 42] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201417) %>%
+                                                                                              SEM_PRI ==201418) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 43] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201418) %>%
+                                                                                              SEM_PRI ==201419) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 44] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201419) %>%
+                                                                                              SEM_PRI ==201420) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 45] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201420) %>%
+                                                                                              SEM_PRI ==201421) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 46] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201421) %>%
+                                                                                              SEM_PRI ==201422) %>%
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 47] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201422) %>%
+                                                                                              SEM_PRI ==201423) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 48] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201423) %>%
+                                                                                              SEM_PRI ==201424) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 49] <- as.integer(RS22_13_14_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201424) %>%
+                                                                                              SEM_PRI ==201425) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 50] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201425) %>% 
+                                                                                              SEM_PRI ==201426) %>% 
                                                                                        count()
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 51] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201426) %>% 
+                                                                                              SEM_PRI ==201427) %>% 
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 52] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201427) %>%
+                                                                                              SEM_PRI ==201428) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 53] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201428) %>%
+                                                                                              SEM_PRI ==201429) %>%
                                                                                        count() 
   )
   
   RS22_13_14_SE_Notificados[which(RS22_13_14_SE_Notificados == i), 54] <- as.integer(RS22_13_14_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201429) %>% 
+                                                                                              SEM_PRI ==201430) %>% 
                                                                                        count() 
   )
 }
@@ -6054,9 +6054,9 @@ colnames(RS22_13_14_SE_Confirmados)[1] <- "Município"
 
 RS22_13_14_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_13_14_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_13_14_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_13_14_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_13_14_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -6069,7 +6069,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201330)%>%
+                                                                                             SEM_PRI ==201331)%>%
                                                                                       count()
   )
   
@@ -6082,7 +6082,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201331) %>% 
+                                                                                             SEM_PRI ==201332) %>% 
                                                                                       count()
   )
   
@@ -6095,7 +6095,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201332) %>% 
+                                                                                             SEM_PRI ==201333) %>% 
                                                                                       count()
   )
   
@@ -6108,7 +6108,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 3
                                                                                             |
                                                                                               CLASSI_FIN == 4,
-                                                                                            SEM_PRI ==201333) %>% 
+                                                                                            SEM_PRI ==201334) %>% 
                                                                                      count()
   )
   
@@ -6121,7 +6121,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201334) %>% 
+                                                                                             SEM_PRI ==201335) %>% 
                                                                                       count() 
   )
   
@@ -6134,7 +6134,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201335) %>%
+                                                                                             SEM_PRI ==201336) %>%
                                                                                       count()
   )
   
@@ -6147,7 +6147,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201336) %>% 
+                                                                                             SEM_PRI ==201337) %>% 
                                                                                       count() 
   )
   
@@ -6160,7 +6160,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201337) %>% 
+                                                                                             SEM_PRI ==201338) %>% 
                                                                                       count() 
   )
   
@@ -6173,7 +6173,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201338) %>%
+                                                                                              SEM_PRI ==201339) %>%
                                                                                        count()
   )
   
@@ -6186,7 +6186,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201339) %>%
+                                                                                              SEM_PRI ==201340) %>%
                                                                                        count() 
   )
   
@@ -6199,7 +6199,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201340) %>%
+                                                                                              SEM_PRI ==201341) %>%
                                                                                        count() 
   )
   
@@ -6212,7 +6212,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201341) %>%
+                                                                                              SEM_PRI ==201342) %>%
                                                                                        count() 
   )
   
@@ -6225,7 +6225,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201342) %>% 
+                                                                                              SEM_PRI ==201343) %>% 
                                                                                        count() 
   )
   
@@ -6238,7 +6238,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201343) %>%
+                                                                                              SEM_PRI ==201344) %>%
                                                                                        count() 
   )
   
@@ -6251,7 +6251,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201344) %>%
+                                                                                              SEM_PRI ==201345) %>%
                                                                                        count() 
   )
   
@@ -6264,7 +6264,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201345) %>%
+                                                                                              SEM_PRI ==201346) %>%
                                                                                        count()
   )
   
@@ -6277,7 +6277,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201346) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201347) %>%                                                                                        count() 
   )
   
   RS22_13_14_SE_Confirmados[which(RS22_13_14_SE_Confirmados == i), 19] <- as.integer(RS22_13_14_SINAN %>% 
@@ -6289,7 +6289,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201347) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201348) %>%                                                                                        count() 
   )
   
   RS22_13_14_SE_Confirmados[which(RS22_13_14_SE_Confirmados == i), 20] <- as.integer(RS22_13_14_SINAN %>% 
@@ -6301,7 +6301,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201348) %>%
+                                                                                              SEM_PRI ==201349) %>%
                                                                                        count() 
   )
   
@@ -6314,7 +6314,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 3
                                                                                                |
                                                                                                  CLASSI_FIN == 4,
-                                                                                               SEM_PRI ==201349) %>%
+                                                                                               SEM_PRI ==201350) %>%
                                                                                         count() 
   )
   
@@ -6327,7 +6327,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201350) %>%
+                                                                                              SEM_PRI ==201351) %>%
                                                                                        count() 
   )
   
@@ -6340,7 +6340,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201351) %>%
+                                                                                              SEM_PRI ==201352) %>%
                                                                                        count() 
   )
   
@@ -6353,7 +6353,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201352) %>%
+                                                                                              SEM_PRI ==201353) %>%
                                                                                        count()
   )
   
@@ -6366,7 +6366,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201353) %>%
+                                                                                              SEM_PRI ==201401) %>%
                                                                                        count() 
   )
   
@@ -6379,7 +6379,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201401) %>%
+                                                                                              SEM_PRI ==201402) %>%
                                                                                        count()
   )
   
@@ -6392,7 +6392,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201402) %>%
+                                                                                              SEM_PRI ==201403) %>%
                                                                                        count() 
   )
   
@@ -6405,7 +6405,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201403) %>%
+                                                                                              SEM_PRI ==201404) %>%
                                                                                        count() 
   )
   
@@ -6418,7 +6418,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201404) %>%
+                                                                                              SEM_PRI ==201405) %>%
                                                                                        count() 
   )
   
@@ -6431,7 +6431,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201405) %>%
+                                                                                              SEM_PRI ==201406) %>%
                                                                                        count() 
   )
   
@@ -6444,7 +6444,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201406) %>% 
+                                                                                              SEM_PRI ==201407) %>% 
                                                                                        count()
   )
   
@@ -6457,7 +6457,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201407) %>%
+                                                                                              SEM_PRI ==201408) %>%
                                                                                        count()
   )
   
@@ -6470,7 +6470,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201408) %>%
+                                                                                              SEM_PRI ==201409) %>%
                                                                                        count() 
   )
   
@@ -6483,7 +6483,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201409) %>% 
+                                                                                              SEM_PRI ==201410) %>% 
                                                                                        count() 
   )
   
@@ -6496,7 +6496,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201410) %>% 
+                                                                                              SEM_PRI ==201411) %>% 
                                                                                        count() 
   )
   
@@ -6509,7 +6509,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201411) %>%
+                                                                                              SEM_PRI ==201412) %>%
                                                                                        count() 
   )
   
@@ -6522,7 +6522,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201412) %>%
+                                                                                              SEM_PRI ==201413) %>%
                                                                                        count() 
   )
   
@@ -6535,7 +6535,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201413) %>% 
+                                                                                              SEM_PRI ==201414) %>% 
                                                                                        count() 
   )
   
@@ -6548,7 +6548,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201414) %>%
+                                                                                              SEM_PRI ==201415) %>%
                                                                                        count()
   )
   
@@ -6561,7 +6561,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201415) %>%
+                                                                                              SEM_PRI ==201416) %>%
                                                                                        count() 
   )
   
@@ -6574,7 +6574,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201416) %>%
+                                                                                              SEM_PRI ==201417) %>%
                                                                                        count() 
   )
   
@@ -6587,7 +6587,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201417) %>%
+                                                                                              SEM_PRI ==201418) %>%
                                                                                        count() 
   )
   
@@ -6600,7 +6600,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201418) %>%
+                                                                                              SEM_PRI ==201419) %>%
                                                                                        count()
   )
   
@@ -6613,7 +6613,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201419) %>%
+                                                                                              SEM_PRI ==201420) %>%
                                                                                        count()
   )
   
@@ -6626,7 +6626,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201420) %>%
+                                                                                              SEM_PRI ==201421) %>%
                                                                                        count() 
   )
   
@@ -6639,7 +6639,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201421) %>%
+                                                                                              SEM_PRI ==201422) %>%
                                                                                        count()
   )
   
@@ -6652,7 +6652,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201422) %>%
+                                                                                              SEM_PRI ==201423) %>%
                                                                                        count() 
   )
   
@@ -6665,7 +6665,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201423) %>%
+                                                                                              SEM_PRI ==201424) %>%
                                                                                        count() 
   )
   
@@ -6678,7 +6678,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201424) %>%
+                                                                                              SEM_PRI ==201425) %>%
                                                                                        count() 
   )
   
@@ -6691,7 +6691,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201425) %>% 
+                                                                                              SEM_PRI ==201426) %>% 
                                                                                        count()
   )
   
@@ -6704,7 +6704,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201426) %>% 
+                                                                                              SEM_PRI ==201427) %>% 
                                                                                        count() 
   )
   
@@ -6717,7 +6717,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201427) %>%
+                                                                                              SEM_PRI ==201428) %>%
                                                                                        count() 
   )
   
@@ -6730,7 +6730,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201428) %>%
+                                                                                              SEM_PRI ==201429) %>%
                                                                                        count() 
   )
   
@@ -6743,7 +6743,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201429) %>%
+                                                                                              SEM_PRI ==201430) %>%
                                                                                        count() 
   )
 }
@@ -7095,325 +7095,325 @@ colnames(RS22_14_15_SE_Notificados)[1] <- "Município"
 
 RS22_14_15_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_14_15_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_14_15_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_14_15_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_14_15_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 2] <- as.integer(RS22_14_15_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201430)%>%
+                                                                                             SEM_PRI ==201431)%>%
                                                                                       count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 3] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201431) %>% 
+                                                                                             SEM_PRI ==201432) %>% 
                                                                                       count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 4] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201432) %>% 
+                                                                                             SEM_PRI ==201433) %>% 
                                                                                       count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i),5] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201433) %>% 
+                                                                                            SEM_PRI ==201434) %>% 
                                                                                      count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 6] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201434) %>% 
+                                                                                             SEM_PRI ==201435) %>% 
                                                                                       count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 7] <- as.integer(RS22_14_15_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201435) %>%
+                                                                                             SEM_PRI ==201436) %>%
                                                                                       count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 8] <- as.integer(RS22_14_15_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201436) %>% 
+                                                                                             SEM_PRI ==201437) %>% 
                                                                                       count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 9] <- as.integer(RS22_14_15_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201437) %>% 
+                                                                                             SEM_PRI ==201438) %>% 
                                                                                       count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 10] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201438) %>%
+                                                                                              SEM_PRI ==201439) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 11] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201439) %>%
+                                                                                              SEM_PRI ==201440) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 12] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201440) %>%
+                                                                                              SEM_PRI ==201441) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 13] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201441) %>%
+                                                                                              SEM_PRI ==201442) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 14] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201442) %>% 
+                                                                                              SEM_PRI ==201443) %>% 
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 15] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201443) %>%
+                                                                                              SEM_PRI ==201444) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 16] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201444) %>%
+                                                                                              SEM_PRI ==201445) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 17] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201445) %>%
+                                                                                              SEM_PRI ==201446) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 18] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201446) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201447) %>%                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 19] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201447) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201448) %>%                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 20] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201448) %>%
+                                                                                              SEM_PRI ==201449) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i),  21] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201449) %>%
+                                                                                               SEM_PRI ==201450) %>%
                                                                                         count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 22] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201450) %>%
+                                                                                              SEM_PRI ==201451) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 23] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201451) %>%
+                                                                                              SEM_PRI ==201452) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 24] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201452) %>%
+                                                                                              SEM_PRI ==201453) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 25] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201453) %>%
+                                                                                              SEM_PRI ==201501) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 26] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201501) %>%
+                                                                                              SEM_PRI ==201502) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 27] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201502) %>%
+                                                                                              SEM_PRI ==201503) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 28] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201503) %>%
+                                                                                              SEM_PRI ==201504) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 29] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201504) %>%
+                                                                                              SEM_PRI ==201505) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 30] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201505) %>%
+                                                                                              SEM_PRI ==201506) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 31] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201506) %>% 
+                                                                                              SEM_PRI ==201507) %>% 
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 32] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201507) %>%
+                                                                                              SEM_PRI ==201508) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 33] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201508) %>%
+                                                                                              SEM_PRI ==201509) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 34] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201509) %>% 
+                                                                                              SEM_PRI ==201510) %>% 
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 35] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201510) %>% 
+                                                                                              SEM_PRI ==201511) %>% 
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 36] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201511) %>%
+                                                                                              SEM_PRI ==201512) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 37] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201512) %>%
+                                                                                              SEM_PRI ==201513) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 38] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201513) %>% 
+                                                                                              SEM_PRI ==201514) %>% 
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 39] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201514) %>%
+                                                                                              SEM_PRI ==201515) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 40] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201515) %>%
+                                                                                              SEM_PRI ==201516) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 41] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201516) %>%
+                                                                                              SEM_PRI ==201517) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 42] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201517) %>%
+                                                                                              SEM_PRI ==201518) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 43] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201518) %>%
+                                                                                              SEM_PRI ==201519) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 44] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201519) %>%
+                                                                                              SEM_PRI ==201520) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 45] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201520) %>%
+                                                                                              SEM_PRI ==201521) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 46] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201521) %>%
+                                                                                              SEM_PRI ==201522) %>%
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 47] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201522) %>%
+                                                                                              SEM_PRI ==201523) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 48] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201523) %>%
+                                                                                              SEM_PRI ==201524) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 49] <- as.integer(RS22_14_15_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201524) %>%
+                                                                                              SEM_PRI ==201525) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 50] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201525) %>% 
+                                                                                              SEM_PRI ==201526) %>% 
                                                                                        count()
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 51] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201526) %>% 
+                                                                                              SEM_PRI ==201527) %>% 
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 52] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201527) %>%
+                                                                                              SEM_PRI ==201528) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 53] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201528) %>%
+                                                                                              SEM_PRI ==201529) %>%
                                                                                        count() 
   )
   
   RS22_14_15_SE_Notificados[which(RS22_14_15_SE_Notificados == i), 54] <- as.integer(RS22_14_15_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201529) %>% 
+                                                                                              SEM_PRI ==201530) %>% 
                                                                                        count() 
   )
 }
@@ -7436,9 +7436,9 @@ colnames(RS22_14_15_SE_Confirmados)[1] <- "Município"
 
 RS22_14_15_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_14_15_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_14_15_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_14_15_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_14_15_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -7451,7 +7451,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201430)%>%
+                                                                                             SEM_PRI ==201431)%>%
                                                                                       count()
   )
   
@@ -7464,7 +7464,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201431) %>% 
+                                                                                             SEM_PRI ==201432) %>% 
                                                                                       count()
   )
   
@@ -7477,7 +7477,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201432) %>% 
+                                                                                             SEM_PRI ==201433) %>% 
                                                                                       count()
   )
   
@@ -7490,7 +7490,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 3
                                                                                             |
                                                                                               CLASSI_FIN == 4,
-                                                                                            SEM_PRI ==201433) %>% 
+                                                                                            SEM_PRI ==201434) %>% 
                                                                                      count()
   )
   
@@ -7503,7 +7503,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201434) %>% 
+                                                                                             SEM_PRI ==201435) %>% 
                                                                                       count() 
   )
   
@@ -7516,7 +7516,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201435) %>%
+                                                                                             SEM_PRI ==201436) %>%
                                                                                       count()
   )
   
@@ -7529,7 +7529,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201436) %>% 
+                                                                                             SEM_PRI ==201437) %>% 
                                                                                       count() 
   )
   
@@ -7542,7 +7542,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 3
                                                                                              |
                                                                                                CLASSI_FIN == 4,
-                                                                                             SEM_PRI ==201437) %>% 
+                                                                                             SEM_PRI ==201438) %>% 
                                                                                       count() 
   )
   
@@ -7555,7 +7555,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201438) %>%
+                                                                                              SEM_PRI ==201439) %>%
                                                                                        count()
   )
   
@@ -7568,7 +7568,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201439) %>%
+                                                                                              SEM_PRI ==201440) %>%
                                                                                        count() 
   )
   
@@ -7581,7 +7581,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201440) %>%
+                                                                                              SEM_PRI ==201441) %>%
                                                                                        count() 
   )
   
@@ -7594,7 +7594,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201441) %>%
+                                                                                              SEM_PRI ==201442) %>%
                                                                                        count() 
   )
   
@@ -7607,7 +7607,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201442) %>% 
+                                                                                              SEM_PRI ==201443) %>% 
                                                                                        count() 
   )
   
@@ -7620,7 +7620,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201443) %>%
+                                                                                              SEM_PRI ==201444) %>%
                                                                                        count() 
   )
   
@@ -7633,7 +7633,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201444) %>%
+                                                                                              SEM_PRI ==201445) %>%
                                                                                        count() 
   )
   
@@ -7646,7 +7646,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201445) %>%
+                                                                                              SEM_PRI ==201446) %>%
                                                                                        count()
   )
   
@@ -7659,7 +7659,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201446) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201447) %>%                                                                                        count() 
   )
   
   RS22_14_15_SE_Confirmados[which(RS22_14_15_SE_Confirmados == i), 19] <- as.integer(RS22_14_15_SINAN %>% 
@@ -7671,7 +7671,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201447) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201448) %>%                                                                                        count() 
   )
   
   RS22_14_15_SE_Confirmados[which(RS22_14_15_SE_Confirmados == i), 20] <- as.integer(RS22_14_15_SINAN %>% 
@@ -7683,7 +7683,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201448) %>%
+                                                                                              SEM_PRI ==201449) %>%
                                                                                        count() 
   )
   
@@ -7696,7 +7696,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 3
                                                                                                |
                                                                                                  CLASSI_FIN == 4,
-                                                                                               SEM_PRI ==201449) %>%
+                                                                                               SEM_PRI ==201450) %>%
                                                                                         count() 
   )
   
@@ -7709,7 +7709,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201450) %>%
+                                                                                              SEM_PRI ==201451) %>%
                                                                                        count() 
   )
   
@@ -7722,7 +7722,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201451) %>%
+                                                                                              SEM_PRI ==201452) %>%
                                                                                        count() 
   )
   
@@ -7735,7 +7735,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201452) %>%
+                                                                                              SEM_PRI ==201453) %>%
                                                                                        count()
   )
   
@@ -7748,7 +7748,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 3
                                                                                               |
                                                                                                 CLASSI_FIN == 4,
-                                                                                              SEM_PRI ==201453) %>%
+                                                                                              SEM_PRI ==201501) %>%
                                                                                        count() 
   )
   
@@ -7759,7 +7759,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201501) %>%
+                                                                                              SEM_PRI ==201502) %>%
                                                                                        count()
   )
   
@@ -7770,7 +7770,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201502) %>%
+                                                                                              SEM_PRI ==201503) %>%
                                                                                        count() 
   )
   
@@ -7781,7 +7781,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201503) %>%
+                                                                                              SEM_PRI ==201504) %>%
                                                                                        count() 
   )
   
@@ -7792,7 +7792,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201504) %>%
+                                                                                              SEM_PRI ==201505) %>%
                                                                                        count() 
   )
   
@@ -7803,7 +7803,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201505) %>%
+                                                                                              SEM_PRI ==201506) %>%
                                                                                        count() 
   )
   
@@ -7814,7 +7814,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201506) %>% 
+                                                                                              SEM_PRI ==201507) %>% 
                                                                                        count()
   )
   
@@ -7825,7 +7825,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201507) %>%
+                                                                                              SEM_PRI ==201508) %>%
                                                                                        count()
   )
   
@@ -7836,7 +7836,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201508) %>%
+                                                                                              SEM_PRI ==201509) %>%
                                                                                        count() 
   )
   
@@ -7847,7 +7847,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201509) %>% 
+                                                                                              SEM_PRI ==201510) %>% 
                                                                                        count() 
   )
   
@@ -7858,7 +7858,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201510) %>% 
+                                                                                              SEM_PRI ==201511) %>% 
                                                                                        count() 
   )
   
@@ -7869,7 +7869,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201511) %>%
+                                                                                              SEM_PRI ==201512) %>%
                                                                                        count() 
   )
   
@@ -7880,7 +7880,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201512) %>%
+                                                                                              SEM_PRI ==201513) %>%
                                                                                        count() 
   )
   
@@ -7891,7 +7891,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201513) %>% 
+                                                                                              SEM_PRI ==201514) %>% 
                                                                                        count() 
   )
   
@@ -7902,7 +7902,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201514) %>%
+                                                                                              SEM_PRI ==201515) %>%
                                                                                        count()
   )
   
@@ -7913,7 +7913,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201515) %>%
+                                                                                              SEM_PRI ==201516) %>%
                                                                                        count() 
   )
   
@@ -7924,7 +7924,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201516) %>%
+                                                                                              SEM_PRI ==201517) %>%
                                                                                        count() 
   )
   
@@ -7935,7 +7935,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201517) %>%
+                                                                                              SEM_PRI ==201518) %>%
                                                                                        count() 
   )
   
@@ -7946,7 +7946,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201518) %>%
+                                                                                              SEM_PRI ==201519) %>%
                                                                                        count()
   )
   
@@ -7957,7 +7957,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201519) %>%
+                                                                                              SEM_PRI ==201520) %>%
                                                                                        count()
   )
   
@@ -7968,7 +7968,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201520) %>%
+                                                                                              SEM_PRI ==201521) %>%
                                                                                        count() 
   )
   
@@ -7979,7 +7979,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201521) %>%
+                                                                                              SEM_PRI ==201522) %>%
                                                                                        count()
   )
   
@@ -7990,7 +7990,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201522) %>%
+                                                                                              SEM_PRI ==201523) %>%
                                                                                        count() 
   )
   
@@ -8001,7 +8001,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201523) %>%
+                                                                                              SEM_PRI ==201524) %>%
                                                                                        count() 
   )
   
@@ -8012,7 +8012,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201524) %>%
+                                                                                              SEM_PRI ==201525) %>%
                                                                                        count() 
   )
   
@@ -8023,7 +8023,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201525) %>% 
+                                                                                              SEM_PRI ==201526) %>% 
                                                                                        count()
   )
   
@@ -8034,7 +8034,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201526) %>% 
+                                                                                              SEM_PRI ==201527) %>% 
                                                                                        count() 
   )
   
@@ -8045,7 +8045,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201527) %>%
+                                                                                              SEM_PRI ==201528) %>%
                                                                                        count() 
   )
   
@@ -8056,7 +8056,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201528) %>%
+                                                                                              SEM_PRI ==201529) %>%
                                                                                        count() 
   )
   
@@ -8067,7 +8067,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201529) %>%
+                                                                                              SEM_PRI ==201530) %>%
                                                                                        count() 
   )
 }
@@ -8425,325 +8425,325 @@ colnames(RS22_15_16_SE_Notificados)[1] <- "Município"
 
 RS22_15_16_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_15_16_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_15_16_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_15_16_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_15_16_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 2] <- as.integer(RS22_15_16_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201530)%>%
+                                                                                             SEM_PRI ==201531)%>%
                                                                                       count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 3] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201531) %>% 
+                                                                                             SEM_PRI ==201532) %>% 
                                                                                       count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 4] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201532) %>% 
+                                                                                             SEM_PRI ==201533) %>% 
                                                                                       count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i),5] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201533) %>% 
+                                                                                            SEM_PRI ==201534) %>% 
                                                                                      count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 6] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201534) %>% 
+                                                                                             SEM_PRI ==201535) %>% 
                                                                                       count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 7] <- as.integer(RS22_15_16_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201535) %>%
+                                                                                             SEM_PRI ==201536) %>%
                                                                                       count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 8] <- as.integer(RS22_15_16_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201536) %>% 
+                                                                                             SEM_PRI ==201537) %>% 
                                                                                       count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 9] <- as.integer(RS22_15_16_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201537) %>% 
+                                                                                             SEM_PRI ==201538) %>% 
                                                                                       count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 10] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201538) %>%
+                                                                                              SEM_PRI ==201539) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 11] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201539) %>%
+                                                                                              SEM_PRI ==201540) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 12] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201540) %>%
+                                                                                              SEM_PRI ==201541) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 13] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201541) %>%
+                                                                                              SEM_PRI ==201542) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 14] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201542) %>% 
+                                                                                              SEM_PRI ==201543) %>% 
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 15] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201543) %>%
+                                                                                              SEM_PRI ==201544) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 16] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201544) %>%
+                                                                                              SEM_PRI ==201545) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 17] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201545) %>%
+                                                                                              SEM_PRI ==201546) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 18] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201546) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201547) %>%                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 19] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201547) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201548) %>%                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 20] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201548) %>%
+                                                                                              SEM_PRI ==201549) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i),  21] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201549) %>%
+                                                                                               SEM_PRI ==201550) %>%
                                                                                         count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 22] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201550) %>%
+                                                                                              SEM_PRI ==201551) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 23] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201551) %>%
+                                                                                              SEM_PRI ==201552) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 24] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201552) %>%
+                                                                                              SEM_PRI ==201553) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 25] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201553) %>%
+                                                                                              SEM_PRI ==201601) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 26] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201601) %>%
+                                                                                              SEM_PRI ==201602) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 27] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201602) %>%
+                                                                                              SEM_PRI ==201603) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 28] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201603) %>%
+                                                                                              SEM_PRI ==201604) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 29] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201604) %>%
+                                                                                              SEM_PRI ==201605) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 30] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201605) %>%
+                                                                                              SEM_PRI ==201606) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 31] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201606) %>% 
+                                                                                              SEM_PRI ==201607) %>% 
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 32] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201607) %>%
+                                                                                              SEM_PRI ==201608) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 33] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201608) %>%
+                                                                                              SEM_PRI ==201609) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 34] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201609) %>% 
+                                                                                              SEM_PRI ==201610) %>% 
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 35] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201610) %>% 
+                                                                                              SEM_PRI ==201611) %>% 
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 36] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201611) %>%
+                                                                                              SEM_PRI ==201612) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 37] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201612) %>%
+                                                                                              SEM_PRI ==201613) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 38] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201613) %>% 
+                                                                                              SEM_PRI ==201614) %>% 
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 39] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201614) %>%
+                                                                                              SEM_PRI ==201615) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 40] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201615) %>%
+                                                                                              SEM_PRI ==201616) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 41] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201616) %>%
+                                                                                              SEM_PRI ==201617) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 42] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201617) %>%
+                                                                                              SEM_PRI ==201618) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 43] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201618) %>%
+                                                                                              SEM_PRI ==201619) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 44] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201619) %>%
+                                                                                              SEM_PRI ==201620) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 45] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201620) %>%
+                                                                                              SEM_PRI ==201621) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 46] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201621) %>%
+                                                                                              SEM_PRI ==201622) %>%
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 47] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201622) %>%
+                                                                                              SEM_PRI ==201623) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 48] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201623) %>%
+                                                                                              SEM_PRI ==201624) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 49] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201624) %>%
+                                                                                              SEM_PRI ==201625) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 50] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201625) %>% 
+                                                                                              SEM_PRI ==201626) %>% 
                                                                                        count()
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 51] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201626) %>% 
+                                                                                              SEM_PRI ==201627) %>% 
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 52] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201627) %>%
+                                                                                              SEM_PRI ==201628) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 53] <- as.integer(RS22_15_16_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201628) %>%
+                                                                                              SEM_PRI ==201629) %>%
                                                                                        count() 
   )
   
   RS22_15_16_SE_Notificados[which(RS22_15_16_SE_Notificados == i), 54] <- as.integer(RS22_15_16_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201629) %>%
+                                                                                              SEM_PRI ==201630) %>%
                                                                                        count() 
   )
 }
@@ -8766,9 +8766,9 @@ colnames(RS22_15_16_SE_Confirmados)[1] <- "Município"
 
 RS22_15_16_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_15_16_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_15_16_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_15_16_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_15_16_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -8779,7 +8779,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201530)%>%
+                                                                                             SEM_PRI ==201531)%>%
                                                                                       count()
   )
   
@@ -8790,7 +8790,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201531) %>% 
+                                                                                             SEM_PRI ==201532) %>% 
                                                                                       count()
   )
   
@@ -8801,7 +8801,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201532) %>% 
+                                                                                             SEM_PRI ==201533) %>% 
                                                                                       count()
   )
   
@@ -8812,7 +8812,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==201533) %>% 
+                                                                                            SEM_PRI ==201534) %>% 
                                                                                      count()
   )
   
@@ -8823,7 +8823,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201534) %>% 
+                                                                                             SEM_PRI ==201535) %>% 
                                                                                       count() 
   )
   
@@ -8834,7 +8834,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201535) %>%
+                                                                                             SEM_PRI ==201536) %>%
                                                                                       count()
   )
   
@@ -8845,7 +8845,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201536) %>% 
+                                                                                             SEM_PRI ==201537) %>% 
                                                                                       count() 
   )
   
@@ -8856,7 +8856,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201537) %>% 
+                                                                                             SEM_PRI ==201538) %>% 
                                                                                       count() 
   )
   
@@ -8867,7 +8867,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201538) %>%
+                                                                                              SEM_PRI ==201539) %>%
                                                                                        count()
   )
   
@@ -8878,7 +8878,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201539) %>%
+                                                                                              SEM_PRI ==201540) %>%
                                                                                        count() 
   )
   
@@ -8889,7 +8889,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201540) %>%
+                                                                                              SEM_PRI ==201541) %>%
                                                                                        count() 
   )
   
@@ -8900,7 +8900,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201541) %>%
+                                                                                              SEM_PRI ==201542) %>%
                                                                                        count() 
   )
   
@@ -8911,7 +8911,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201542) %>% 
+                                                                                              SEM_PRI ==201543) %>% 
                                                                                        count() 
   )
   
@@ -8922,7 +8922,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201543) %>%
+                                                                                              SEM_PRI ==201544) %>%
                                                                                        count() 
   )
   
@@ -8933,7 +8933,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201544) %>%
+                                                                                              SEM_PRI ==201545) %>%
                                                                                        count() 
   )
   
@@ -8944,7 +8944,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201545) %>%
+                                                                                              SEM_PRI ==201546) %>%
                                                                                        count()
   )
   
@@ -8955,7 +8955,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201546) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201547) %>%                                                                                        count() 
   )
   
   RS22_15_16_SE_Confirmados[which(RS22_15_16_SE_Confirmados == i), 19] <- as.integer(RS22_15_16_SINAN %>% 
@@ -8965,7 +8965,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201547) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201548) %>%                                                                                        count() 
   )
   
   RS22_15_16_SE_Confirmados[which(RS22_15_16_SE_Confirmados == i), 20] <- as.integer(RS22_15_16_SINAN %>% 
@@ -8975,7 +8975,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201548) %>%
+                                                                                              SEM_PRI ==201549) %>%
                                                                                        count() 
   )
   
@@ -8986,7 +8986,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==201549) %>%
+                                                                                               SEM_PRI ==201550) %>%
                                                                                         count() 
   )
   
@@ -8997,7 +8997,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201550) %>%
+                                                                                              SEM_PRI ==201551) %>%
                                                                                        count() 
   )
   
@@ -9008,7 +9008,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201551) %>%
+                                                                                              SEM_PRI ==201552) %>%
                                                                                        count() 
   )
   
@@ -9019,7 +9019,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201552) %>%
+                                                                                              SEM_PRI ==201553) %>%
                                                                                        count()
   )
   
@@ -9030,7 +9030,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201553) %>%
+                                                                                              SEM_PRI ==201601) %>%
                                                                                        count() 
   )
   
@@ -9041,7 +9041,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201601) %>%
+                                                                                              SEM_PRI ==201602) %>%
                                                                                        count()
   )
   
@@ -9052,7 +9052,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201602) %>%
+                                                                                              SEM_PRI ==201603) %>%
                                                                                        count() 
   )
   
@@ -9063,7 +9063,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201603) %>%
+                                                                                              SEM_PRI ==201604) %>%
                                                                                        count() 
   )
   
@@ -9074,7 +9074,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201604) %>%
+                                                                                              SEM_PRI ==201605) %>%
                                                                                        count() 
   )
   
@@ -9085,7 +9085,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201605) %>%
+                                                                                              SEM_PRI ==201606) %>%
                                                                                        count() 
   )
   
@@ -9096,7 +9096,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201606) %>% 
+                                                                                              SEM_PRI ==201607) %>% 
                                                                                        count()
   )
   
@@ -9107,7 +9107,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201607) %>%
+                                                                                              SEM_PRI ==201608) %>%
                                                                                        count()
   )
   
@@ -9118,7 +9118,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201608) %>%
+                                                                                              SEM_PRI ==201609) %>%
                                                                                        count() 
   )
   
@@ -9129,7 +9129,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201609) %>% 
+                                                                                              SEM_PRI ==201610) %>% 
                                                                                        count() 
   )
   
@@ -9140,7 +9140,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201610) %>% 
+                                                                                              SEM_PRI ==201611) %>% 
                                                                                        count() 
   )
   
@@ -9151,7 +9151,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201611) %>%
+                                                                                              SEM_PRI ==201612) %>%
                                                                                        count() 
   )
   
@@ -9162,7 +9162,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201612) %>%
+                                                                                              SEM_PRI ==201613) %>%
                                                                                        count() 
   )
   
@@ -9173,7 +9173,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201613) %>% 
+                                                                                              SEM_PRI ==201614) %>% 
                                                                                        count() 
   )
   
@@ -9184,7 +9184,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201614) %>%
+                                                                                              SEM_PRI ==201615) %>%
                                                                                        count()
   )
   
@@ -9195,7 +9195,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201615) %>%
+                                                                                              SEM_PRI ==201616) %>%
                                                                                        count() 
   )
   
@@ -9206,7 +9206,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201616) %>%
+                                                                                              SEM_PRI ==201617) %>%
                                                                                        count() 
   )
   
@@ -9217,7 +9217,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201617) %>%
+                                                                                              SEM_PRI ==201618) %>%
                                                                                        count() 
   )
   
@@ -9228,7 +9228,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201618) %>%
+                                                                                              SEM_PRI ==201619) %>%
                                                                                        count()
   )
   
@@ -9239,7 +9239,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201619) %>%
+                                                                                              SEM_PRI ==201620) %>%
                                                                                        count()
   )
   
@@ -9250,7 +9250,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201620) %>%
+                                                                                              SEM_PRI ==201621) %>%
                                                                                        count() 
   )
   
@@ -9261,7 +9261,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201621) %>%
+                                                                                              SEM_PRI ==201622) %>%
                                                                                        count()
   )
   
@@ -9272,7 +9272,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201622) %>%
+                                                                                              SEM_PRI ==201623) %>%
                                                                                        count() 
   )
   
@@ -9283,7 +9283,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201623) %>%
+                                                                                              SEM_PRI ==201624) %>%
                                                                                        count() 
   )
   
@@ -9294,7 +9294,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201624) %>%
+                                                                                              SEM_PRI ==201625) %>%
                                                                                        count() 
   )
   
@@ -9305,7 +9305,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201625) %>% 
+                                                                                              SEM_PRI ==201626) %>% 
                                                                                        count()
   )
   
@@ -9316,7 +9316,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201626) %>% 
+                                                                                              SEM_PRI ==201627) %>% 
                                                                                        count() 
   )
   
@@ -9327,7 +9327,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201627) %>%
+                                                                                              SEM_PRI ==201628) %>%
                                                                                        count() 
   )
   
@@ -9338,7 +9338,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201628) %>%
+                                                                                              SEM_PRI ==201629) %>%
                                                                                        count() 
   )
   
@@ -9349,7 +9349,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201629) %>%
+                                                                                              SEM_PRI ==201630) %>%
                                                                                        count() 
   )
 }
@@ -10110,325 +10110,325 @@ colnames(RS22_16_17_SE_Notificados)[1] <- "Município"
 
 RS22_16_17_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_16_17_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_16_17_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_16_17_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_16_17_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 2] <- as.integer(RS22_16_17_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201630)%>%
+                                                                                             SEM_PRI ==201631)%>%
                                                                                       count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 3] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201631) %>% 
+                                                                                             SEM_PRI ==201632) %>% 
                                                                                       count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 4] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201632) %>% 
+                                                                                             SEM_PRI ==201633) %>% 
                                                                                       count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i),5] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201633) %>% 
+                                                                                            SEM_PRI ==201634) %>% 
                                                                                      count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 6] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201634) %>% 
+                                                                                             SEM_PRI ==201635) %>% 
                                                                                       count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 7] <- as.integer(RS22_16_17_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201635) %>%
+                                                                                             SEM_PRI ==201636) %>%
                                                                                       count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 8] <- as.integer(RS22_16_17_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201636) %>% 
+                                                                                             SEM_PRI ==201637) %>% 
                                                                                       count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 9] <- as.integer(RS22_16_17_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201637) %>% 
+                                                                                             SEM_PRI ==201638) %>% 
                                                                                       count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 10] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201638) %>%
+                                                                                              SEM_PRI ==201639) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 11] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201639) %>%
+                                                                                              SEM_PRI ==201640) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 12] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201640) %>%
+                                                                                              SEM_PRI ==201641) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 13] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201641) %>%
+                                                                                              SEM_PRI ==201642) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 14] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201642) %>% 
+                                                                                              SEM_PRI ==201643) %>% 
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 15] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201643) %>%
+                                                                                              SEM_PRI ==201644) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 16] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201644) %>%
+                                                                                              SEM_PRI ==201645) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 17] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201645) %>%
+                                                                                              SEM_PRI ==201646) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 18] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201646) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201647) %>%                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 19] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201647) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201648) %>%                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 20] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201648) %>%
+                                                                                              SEM_PRI ==201649) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i),  21] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201649) %>%
+                                                                                               SEM_PRI ==201650) %>%
                                                                                         count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 22] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201650) %>%
+                                                                                              SEM_PRI ==201651) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 23] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201651) %>%
+                                                                                              SEM_PRI ==201652) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 24] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201652) %>%
+                                                                                              SEM_PRI ==201653) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 25] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201653) %>%
+                                                                                              SEM_PRI ==201701) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 26] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201701) %>%
+                                                                                              SEM_PRI ==201702) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 27] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201702) %>%
+                                                                                              SEM_PRI ==201703) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 28] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201703) %>%
+                                                                                              SEM_PRI ==201704) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 29] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201704) %>%
+                                                                                              SEM_PRI ==201705) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 30] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201705) %>%
+                                                                                              SEM_PRI ==201706) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 31] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201706) %>% 
+                                                                                              SEM_PRI ==201707) %>% 
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 32] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201707) %>%
+                                                                                              SEM_PRI ==201708) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 33] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201708) %>%
+                                                                                              SEM_PRI ==201709) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 34] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201709) %>% 
+                                                                                              SEM_PRI ==201710) %>% 
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 35] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201710) %>% 
+                                                                                              SEM_PRI ==201711) %>% 
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 36] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201711) %>%
+                                                                                              SEM_PRI ==201712) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 37] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201712) %>%
+                                                                                              SEM_PRI ==201713) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 38] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201713) %>% 
+                                                                                              SEM_PRI ==201714) %>% 
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 39] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201714) %>%
+                                                                                              SEM_PRI ==201715) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 40] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201715) %>%
+                                                                                              SEM_PRI ==201716) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 41] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201716) %>%
+                                                                                              SEM_PRI ==201717) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 42] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201717) %>%
+                                                                                              SEM_PRI ==201718) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 43] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201718) %>%
+                                                                                              SEM_PRI ==201719) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 44] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201719) %>%
+                                                                                              SEM_PRI ==201720) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 45] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201720) %>%
+                                                                                              SEM_PRI ==201721) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 46] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201721) %>%
+                                                                                              SEM_PRI ==201722) %>%
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 47] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201722) %>%
+                                                                                              SEM_PRI ==201723) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 48] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201723) %>%
+                                                                                              SEM_PRI ==201724) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 49] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201724) %>%
+                                                                                              SEM_PRI ==201725) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 50] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201725) %>% 
+                                                                                              SEM_PRI ==201726) %>% 
                                                                                        count()
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 51] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201726) %>% 
+                                                                                              SEM_PRI ==201727) %>% 
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 52] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201727) %>%
+                                                                                              SEM_PRI ==201728) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 53] <- as.integer(RS22_16_17_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201728) %>%
+                                                                                              SEM_PRI ==201729) %>%
                                                                                        count() 
   )
   
   RS22_16_17_SE_Notificados[which(RS22_16_17_SE_Notificados == i), 54] <- as.integer(RS22_16_17_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201729) %>%
+                                                                                              SEM_PRI ==201730) %>%
                                                                                        count() 
   )
 }
@@ -10451,9 +10451,9 @@ colnames(RS22_16_17_SE_Confirmados)[1] <- "Município"
 
 RS22_16_17_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_16_17_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_16_17_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_16_17_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_16_17_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -10464,7 +10464,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201630)%>%
+                                                                                             SEM_PRI ==201631)%>%
                                                                                       count()
   )
   
@@ -10475,7 +10475,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201631) %>% 
+                                                                                             SEM_PRI ==201632) %>% 
                                                                                       count()
   )
   
@@ -10486,7 +10486,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201632) %>% 
+                                                                                             SEM_PRI ==201633) %>% 
                                                                                       count()
   )
   
@@ -10497,7 +10497,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==201633) %>% 
+                                                                                            SEM_PRI ==201634) %>% 
                                                                                      count()
   )
   
@@ -10508,7 +10508,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201634) %>% 
+                                                                                             SEM_PRI ==201635) %>% 
                                                                                       count() 
   )
   
@@ -10519,7 +10519,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201635) %>%
+                                                                                             SEM_PRI ==201636) %>%
                                                                                       count()
   )
   
@@ -10530,7 +10530,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201636) %>% 
+                                                                                             SEM_PRI ==201637) %>% 
                                                                                       count() 
   )
   
@@ -10541,7 +10541,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201637) %>% 
+                                                                                             SEM_PRI ==201638) %>% 
                                                                                       count() 
   )
   
@@ -10552,7 +10552,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201638) %>%
+                                                                                              SEM_PRI ==201639) %>%
                                                                                        count()
   )
   
@@ -10563,7 +10563,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201639) %>%
+                                                                                              SEM_PRI ==201640) %>%
                                                                                        count() 
   )
   
@@ -10574,7 +10574,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201640) %>%
+                                                                                              SEM_PRI ==201641) %>%
                                                                                        count() 
   )
   
@@ -10585,7 +10585,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201641) %>%
+                                                                                              SEM_PRI ==201642) %>%
                                                                                        count() 
   )
   
@@ -10596,7 +10596,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201642) %>% 
+                                                                                              SEM_PRI ==201643) %>% 
                                                                                        count() 
   )
   
@@ -10607,7 +10607,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201643) %>%
+                                                                                              SEM_PRI ==201644) %>%
                                                                                        count() 
   )
   
@@ -10618,7 +10618,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201644) %>%
+                                                                                              SEM_PRI ==201645) %>%
                                                                                        count() 
   )
   
@@ -10629,7 +10629,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201645) %>%
+                                                                                              SEM_PRI ==201646) %>%
                                                                                        count()
   )
   
@@ -10640,7 +10640,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201646) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201647) %>%                                                                                        count() 
   )
   
   RS22_16_17_SE_Confirmados[which(RS22_16_17_SE_Confirmados == i), 19] <- as.integer(RS22_16_17_SINAN %>% 
@@ -10650,7 +10650,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201647) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201648) %>%                                                                                        count() 
   )
   
   RS22_16_17_SE_Confirmados[which(RS22_16_17_SE_Confirmados == i), 20] <- as.integer(RS22_16_17_SINAN %>% 
@@ -10660,7 +10660,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201648) %>%
+                                                                                              SEM_PRI ==201649) %>%
                                                                                        count() 
   )
   
@@ -10671,7 +10671,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==201649) %>%
+                                                                                               SEM_PRI ==201650) %>%
                                                                                         count() 
   )
   
@@ -10682,7 +10682,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201650) %>%
+                                                                                              SEM_PRI ==201651) %>%
                                                                                        count() 
   )
   
@@ -10693,7 +10693,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201651) %>%
+                                                                                              SEM_PRI ==201652) %>%
                                                                                        count() 
   )
   
@@ -10704,7 +10704,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201652) %>%
+                                                                                              SEM_PRI ==201653) %>%
                                                                                        count()
   )
   
@@ -10715,7 +10715,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201653) %>%
+                                                                                              SEM_PRI ==20701) %>%
                                                                                        count() 
   )
   
@@ -10726,7 +10726,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201701) %>%
+                                                                                              SEM_PRI ==201702) %>%
                                                                                        count()
   )
   
@@ -10737,7 +10737,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201702) %>%
+                                                                                              SEM_PRI ==201703) %>%
                                                                                        count() 
   )
   
@@ -10748,7 +10748,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201703) %>%
+                                                                                              SEM_PRI ==201704) %>%
                                                                                        count() 
   )
   
@@ -10759,7 +10759,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201704) %>%
+                                                                                              SEM_PRI ==201705) %>%
                                                                                        count() 
   )
   
@@ -10770,7 +10770,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201705) %>%
+                                                                                              SEM_PRI ==201706) %>%
                                                                                        count() 
   )
   
@@ -10781,7 +10781,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201706) %>% 
+                                                                                              SEM_PRI ==201707) %>% 
                                                                                        count()
   )
   
@@ -10792,7 +10792,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201707) %>%
+                                                                                              SEM_PRI ==201708) %>%
                                                                                        count()
   )
   
@@ -10803,7 +10803,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201708) %>%
+                                                                                              SEM_PRI ==201709) %>%
                                                                                        count() 
   )
   
@@ -10814,7 +10814,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201709) %>% 
+                                                                                              SEM_PRI ==201710) %>% 
                                                                                        count() 
   )
   
@@ -10825,7 +10825,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201710) %>% 
+                                                                                              SEM_PRI ==201711) %>% 
                                                                                        count() 
   )
   
@@ -10836,7 +10836,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201711) %>%
+                                                                                              SEM_PRI ==201712) %>%
                                                                                        count() 
   )
   
@@ -10847,7 +10847,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201712) %>%
+                                                                                              SEM_PRI ==201713) %>%
                                                                                        count() 
   )
   
@@ -10858,7 +10858,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201713) %>% 
+                                                                                              SEM_PRI ==201714) %>% 
                                                                                        count() 
   )
   
@@ -10869,7 +10869,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201714) %>%
+                                                                                              SEM_PRI ==201715) %>%
                                                                                        count()
   )
   
@@ -10880,7 +10880,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201715) %>%
+                                                                                              SEM_PRI ==201716) %>%
                                                                                        count() 
   )
   
@@ -10891,7 +10891,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201716) %>%
+                                                                                              SEM_PRI ==201717) %>%
                                                                                        count() 
   )
   
@@ -10902,7 +10902,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201717) %>%
+                                                                                              SEM_PRI ==201718) %>%
                                                                                        count() 
   )
   
@@ -10913,7 +10913,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201718) %>%
+                                                                                              SEM_PRI ==201719) %>%
                                                                                        count()
   )
   
@@ -10924,7 +10924,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201719) %>%
+                                                                                              SEM_PRI ==201720) %>%
                                                                                        count()
   )
   
@@ -10935,7 +10935,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201720) %>%
+                                                                                              SEM_PRI ==201721) %>%
                                                                                        count() 
   )
   
@@ -10946,7 +10946,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201721) %>%
+                                                                                              SEM_PRI ==201722) %>%
                                                                                        count()
   )
   
@@ -10957,7 +10957,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201722) %>%
+                                                                                              SEM_PRI ==201723) %>%
                                                                                        count() 
   )
   
@@ -10968,7 +10968,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201723) %>%
+                                                                                              SEM_PRI ==201724) %>%
                                                                                        count() 
   )
   
@@ -10979,7 +10979,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201724) %>%
+                                                                                              SEM_PRI ==201725) %>%
                                                                                        count() 
   )
   
@@ -10990,7 +10990,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201725) %>% 
+                                                                                              SEM_PRI ==201726) %>% 
                                                                                        count()
   )
   
@@ -11001,7 +11001,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201726) %>% 
+                                                                                              SEM_PRI ==201727) %>% 
                                                                                        count() 
   )
   
@@ -11012,7 +11012,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201727) %>%
+                                                                                              SEM_PRI ==201728) %>%
                                                                                        count() 
   )
   
@@ -11023,7 +11023,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201728) %>%
+                                                                                              SEM_PRI ==201729) %>%
                                                                                        count() 
   )
   
@@ -11034,7 +11034,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201729) %>%
+                                                                                              SEM_PRI ==201730) %>%
                                                                                        count() 
   )
 }
@@ -11796,325 +11796,325 @@ colnames(RS22_17_18_SE_Notificados)[1] <- "Município"
 
 RS22_17_18_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_17_18_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_17_18_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_17_18_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_17_18_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 2] <- as.integer(RS22_17_18_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201730)%>%
+                                                                                             SEM_PRI ==201731)%>%
                                                                                       count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 3] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201731) %>% 
+                                                                                             SEM_PRI ==201732) %>% 
                                                                                       count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 4] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201732) %>% 
+                                                                                             SEM_PRI ==201733) %>% 
                                                                                       count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i),5] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201733) %>% 
+                                                                                            SEM_PRI ==201734) %>% 
                                                                                      count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 6] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201734) %>% 
+                                                                                             SEM_PRI ==201735) %>% 
                                                                                       count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 7] <- as.integer(RS22_17_18_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201735) %>%
+                                                                                             SEM_PRI ==201736) %>%
                                                                                       count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 8] <- as.integer(RS22_17_18_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201736) %>% 
+                                                                                             SEM_PRI ==201737) %>% 
                                                                                       count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 9] <- as.integer(RS22_17_18_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201737) %>% 
+                                                                                             SEM_PRI ==201738) %>% 
                                                                                       count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 10] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201738) %>%
+                                                                                              SEM_PRI ==201739) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 11] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201739) %>%
+                                                                                              SEM_PRI ==201740) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 12] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201740) %>%
+                                                                                              SEM_PRI ==201741) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 13] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201741) %>%
+                                                                                              SEM_PRI ==201742) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 14] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201742) %>% 
+                                                                                              SEM_PRI ==201743) %>% 
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 15] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201743) %>%
+                                                                                              SEM_PRI ==201744) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 16] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201744) %>%
+                                                                                              SEM_PRI ==201745) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 17] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201745) %>%
+                                                                                              SEM_PRI ==201746) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 18] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201746) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201747) %>%                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 19] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201747) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201748) %>%                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 20] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201748) %>%
+                                                                                              SEM_PRI ==201749) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i),  21] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201749) %>%
+                                                                                               SEM_PRI ==201750) %>%
                                                                                         count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 22] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201750) %>%
+                                                                                              SEM_PRI ==201751) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 23] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201751) %>%
+                                                                                              SEM_PRI ==201752) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 24] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201752) %>%
+                                                                                              SEM_PRI ==201753) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 25] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201753) %>%
+                                                                                              SEM_PRI ==201801) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 26] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201801) %>%
+                                                                                              SEM_PRI ==201802) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 27] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201802) %>%
+                                                                                              SEM_PRI ==201803) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 28] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201803) %>%
+                                                                                              SEM_PRI ==201804) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 29] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201804) %>%
+                                                                                              SEM_PRI ==201805) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 30] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201805) %>%
+                                                                                              SEM_PRI ==201806) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 31] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201806) %>% 
+                                                                                              SEM_PRI ==201807) %>% 
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 32] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201807) %>%
+                                                                                              SEM_PRI ==201808) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 33] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201808) %>%
+                                                                                              SEM_PRI ==201809) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 34] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201809) %>% 
+                                                                                              SEM_PRI ==201810) %>% 
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 35] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201810) %>% 
+                                                                                              SEM_PRI ==201811) %>% 
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 36] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201811) %>%
+                                                                                              SEM_PRI ==201812) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 37] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201812) %>%
+                                                                                              SEM_PRI ==201813) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 38] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201813) %>% 
+                                                                                              SEM_PRI ==201814) %>% 
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 39] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201814) %>%
+                                                                                              SEM_PRI ==201815) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 40] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201815) %>%
+                                                                                              SEM_PRI ==201816) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 41] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201816) %>%
+                                                                                              SEM_PRI ==201817) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 42] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201817) %>%
+                                                                                              SEM_PRI ==201818) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 43] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201818) %>%
+                                                                                              SEM_PRI ==201819) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 44] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201819) %>%
+                                                                                              SEM_PRI ==201820) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 45] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201820) %>%
+                                                                                              SEM_PRI ==201821) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 46] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201821) %>%
+                                                                                              SEM_PRI ==201822) %>%
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 47] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201822) %>%
+                                                                                              SEM_PRI ==201823) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 48] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201823) %>%
+                                                                                              SEM_PRI ==201824) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 49] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201824) %>%
+                                                                                              SEM_PRI ==201825) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 50] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201825) %>% 
+                                                                                              SEM_PRI ==201826) %>% 
                                                                                        count()
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 51] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201826) %>% 
+                                                                                              SEM_PRI ==201827) %>% 
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 52] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201827) %>%
+                                                                                              SEM_PRI ==201828) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 53] <- as.integer(RS22_17_18_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201828) %>%
+                                                                                              SEM_PRI ==201829) %>%
                                                                                        count() 
   )
   
   RS22_17_18_SE_Notificados[which(RS22_17_18_SE_Notificados == i), 54] <- as.integer(RS22_17_18_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201829) %>%
+                                                                                              SEM_PRI ==201830) %>%
                                                                                        count() 
   )
 }
@@ -12137,9 +12137,9 @@ colnames(RS22_17_18_SE_Confirmados)[1] <- "Município"
 
 RS22_17_18_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_17_18_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_17_18_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_17_18_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_17_18_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -12150,7 +12150,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201730)%>%
+                                                                                             SEM_PRI ==201731)%>%
                                                                                       count()
   )
   
@@ -12161,7 +12161,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201731) %>% 
+                                                                                             SEM_PRI ==201732) %>% 
                                                                                       count()
   )
   
@@ -12172,7 +12172,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201732) %>% 
+                                                                                             SEM_PRI ==201733) %>% 
                                                                                       count()
   )
   
@@ -12183,7 +12183,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==201733) %>% 
+                                                                                            SEM_PRI ==201734) %>% 
                                                                                      count()
   )
   
@@ -12194,7 +12194,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201734) %>% 
+                                                                                             SEM_PRI ==201735) %>% 
                                                                                       count() 
   )
   
@@ -12205,7 +12205,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201735) %>%
+                                                                                             SEM_PRI ==201736) %>%
                                                                                       count()
   )
   
@@ -12216,7 +12216,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201736) %>% 
+                                                                                             SEM_PRI ==201737) %>% 
                                                                                       count() 
   )
   
@@ -12227,7 +12227,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201737) %>% 
+                                                                                             SEM_PRI ==201738) %>% 
                                                                                       count() 
   )
   
@@ -12238,7 +12238,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201738) %>%
+                                                                                              SEM_PRI ==201739) %>%
                                                                                        count()
   )
   
@@ -12249,7 +12249,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201739) %>%
+                                                                                              SEM_PRI ==201740) %>%
                                                                                        count() 
   )
   
@@ -12260,7 +12260,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201740) %>%
+                                                                                              SEM_PRI ==201741) %>%
                                                                                        count() 
   )
   
@@ -12271,7 +12271,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201741) %>%
+                                                                                              SEM_PRI ==201742) %>%
                                                                                        count() 
   )
   
@@ -12282,7 +12282,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201742) %>% 
+                                                                                              SEM_PRI ==201743) %>% 
                                                                                        count() 
   )
   
@@ -12293,7 +12293,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201743) %>%
+                                                                                              SEM_PRI ==201744) %>%
                                                                                        count() 
   )
   
@@ -12304,7 +12304,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201744) %>%
+                                                                                              SEM_PRI ==201745) %>%
                                                                                        count() 
   )
   
@@ -12315,7 +12315,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201745) %>%
+                                                                                              SEM_PRI ==201746) %>%
                                                                                        count()
   )
   
@@ -12326,7 +12326,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201746) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201747) %>%                                                                                        count() 
   )
   
   RS22_17_18_SE_Confirmados[which(RS22_17_18_SE_Confirmados == i), 19] <- as.integer(RS22_17_18_SINAN %>% 
@@ -12336,7 +12336,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201747) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201748) %>%                                                                                        count() 
   )
   
   RS22_17_18_SE_Confirmados[which(RS22_17_18_SE_Confirmados == i), 20] <- as.integer(RS22_17_18_SINAN %>% 
@@ -12346,7 +12346,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201748) %>%
+                                                                                              SEM_PRI ==201749) %>%
                                                                                        count() 
   )
   
@@ -12357,7 +12357,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==201749) %>%
+                                                                                               SEM_PRI ==201750) %>%
                                                                                         count() 
   )
   
@@ -12368,7 +12368,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201750) %>%
+                                                                                              SEM_PRI ==201751) %>%
                                                                                        count() 
   )
   
@@ -12379,7 +12379,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201751) %>%
+                                                                                              SEM_PRI ==201752) %>%
                                                                                        count() 
   )
   
@@ -12390,7 +12390,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201752) %>%
+                                                                                              SEM_PRI ==201753) %>%
                                                                                        count()
   )
   
@@ -12401,7 +12401,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201753) %>%
+                                                                                              SEM_PRI ==201801) %>%
                                                                                        count() 
   )
   
@@ -12412,7 +12412,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201801) %>%
+                                                                                              SEM_PRI ==201802) %>%
                                                                                        count()
   )
   
@@ -12423,7 +12423,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201802) %>%
+                                                                                              SEM_PRI ==201803) %>%
                                                                                        count() 
   )
   
@@ -12434,7 +12434,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201803) %>%
+                                                                                              SEM_PRI ==201804) %>%
                                                                                        count() 
   )
   
@@ -12445,7 +12445,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201804) %>%
+                                                                                              SEM_PRI ==201805) %>%
                                                                                        count() 
   )
   
@@ -12456,7 +12456,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201805) %>%
+                                                                                              SEM_PRI ==201806) %>%
                                                                                        count() 
   )
   
@@ -12467,7 +12467,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201806) %>% 
+                                                                                              SEM_PRI ==201807) %>% 
                                                                                        count()
   )
   
@@ -12478,7 +12478,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201807) %>%
+                                                                                              SEM_PRI ==201808) %>%
                                                                                        count()
   )
   
@@ -12489,7 +12489,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201808) %>%
+                                                                                              SEM_PRI ==201809) %>%
                                                                                        count() 
   )
   
@@ -12500,7 +12500,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201809) %>% 
+                                                                                              SEM_PRI ==201810) %>% 
                                                                                        count() 
   )
   
@@ -12511,7 +12511,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201810) %>% 
+                                                                                              SEM_PRI ==201811) %>% 
                                                                                        count() 
   )
   
@@ -12522,7 +12522,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201811) %>%
+                                                                                              SEM_PRI ==201812) %>%
                                                                                        count() 
   )
   
@@ -12533,7 +12533,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201812) %>%
+                                                                                              SEM_PRI ==201813) %>%
                                                                                        count() 
   )
   
@@ -12544,7 +12544,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201813) %>% 
+                                                                                              SEM_PRI ==201814) %>% 
                                                                                        count() 
   )
   
@@ -12555,7 +12555,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201814) %>%
+                                                                                              SEM_PRI ==201815) %>%
                                                                                        count()
   )
   
@@ -12566,7 +12566,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201815) %>%
+                                                                                              SEM_PRI ==201816) %>%
                                                                                        count() 
   )
   
@@ -12577,7 +12577,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201816) %>%
+                                                                                              SEM_PRI ==201817) %>%
                                                                                        count() 
   )
   
@@ -12588,7 +12588,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201817) %>%
+                                                                                              SEM_PRI ==201818) %>%
                                                                                        count() 
   )
   
@@ -12599,7 +12599,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201818) %>%
+                                                                                              SEM_PRI ==201819) %>%
                                                                                        count()
   )
   
@@ -12610,7 +12610,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201819) %>%
+                                                                                              SEM_PRI ==201820) %>%
                                                                                        count()
   )
   
@@ -12621,7 +12621,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201820) %>%
+                                                                                              SEM_PRI ==201821) %>%
                                                                                        count() 
   )
   
@@ -12632,7 +12632,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201821) %>%
+                                                                                              SEM_PRI ==201822) %>%
                                                                                        count()
   )
   
@@ -12643,7 +12643,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201822) %>%
+                                                                                              SEM_PRI ==201823) %>%
                                                                                        count() 
   )
   
@@ -12654,7 +12654,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201823) %>%
+                                                                                              SEM_PRI ==201824) %>%
                                                                                        count() 
   )
   
@@ -12665,7 +12665,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201824) %>%
+                                                                                              SEM_PRI ==201825) %>%
                                                                                        count() 
   )
   
@@ -12676,7 +12676,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201825) %>% 
+                                                                                              SEM_PRI ==201826) %>% 
                                                                                        count()
   )
   
@@ -12687,7 +12687,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201826) %>% 
+                                                                                              SEM_PRI ==201827) %>% 
                                                                                        count() 
   )
   
@@ -12698,7 +12698,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201827) %>%
+                                                                                              SEM_PRI ==201828) %>%
                                                                                        count() 
   )
   
@@ -12709,7 +12709,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201828) %>%
+                                                                                              SEM_PRI ==201829) %>%
                                                                                        count() 
   )
   
@@ -12720,7 +12720,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201829) %>%
+                                                                                              SEM_PRI ==201830) %>%
                                                                                        count() 
   )
 }
@@ -13482,325 +13482,325 @@ colnames(RS22_18_19_SE_Notificados)[1] <- "Município"
 
 RS22_18_19_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_18_19_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_18_19_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_18_19_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_18_19_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 2] <- as.integer(RS22_18_19_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201830)%>%
+                                                                                             SEM_PRI ==201831)%>%
                                                                                       count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 3] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201831) %>% 
+                                                                                             SEM_PRI ==201832) %>% 
                                                                                       count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 4] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201832) %>% 
+                                                                                             SEM_PRI ==201833) %>% 
                                                                                       count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i),5] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201833) %>% 
+                                                                                            SEM_PRI ==201834) %>% 
                                                                                      count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 6] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201834) %>% 
+                                                                                             SEM_PRI ==201835) %>% 
                                                                                       count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 7] <- as.integer(RS22_18_19_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201835) %>%
+                                                                                             SEM_PRI ==201836) %>%
                                                                                       count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 8] <- as.integer(RS22_18_19_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201836) %>% 
+                                                                                             SEM_PRI ==201837) %>% 
                                                                                       count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 9] <- as.integer(RS22_18_19_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201837) %>% 
+                                                                                             SEM_PRI ==201838) %>% 
                                                                                       count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 10] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201838) %>%
+                                                                                              SEM_PRI ==201839) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 11] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201839) %>%
+                                                                                              SEM_PRI ==201840) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 12] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201840) %>%
+                                                                                              SEM_PRI ==201841) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 13] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201841) %>%
+                                                                                              SEM_PRI ==201842) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 14] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201842) %>% 
+                                                                                              SEM_PRI ==201843) %>% 
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 15] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201843) %>%
+                                                                                              SEM_PRI ==201844) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 16] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201844) %>%
+                                                                                              SEM_PRI ==201845) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 17] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201845) %>%
+                                                                                              SEM_PRI ==201846) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 18] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201846) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201847) %>%                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 19] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201847) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201848) %>%                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 20] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201848) %>%
+                                                                                              SEM_PRI ==201849) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i),  21] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201849) %>%
+                                                                                               SEM_PRI ==201850) %>%
                                                                                         count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 22] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201850) %>%
+                                                                                              SEM_PRI ==201851) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 23] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201851) %>%
+                                                                                              SEM_PRI ==201852) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 24] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201852) %>%
+                                                                                              SEM_PRI ==201853) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 25] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201853) %>%
+                                                                                              SEM_PRI ==201901) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 26] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201901) %>%
+                                                                                              SEM_PRI ==201902) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 27] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201902) %>%
+                                                                                              SEM_PRI ==201903) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 28] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201903) %>%
+                                                                                              SEM_PRI ==201904) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 29] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201904) %>%
+                                                                                              SEM_PRI ==201905) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 30] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201905) %>%
+                                                                                              SEM_PRI ==201906) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 31] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201906) %>% 
+                                                                                              SEM_PRI ==201907) %>% 
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 32] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201907) %>%
+                                                                                              SEM_PRI ==201908) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 33] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201908) %>%
+                                                                                              SEM_PRI ==201909) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 34] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201909) %>% 
+                                                                                              SEM_PRI ==201910) %>% 
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 35] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201910) %>% 
+                                                                                              SEM_PRI ==201911) %>% 
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 36] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201911) %>%
+                                                                                              SEM_PRI ==201912) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 37] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201912) %>%
+                                                                                              SEM_PRI ==201913) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 38] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201913) %>% 
+                                                                                              SEM_PRI ==201914) %>% 
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 39] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201914) %>%
+                                                                                              SEM_PRI ==201915) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 40] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201915) %>%
+                                                                                              SEM_PRI ==201916) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 41] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201916) %>%
+                                                                                              SEM_PRI ==201917) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 42] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201917) %>%
+                                                                                              SEM_PRI ==201918) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 43] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201918) %>%
+                                                                                              SEM_PRI ==201919) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 44] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201919) %>%
+                                                                                              SEM_PRI ==201920) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 45] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201920) %>%
+                                                                                              SEM_PRI ==201921) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 46] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201921) %>%
+                                                                                              SEM_PRI ==201922) %>%
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 47] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201922) %>%
+                                                                                              SEM_PRI ==201923) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 48] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201923) %>%
+                                                                                              SEM_PRI ==201924) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 49] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201924) %>%
+                                                                                              SEM_PRI ==201925) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 50] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201925) %>% 
+                                                                                              SEM_PRI ==201926) %>% 
                                                                                        count()
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 51] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201926) %>% 
+                                                                                              SEM_PRI ==201927) %>% 
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 52] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201927) %>%
+                                                                                              SEM_PRI ==201928) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 53] <- as.integer(RS22_18_19_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201928) %>%
+                                                                                              SEM_PRI ==201929) %>%
                                                                                        count() 
   )
   
   RS22_18_19_SE_Notificados[which(RS22_18_19_SE_Notificados == i), 54] <- as.integer(RS22_18_19_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201929) %>%
+                                                                                              SEM_PRI ==201930) %>%
                                                                                        count() 
   )
 }
@@ -13823,9 +13823,9 @@ colnames(RS22_18_19_SE_Confirmados)[1] <- "Município"
 
 RS22_18_19_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_18_19_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_18_19_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_18_19_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_18_19_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -13836,7 +13836,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201830)%>%
+                                                                                             SEM_PRI ==201831)%>%
                                                                                       count()
   )
   
@@ -13847,7 +13847,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201831) %>% 
+                                                                                             SEM_PRI ==201832) %>% 
                                                                                       count()
   )
   
@@ -13858,7 +13858,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201832) %>% 
+                                                                                             SEM_PRI ==201833) %>% 
                                                                                       count()
   )
   
@@ -13869,7 +13869,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==201833) %>% 
+                                                                                            SEM_PRI ==201834) %>% 
                                                                                      count()
   )
   
@@ -13880,7 +13880,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201834) %>% 
+                                                                                             SEM_PRI ==201835) %>% 
                                                                                       count() 
   )
   
@@ -13891,7 +13891,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201835) %>%
+                                                                                             SEM_PRI ==201836) %>%
                                                                                       count()
   )
   
@@ -13902,7 +13902,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201836) %>% 
+                                                                                             SEM_PRI ==201837) %>% 
                                                                                       count() 
   )
   
@@ -13913,7 +13913,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201837) %>% 
+                                                                                             SEM_PRI ==201838) %>% 
                                                                                       count() 
   )
   
@@ -13924,7 +13924,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201838) %>%
+                                                                                              SEM_PRI ==201839) %>%
                                                                                        count()
   )
   
@@ -13935,7 +13935,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201839) %>%
+                                                                                              SEM_PRI ==201840) %>%
                                                                                        count() 
   )
   
@@ -13946,7 +13946,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201840) %>%
+                                                                                              SEM_PRI ==201841) %>%
                                                                                        count() 
   )
   
@@ -13957,7 +13957,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201841) %>%
+                                                                                              SEM_PRI ==201842) %>%
                                                                                        count() 
   )
   
@@ -13968,7 +13968,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201842) %>% 
+                                                                                              SEM_PRI ==201843) %>% 
                                                                                        count() 
   )
   
@@ -13979,7 +13979,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201843) %>%
+                                                                                              SEM_PRI ==201844) %>%
                                                                                        count() 
   )
   
@@ -13990,7 +13990,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201844) %>%
+                                                                                              SEM_PRI ==201845) %>%
                                                                                        count() 
   )
   
@@ -14001,7 +14001,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201845) %>%
+                                                                                              SEM_PRI ==201846) %>%
                                                                                        count()
   )
   
@@ -14012,7 +14012,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201846) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201847) %>%                                                                                        count() 
   )
   
   RS22_18_19_SE_Confirmados[which(RS22_18_19_SE_Confirmados == i), 19] <- as.integer(RS22_18_19_SINAN %>% 
@@ -14022,7 +14022,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201847) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201848) %>%                                                                                        count() 
   )
   
   RS22_18_19_SE_Confirmados[which(RS22_18_19_SE_Confirmados == i), 20] <- as.integer(RS22_18_19_SINAN %>% 
@@ -14032,7 +14032,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201848) %>%
+                                                                                              SEM_PRI ==201849) %>%
                                                                                        count() 
   )
   
@@ -14043,7 +14043,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==201849) %>%
+                                                                                               SEM_PRI ==201850) %>%
                                                                                         count() 
   )
   
@@ -14054,7 +14054,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201850) %>%
+                                                                                              SEM_PRI ==201851) %>%
                                                                                        count() 
   )
   
@@ -14065,7 +14065,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201851) %>%
+                                                                                              SEM_PRI ==201852) %>%
                                                                                        count() 
   )
   
@@ -14076,7 +14076,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201852) %>%
+                                                                                              SEM_PRI ==201853) %>%
                                                                                        count()
   )
   
@@ -14087,7 +14087,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201853) %>%
+                                                                                              SEM_PRI ==201901) %>%
                                                                                        count() 
   )
   
@@ -14098,7 +14098,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201901) %>%
+                                                                                              SEM_PRI ==201902) %>%
                                                                                        count()
   )
   
@@ -14109,7 +14109,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201902) %>%
+                                                                                              SEM_PRI ==201903) %>%
                                                                                        count() 
   )
   
@@ -14120,7 +14120,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201903) %>%
+                                                                                              SEM_PRI ==201904) %>%
                                                                                        count() 
   )
   
@@ -14131,7 +14131,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201904) %>%
+                                                                                              SEM_PRI ==201905) %>%
                                                                                        count() 
   )
   
@@ -14142,7 +14142,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201905) %>%
+                                                                                              SEM_PRI ==201906) %>%
                                                                                        count() 
   )
   
@@ -14153,7 +14153,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201906) %>% 
+                                                                                              SEM_PRI ==201907) %>% 
                                                                                        count()
   )
   
@@ -14164,7 +14164,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201907) %>%
+                                                                                              SEM_PRI ==201908) %>%
                                                                                        count()
   )
   
@@ -14175,7 +14175,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201908) %>%
+                                                                                              SEM_PRI ==201909) %>%
                                                                                        count() 
   )
   
@@ -14186,7 +14186,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201909) %>% 
+                                                                                              SEM_PRI ==201910) %>% 
                                                                                        count() 
   )
   
@@ -14197,7 +14197,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201910) %>% 
+                                                                                              SEM_PRI ==201911) %>% 
                                                                                        count() 
   )
   
@@ -14208,7 +14208,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201911) %>%
+                                                                                              SEM_PRI ==201912) %>%
                                                                                        count() 
   )
   
@@ -14219,7 +14219,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201912) %>%
+                                                                                              SEM_PRI ==201913) %>%
                                                                                        count() 
   )
   
@@ -14230,7 +14230,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201913) %>% 
+                                                                                              SEM_PRI ==201914) %>% 
                                                                                        count() 
   )
   
@@ -14241,7 +14241,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201914) %>%
+                                                                                              SEM_PRI ==201915) %>%
                                                                                        count()
   )
   
@@ -14252,7 +14252,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201915) %>%
+                                                                                              SEM_PRI ==201916) %>%
                                                                                        count() 
   )
   
@@ -14263,7 +14263,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201916) %>%
+                                                                                              SEM_PRI ==201917) %>%
                                                                                        count() 
   )
   
@@ -14274,7 +14274,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201917) %>%
+                                                                                              SEM_PRI ==201918) %>%
                                                                                        count() 
   )
   
@@ -14285,7 +14285,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201918) %>%
+                                                                                              SEM_PRI ==201919) %>%
                                                                                        count()
   )
   
@@ -14296,7 +14296,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201919) %>%
+                                                                                              SEM_PRI ==201920) %>%
                                                                                        count()
   )
   
@@ -14307,7 +14307,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201920) %>%
+                                                                                              SEM_PRI ==201921) %>%
                                                                                        count() 
   )
   
@@ -14318,7 +14318,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201921) %>%
+                                                                                              SEM_PRI ==201922) %>%
                                                                                        count()
   )
   
@@ -14329,7 +14329,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201922) %>%
+                                                                                              SEM_PRI ==201923) %>%
                                                                                        count() 
   )
   
@@ -14340,7 +14340,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201923) %>%
+                                                                                              SEM_PRI ==201924) %>%
                                                                                        count() 
   )
   
@@ -14351,7 +14351,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201924) %>%
+                                                                                              SEM_PRI ==201925) %>%
                                                                                        count() 
   )
   
@@ -14362,7 +14362,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201925) %>% 
+                                                                                              SEM_PRI ==201926) %>% 
                                                                                        count()
   )
   
@@ -14373,7 +14373,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201926) %>% 
+                                                                                              SEM_PRI ==201927) %>% 
                                                                                        count() 
   )
   
@@ -14384,7 +14384,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201927) %>%
+                                                                                              SEM_PRI ==201928) %>%
                                                                                        count() 
   )
   
@@ -14395,7 +14395,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201928) %>%
+                                                                                              SEM_PRI ==201929) %>%
                                                                                        count() 
   )
   
@@ -14406,7 +14406,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201929) %>%
+                                                                                              SEM_PRI ==201930) %>%
                                                                                        count() 
   )
 }
@@ -15167,325 +15167,325 @@ colnames(RS22_19_20_SE_Notificados)[1] <- "Município"
 
 RS22_19_20_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_19_20_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_19_20_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_19_20_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_19_20_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 2] <- as.integer(RS22_19_20_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201930)%>%
+                                                                                             SEM_PRI ==201931)%>%
                                                                                       count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 3] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201931) %>% 
+                                                                                             SEM_PRI ==201932) %>% 
                                                                                       count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 4] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201932) %>% 
+                                                                                             SEM_PRI ==201933) %>% 
                                                                                       count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i),5] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==201933) %>% 
+                                                                                            SEM_PRI ==201934) %>% 
                                                                                      count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 6] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==201934) %>% 
+                                                                                             SEM_PRI ==201935) %>% 
                                                                                       count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 7] <- as.integer(RS22_19_20_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201935) %>%
+                                                                                             SEM_PRI ==201936) %>%
                                                                                       count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 8] <- as.integer(RS22_19_20_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201936) %>% 
+                                                                                             SEM_PRI ==201937) %>% 
                                                                                       count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 9] <- as.integer(RS22_19_20_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==201937) %>% 
+                                                                                             SEM_PRI ==201938) %>% 
                                                                                       count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 10] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201938) %>%
+                                                                                              SEM_PRI ==201939) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 11] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201939) %>%
+                                                                                              SEM_PRI ==201940) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 12] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201940) %>%
+                                                                                              SEM_PRI ==201941) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 13] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==201941) %>%
+                                                                                              SEM_PRI ==201942) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 14] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201942) %>% 
+                                                                                              SEM_PRI ==201943) %>% 
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 15] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201943) %>%
+                                                                                              SEM_PRI ==201944) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 16] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201944) %>%
+                                                                                              SEM_PRI ==201945) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 17] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201945) %>%
+                                                                                              SEM_PRI ==201946) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 18] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201946) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201947) %>%                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 19] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201947) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201948) %>%                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 20] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201948) %>%
+                                                                                              SEM_PRI ==201949) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i),  21] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==201949) %>%
+                                                                                               SEM_PRI ==201950) %>%
                                                                                         count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 22] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201950) %>%
+                                                                                              SEM_PRI ==201951) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 23] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201951) %>%
+                                                                                              SEM_PRI ==201952) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 24] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201952) %>%
+                                                                                              SEM_PRI ==201953) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 25] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==201953) %>%
+                                                                                              SEM_PRI ==202001) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 26] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202001) %>%
+                                                                                              SEM_PRI ==202002) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 27] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202002) %>%
+                                                                                              SEM_PRI ==202003) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 28] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202003) %>%
+                                                                                              SEM_PRI ==202004) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 29] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202004) %>%
+                                                                                              SEM_PRI ==202005) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 30] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202005) %>%
+                                                                                              SEM_PRI ==202006) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 31] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202006) %>% 
+                                                                                              SEM_PRI ==202007) %>% 
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 32] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202007) %>%
+                                                                                              SEM_PRI ==202008) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 33] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202008) %>%
+                                                                                              SEM_PRI ==202009) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 34] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202009) %>% 
+                                                                                              SEM_PRI ==202010) %>% 
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 35] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202010) %>% 
+                                                                                              SEM_PRI ==202011) %>% 
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 36] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202011) %>%
+                                                                                              SEM_PRI ==202012) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 37] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202012) %>%
+                                                                                              SEM_PRI ==202013) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 38] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202013) %>% 
+                                                                                              SEM_PRI ==202014) %>% 
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 39] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202014) %>%
+                                                                                              SEM_PRI ==202015) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 40] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202015) %>%
+                                                                                              SEM_PRI ==202016) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 41] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202016) %>%
+                                                                                              SEM_PRI ==202017) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 42] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202017) %>%
+                                                                                              SEM_PRI ==202018) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 43] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202018) %>%
+                                                                                              SEM_PRI ==202019) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 44] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202019) %>%
+                                                                                              SEM_PRI ==202020) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 45] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202020) %>%
+                                                                                              SEM_PRI ==202021) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 46] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202021) %>%
+                                                                                              SEM_PRI ==202022) %>%
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 47] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202022) %>%
+                                                                                              SEM_PRI ==202023) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 48] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202023) %>%
+                                                                                              SEM_PRI ==202024) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 49] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202024) %>%
+                                                                                              SEM_PRI ==202025) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 50] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202025) %>% 
+                                                                                              SEM_PRI ==202026) %>% 
                                                                                        count()
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 51] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202026) %>% 
+                                                                                              SEM_PRI ==202027) %>% 
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 52] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202027) %>%
+                                                                                              SEM_PRI ==202028) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 53] <- as.integer(RS22_19_20_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202028) %>%
+                                                                                              SEM_PRI ==202029) %>%
                                                                                        count() 
   )
   
   RS22_19_20_SE_Notificados[which(RS22_19_20_SE_Notificados == i), 54] <- as.integer(RS22_19_20_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202029) %>%
+                                                                                              SEM_PRI ==202030) %>%
                                                                                        count() 
   )
 }
@@ -15508,9 +15508,9 @@ colnames(RS22_19_20_SE_Confirmados)[1] <- "Município"
 
 RS22_19_20_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_19_20_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_19_20_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_19_20_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_19_20_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -15521,7 +15521,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201930)%>%
+                                                                                             SEM_PRI ==201931)%>%
                                                                                       count()
   )
   
@@ -15532,7 +15532,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201931) %>% 
+                                                                                             SEM_PRI ==201932) %>% 
                                                                                       count()
   )
   
@@ -15543,7 +15543,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201932) %>% 
+                                                                                             SEM_PRI ==201933) %>% 
                                                                                       count()
   )
   
@@ -15554,7 +15554,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==201933) %>% 
+                                                                                            SEM_PRI ==201934) %>% 
                                                                                      count()
   )
   
@@ -15565,7 +15565,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201934) %>% 
+                                                                                             SEM_PRI ==201935) %>% 
                                                                                       count() 
   )
   
@@ -15576,7 +15576,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201935) %>%
+                                                                                             SEM_PRI ==201936) %>%
                                                                                       count()
   )
   
@@ -15587,7 +15587,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201936) %>% 
+                                                                                             SEM_PRI ==201937) %>% 
                                                                                       count() 
   )
   
@@ -15598,7 +15598,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==201937) %>% 
+                                                                                             SEM_PRI ==201938) %>% 
                                                                                       count() 
   )
   
@@ -15609,7 +15609,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201938) %>%
+                                                                                              SEM_PRI ==201939) %>%
                                                                                        count()
   )
   
@@ -15620,7 +15620,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201939) %>%
+                                                                                              SEM_PRI ==201940) %>%
                                                                                        count() 
   )
   
@@ -15631,7 +15631,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201940) %>%
+                                                                                              SEM_PRI ==201941) %>%
                                                                                        count() 
   )
   
@@ -15642,7 +15642,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201941) %>%
+                                                                                              SEM_PRI ==201942) %>%
                                                                                        count() 
   )
   
@@ -15653,7 +15653,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201942) %>% 
+                                                                                              SEM_PRI ==201943) %>% 
                                                                                        count() 
   )
   
@@ -15664,7 +15664,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201943) %>%
+                                                                                              SEM_PRI ==201944) %>%
                                                                                        count() 
   )
   
@@ -15675,7 +15675,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201944) %>%
+                                                                                              SEM_PRI ==201945) %>%
                                                                                        count() 
   )
   
@@ -15686,7 +15686,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201945) %>%
+                                                                                              SEM_PRI ==201946) %>%
                                                                                        count()
   )
   
@@ -15697,7 +15697,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201946) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201947) %>%                                                                                        count() 
   )
   
   RS22_19_20_SE_Confirmados[which(RS22_19_20_SE_Confirmados == i), 19] <- as.integer(RS22_19_20_SINAN %>% 
@@ -15707,7 +15707,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201947) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==201948) %>%                                                                                        count() 
   )
   
   RS22_19_20_SE_Confirmados[which(RS22_19_20_SE_Confirmados == i), 20] <- as.integer(RS22_19_20_SINAN %>% 
@@ -15717,7 +15717,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201948) %>%
+                                                                                              SEM_PRI ==201949) %>%
                                                                                        count() 
   )
   
@@ -15728,7 +15728,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==201949) %>%
+                                                                                               SEM_PRI ==201950) %>%
                                                                                         count() 
   )
   
@@ -15739,7 +15739,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201950) %>%
+                                                                                              SEM_PRI ==201951) %>%
                                                                                        count() 
   )
   
@@ -15750,7 +15750,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201951) %>%
+                                                                                              SEM_PRI ==201952) %>%
                                                                                        count() 
   )
   
@@ -15761,7 +15761,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201952) %>%
+                                                                                              SEM_PRI ==201953) %>%
                                                                                        count()
   )
   
@@ -15772,7 +15772,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==201953) %>%
+                                                                                              SEM_PRI ==202001) %>%
                                                                                        count() 
   )
   
@@ -15783,7 +15783,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202001) %>%
+                                                                                              SEM_PRI ==202002) %>%
                                                                                        count()
   )
   
@@ -15794,7 +15794,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202002) %>%
+                                                                                              SEM_PRI ==202003) %>%
                                                                                        count() 
   )
   
@@ -15805,7 +15805,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202003) %>%
+                                                                                              SEM_PRI ==202004) %>%
                                                                                        count() 
   )
   
@@ -15816,7 +15816,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202004) %>%
+                                                                                              SEM_PRI ==202005) %>%
                                                                                        count() 
   )
   
@@ -15827,7 +15827,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202005) %>%
+                                                                                              SEM_PRI ==202006) %>%
                                                                                        count() 
   )
   
@@ -15838,7 +15838,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202006) %>% 
+                                                                                              SEM_PRI ==202007) %>% 
                                                                                        count()
   )
   
@@ -15849,7 +15849,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202007) %>%
+                                                                                              SEM_PRI ==202008) %>%
                                                                                        count()
   )
   
@@ -15860,7 +15860,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202008) %>%
+                                                                                              SEM_PRI ==202009) %>%
                                                                                        count() 
   )
   
@@ -15871,7 +15871,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202009) %>% 
+                                                                                              SEM_PRI ==202010) %>% 
                                                                                        count() 
   )
   
@@ -15882,7 +15882,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202010) %>% 
+                                                                                              SEM_PRI ==202011) %>% 
                                                                                        count() 
   )
   
@@ -15893,7 +15893,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202011) %>%
+                                                                                              SEM_PRI ==202012) %>%
                                                                                        count() 
   )
   
@@ -15904,7 +15904,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202012) %>%
+                                                                                              SEM_PRI ==202013) %>%
                                                                                        count() 
   )
   
@@ -15915,7 +15915,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202013) %>% 
+                                                                                              SEM_PRI ==202014) %>% 
                                                                                        count() 
   )
   
@@ -15926,7 +15926,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202014) %>%
+                                                                                              SEM_PRI ==202015) %>%
                                                                                        count()
   )
   
@@ -15937,7 +15937,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202015) %>%
+                                                                                              SEM_PRI ==202016) %>%
                                                                                        count() 
   )
   
@@ -15948,7 +15948,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202016) %>%
+                                                                                              SEM_PRI ==202017) %>%
                                                                                        count() 
   )
   
@@ -15959,7 +15959,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202017) %>%
+                                                                                              SEM_PRI ==202018) %>%
                                                                                        count() 
   )
   
@@ -15970,7 +15970,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202018) %>%
+                                                                                              SEM_PRI ==202019) %>%
                                                                                        count()
   )
   
@@ -15981,7 +15981,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202019) %>%
+                                                                                              SEM_PRI ==202020) %>%
                                                                                        count()
   )
   
@@ -15992,7 +15992,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202020) %>%
+                                                                                              SEM_PRI ==202021) %>%
                                                                                        count() 
   )
   
@@ -16003,7 +16003,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202021) %>%
+                                                                                              SEM_PRI ==202022) %>%
                                                                                        count()
   )
   
@@ -16014,7 +16014,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202022) %>%
+                                                                                              SEM_PRI ==202023) %>%
                                                                                        count() 
   )
   
@@ -16025,7 +16025,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202023) %>%
+                                                                                              SEM_PRI ==202024) %>%
                                                                                        count() 
   )
   
@@ -16036,7 +16036,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202024) %>%
+                                                                                              SEM_PRI ==202025) %>%
                                                                                        count() 
   )
   
@@ -16047,7 +16047,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202025) %>% 
+                                                                                              SEM_PRI ==202026) %>% 
                                                                                        count()
   )
   
@@ -16058,7 +16058,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202026) %>% 
+                                                                                              SEM_PRI ==202027) %>% 
                                                                                        count() 
   )
   
@@ -16069,7 +16069,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202027) %>%
+                                                                                              SEM_PRI ==202028) %>%
                                                                                        count() 
   )
   
@@ -16080,7 +16080,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202028) %>%
+                                                                                              SEM_PRI ==202029) %>%
                                                                                        count() 
   )
   
@@ -16091,7 +16091,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202029) %>%
+                                                                                              SEM_PRI ==202030) %>%
                                                                                        count() 
   )
 }
@@ -16853,325 +16853,325 @@ colnames(RS22_20_21_SE_Notificados)[1] <- "Município"
 
 RS22_20_21_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_20_21_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_20_21_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_20_21_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_20_21_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 2] <- as.integer(RS22_20_21_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==202030)%>%
+                                                                                             SEM_PRI ==202031)%>%
                                                                                       count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 3] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202031) %>% 
+                                                                                             SEM_PRI ==202032) %>% 
                                                                                       count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 4] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==202032) %>% 
+                                                                                             SEM_PRI ==202033) %>% 
                                                                                       count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i),5] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==202033) %>% 
+                                                                                            SEM_PRI ==202034) %>% 
                                                                                      count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 6] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==202034) %>% 
+                                                                                             SEM_PRI ==202035) %>% 
                                                                                       count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 7] <- as.integer(RS22_20_21_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202035) %>%
+                                                                                             SEM_PRI ==202036) %>%
                                                                                       count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 8] <- as.integer(RS22_20_21_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202036) %>% 
+                                                                                             SEM_PRI ==202037) %>% 
                                                                                       count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 9] <- as.integer(RS22_20_21_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202037) %>% 
+                                                                                             SEM_PRI ==202038) %>% 
                                                                                       count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 10] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202038) %>%
+                                                                                              SEM_PRI ==202039) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 11] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202039) %>%
+                                                                                              SEM_PRI ==202040) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 12] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202040) %>%
+                                                                                              SEM_PRI ==202041) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 13] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202041) %>%
+                                                                                              SEM_PRI ==202042) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 14] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202042) %>% 
+                                                                                              SEM_PRI ==202043) %>% 
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 15] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202043) %>%
+                                                                                              SEM_PRI ==202044) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 16] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202044) %>%
+                                                                                              SEM_PRI ==202045) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 17] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202045) %>%
+                                                                                              SEM_PRI ==202046) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 18] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202046) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202047) %>%                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 19] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202047) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202048) %>%                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 20] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202048) %>%
+                                                                                              SEM_PRI ==202049) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i),  21] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==202049) %>%
+                                                                                               SEM_PRI ==202050) %>%
                                                                                         count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 22] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202050) %>%
+                                                                                              SEM_PRI ==202051) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 23] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202051) %>%
+                                                                                              SEM_PRI ==202052) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 24] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202052) %>%
+                                                                                              SEM_PRI ==202053) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 25] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202053) %>%
+                                                                                              SEM_PRI ==202101) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 26] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202101) %>%
+                                                                                              SEM_PRI ==202102) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 27] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202102) %>%
+                                                                                              SEM_PRI ==202103) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 28] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202103) %>%
+                                                                                              SEM_PRI ==202104) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 29] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202104) %>%
+                                                                                              SEM_PRI ==202105) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 30] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202105) %>%
+                                                                                              SEM_PRI ==202106) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 31] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202106) %>% 
+                                                                                              SEM_PRI ==202107) %>% 
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 32] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202107) %>%
+                                                                                              SEM_PRI ==202108) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 33] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202108) %>%
+                                                                                              SEM_PRI ==202109) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 34] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202109) %>% 
+                                                                                              SEM_PRI ==202110) %>% 
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 35] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202110) %>% 
+                                                                                              SEM_PRI ==202111) %>% 
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 36] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202111) %>%
+                                                                                              SEM_PRI ==202112) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 37] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202112) %>%
+                                                                                              SEM_PRI ==202113) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 38] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202113) %>% 
+                                                                                              SEM_PRI ==202114) %>% 
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 39] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202114) %>%
+                                                                                              SEM_PRI ==202115) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 40] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202115) %>%
+                                                                                              SEM_PRI ==202116) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 41] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202116) %>%
+                                                                                              SEM_PRI ==202117) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 42] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202117) %>%
+                                                                                              SEM_PRI ==202118) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 43] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202118) %>%
+                                                                                              SEM_PRI ==202119) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 44] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202119) %>%
+                                                                                              SEM_PRI ==202120) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 45] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202120) %>%
+                                                                                              SEM_PRI ==202121) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 46] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202121) %>%
+                                                                                              SEM_PRI ==202122) %>%
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 47] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202122) %>%
+                                                                                              SEM_PRI ==202123) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 48] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202123) %>%
+                                                                                              SEM_PRI ==202124) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 49] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202124) %>%
+                                                                                              SEM_PRI ==202125) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 50] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202125) %>% 
+                                                                                              SEM_PRI ==202126) %>% 
                                                                                        count()
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 51] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202126) %>% 
+                                                                                              SEM_PRI ==202127) %>% 
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 52] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202127) %>%
+                                                                                              SEM_PRI ==202128) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 53] <- as.integer(RS22_20_21_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202128) %>%
+                                                                                              SEM_PRI ==202129) %>%
                                                                                        count() 
   )
   
   RS22_20_21_SE_Notificados[which(RS22_20_21_SE_Notificados == i), 54] <- as.integer(RS22_20_21_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202129) %>%
+                                                                                              SEM_PRI ==202130) %>%
                                                                                        count() 
   )
 }
@@ -17194,9 +17194,9 @@ colnames(RS22_20_21_SE_Confirmados)[1] <- "Município"
 
 RS22_20_21_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_20_21_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_20_21_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_20_21_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_20_21_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -17207,7 +17207,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202030)%>%
+                                                                                             SEM_PRI ==202031)%>%
                                                                                       count()
   )
   
@@ -17218,7 +17218,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202031) %>% 
+                                                                                             SEM_PRI ==202032) %>% 
                                                                                       count()
   )
   
@@ -17229,7 +17229,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202032) %>% 
+                                                                                             SEM_PRI ==202033) %>% 
                                                                                       count()
   )
   
@@ -17240,7 +17240,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==202033) %>% 
+                                                                                            SEM_PRI ==202034) %>% 
                                                                                      count()
   )
   
@@ -17251,7 +17251,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202034) %>% 
+                                                                                             SEM_PRI ==202035) %>% 
                                                                                       count() 
   )
   
@@ -17262,7 +17262,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202035) %>%
+                                                                                             SEM_PRI ==202036) %>%
                                                                                       count()
   )
   
@@ -17273,7 +17273,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202036) %>% 
+                                                                                             SEM_PRI ==202037) %>% 
                                                                                       count() 
   )
   
@@ -17284,7 +17284,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202037) %>% 
+                                                                                             SEM_PRI ==202038) %>% 
                                                                                       count() 
   )
   
@@ -17295,7 +17295,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202038) %>%
+                                                                                              SEM_PRI ==202039) %>%
                                                                                        count()
   )
   
@@ -17306,7 +17306,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202039) %>%
+                                                                                              SEM_PRI ==202040) %>%
                                                                                        count() 
   )
   
@@ -17317,7 +17317,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202040) %>%
+                                                                                              SEM_PRI ==202041) %>%
                                                                                        count() 
   )
   
@@ -17328,7 +17328,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202041) %>%
+                                                                                              SEM_PRI ==202042) %>%
                                                                                        count() 
   )
   
@@ -17339,7 +17339,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202042) %>% 
+                                                                                              SEM_PRI ==202043) %>% 
                                                                                        count() 
   )
   
@@ -17350,7 +17350,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202043) %>%
+                                                                                              SEM_PRI ==202044) %>%
                                                                                        count() 
   )
   
@@ -17361,7 +17361,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202044) %>%
+                                                                                              SEM_PRI ==202045) %>%
                                                                                        count() 
   )
   
@@ -17372,7 +17372,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202045) %>%
+                                                                                              SEM_PRI ==202046) %>%
                                                                                        count()
   )
   
@@ -17383,7 +17383,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202046) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202047) %>%                                                                                        count() 
   )
   
   RS22_20_21_SE_Confirmados[which(RS22_20_21_SE_Confirmados == i), 19] <- as.integer(RS22_20_21_SINAN %>% 
@@ -17393,7 +17393,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202047) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202048) %>%                                                                                        count() 
   )
   
   RS22_20_21_SE_Confirmados[which(RS22_20_21_SE_Confirmados == i), 20] <- as.integer(RS22_20_21_SINAN %>% 
@@ -17403,7 +17403,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202048) %>%
+                                                                                              SEM_PRI ==202049) %>%
                                                                                        count() 
   )
   
@@ -17414,7 +17414,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==202049) %>%
+                                                                                               SEM_PRI ==202050) %>%
                                                                                         count() 
   )
   
@@ -17425,7 +17425,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202050) %>%
+                                                                                              SEM_PRI ==202051) %>%
                                                                                        count() 
   )
   
@@ -17436,7 +17436,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202051) %>%
+                                                                                              SEM_PRI ==202052) %>%
                                                                                        count() 
   )
   
@@ -17447,7 +17447,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202052) %>%
+                                                                                              SEM_PRI ==202053) %>%
                                                                                        count()
   )
   
@@ -17458,7 +17458,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202053) %>%
+                                                                                              SEM_PRI ==202101) %>%
                                                                                        count() 
   )
   
@@ -17469,7 +17469,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202101) %>%
+                                                                                              SEM_PRI ==202102) %>%
                                                                                        count()
   )
   
@@ -17480,7 +17480,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202102) %>%
+                                                                                              SEM_PRI ==202103) %>%
                                                                                        count() 
   )
   
@@ -17491,7 +17491,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202103) %>%
+                                                                                              SEM_PRI ==202104) %>%
                                                                                        count() 
   )
   
@@ -17502,7 +17502,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202104) %>%
+                                                                                              SEM_PRI ==202105) %>%
                                                                                        count() 
   )
   
@@ -17513,7 +17513,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202105) %>%
+                                                                                              SEM_PRI ==202106) %>%
                                                                                        count() 
   )
   
@@ -17524,7 +17524,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202106) %>% 
+                                                                                              SEM_PRI ==202107) %>% 
                                                                                        count()
   )
   
@@ -17535,7 +17535,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202107) %>%
+                                                                                              SEM_PRI ==202108) %>%
                                                                                        count()
   )
   
@@ -17546,7 +17546,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202108) %>%
+                                                                                              SEM_PRI ==202109) %>%
                                                                                        count() 
   )
   
@@ -17557,7 +17557,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202109) %>% 
+                                                                                              SEM_PRI ==202110) %>% 
                                                                                        count() 
   )
   
@@ -17568,7 +17568,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202110) %>% 
+                                                                                              SEM_PRI ==202111) %>% 
                                                                                        count() 
   )
   
@@ -17579,7 +17579,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202111) %>%
+                                                                                              SEM_PRI ==202112) %>%
                                                                                        count() 
   )
   
@@ -17590,7 +17590,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202112) %>%
+                                                                                              SEM_PRI ==202113) %>%
                                                                                        count() 
   )
   
@@ -17601,7 +17601,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202113) %>% 
+                                                                                              SEM_PRI ==202114) %>% 
                                                                                        count() 
   )
   
@@ -17612,7 +17612,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202114) %>%
+                                                                                              SEM_PRI ==202115) %>%
                                                                                        count()
   )
   
@@ -17623,7 +17623,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202115) %>%
+                                                                                              SEM_PRI ==202116) %>%
                                                                                        count() 
   )
   
@@ -17634,7 +17634,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202116) %>%
+                                                                                              SEM_PRI ==202117) %>%
                                                                                        count() 
   )
   
@@ -17645,7 +17645,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202117) %>%
+                                                                                              SEM_PRI ==202118) %>%
                                                                                        count() 
   )
   
@@ -17656,7 +17656,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202118) %>%
+                                                                                              SEM_PRI ==202119) %>%
                                                                                        count()
   )
   
@@ -17667,7 +17667,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202119) %>%
+                                                                                              SEM_PRI ==202120) %>%
                                                                                        count()
   )
   
@@ -17678,7 +17678,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202120) %>%
+                                                                                              SEM_PRI ==202121) %>%
                                                                                        count() 
   )
   
@@ -17689,7 +17689,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202121) %>%
+                                                                                              SEM_PRI ==202122) %>%
                                                                                        count()
   )
   
@@ -17700,7 +17700,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202122) %>%
+                                                                                              SEM_PRI ==202123) %>%
                                                                                        count() 
   )
   
@@ -17711,7 +17711,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202123) %>%
+                                                                                              SEM_PRI ==202124) %>%
                                                                                        count() 
   )
   
@@ -17722,7 +17722,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202124) %>%
+                                                                                              SEM_PRI ==202125) %>%
                                                                                        count() 
   )
   
@@ -17733,7 +17733,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202125) %>% 
+                                                                                              SEM_PRI ==202126) %>% 
                                                                                        count()
   )
   
@@ -17744,7 +17744,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202126) %>% 
+                                                                                              SEM_PRI ==202127) %>% 
                                                                                        count() 
   )
   
@@ -17755,7 +17755,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202127) %>%
+                                                                                              SEM_PRI ==202128) %>%
                                                                                        count() 
   )
   
@@ -17766,7 +17766,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202128) %>%
+                                                                                              SEM_PRI ==202129) %>%
                                                                                        count() 
   )
   
@@ -17777,7 +17777,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202129) %>%
+                                                                                              SEM_PRI ==202130) %>%
                                                                                        count() 
   )
 }
@@ -18538,325 +18538,325 @@ colnames(RS22_21_22_SE_Notificados)[1] <- "Município"
 
 RS22_21_22_SE_Notificados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_21_22_SE_Notificados)[2:25] <- c(30:53)
+colnames (RS22_21_22_SE_Notificados)[2:24] <- c(31:53)
 
-colnames (RS22_21_22_SE_Notificados)[26:54] <- c(1:29)
+colnames (RS22_21_22_SE_Notificados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 2] <- as.integer(RS22_21_22_SINAN %>%
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==202130)%>%
+                                                                                             SEM_PRI ==202131)%>%
                                                                                       count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 3] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202131) %>% 
+                                                                                             SEM_PRI ==202132) %>% 
                                                                                       count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 4] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==202132) %>% 
+                                                                                             SEM_PRI ==202133) %>% 
                                                                                       count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i),5] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                      filter(ID_MN_RESI == i,
-                                                                                            SEM_PRI ==202133) %>% 
+                                                                                            SEM_PRI ==202134) %>% 
                                                                                      count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 6] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                       filter(ID_MN_RESI == i,
-                                                                                             SEM_PRI ==202134) %>% 
+                                                                                             SEM_PRI ==202135) %>% 
                                                                                       count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 7] <- as.integer(RS22_21_22_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202135) %>%
+                                                                                             SEM_PRI ==202136) %>%
                                                                                       count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 8] <- as.integer(RS22_21_22_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202136) %>% 
+                                                                                             SEM_PRI ==202137) %>% 
                                                                                       count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 9] <- as.integer(RS22_21_22_SINAN %>%
                                                                                       filter(ID_MN_RESI == i, 
-                                                                                             SEM_PRI ==202137) %>% 
+                                                                                             SEM_PRI ==202138) %>% 
                                                                                       count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 10] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202138) %>%
+                                                                                              SEM_PRI ==202139) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 11] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202139) %>%
+                                                                                              SEM_PRI ==202140) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 12] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202140) %>%
+                                                                                              SEM_PRI ==202141) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 13] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202141) %>%
+                                                                                              SEM_PRI ==202142) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 14] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202142) %>% 
+                                                                                              SEM_PRI ==202143) %>% 
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 15] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202143) %>%
+                                                                                              SEM_PRI ==202144) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 16] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202144) %>%
+                                                                                              SEM_PRI ==202145) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 17] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202145) %>%
+                                                                                              SEM_PRI ==202146) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 18] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202146) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202147) %>%                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 19] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202147) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202148) %>%                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 20] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202148) %>%
+                                                                                              SEM_PRI ==202149) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i),  21] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                         filter(ID_MN_RESI == i, 
-                                                                                               SEM_PRI ==202149) %>%
+                                                                                               SEM_PRI ==202150) %>%
                                                                                         count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 22] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202150) %>%
+                                                                                              SEM_PRI ==202151) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 23] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202151) %>%
+                                                                                              SEM_PRI ==202152) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 24] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202152) %>%
+                                                                                              SEM_PRI ==202153) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 25] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202153) %>%
+                                                                                              SEM_PRI ==202201) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 26] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202201) %>%
+                                                                                              SEM_PRI ==202202) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 27] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202202) %>%
+                                                                                              SEM_PRI ==202203) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 28] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202203) %>%
+                                                                                              SEM_PRI ==202204) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 29] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202204) %>%
+                                                                                              SEM_PRI ==202205) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 30] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202205) %>%
+                                                                                              SEM_PRI ==202206) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 31] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202206) %>% 
+                                                                                              SEM_PRI ==202207) %>% 
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 32] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202207) %>%
+                                                                                              SEM_PRI ==202208) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 33] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202208) %>%
+                                                                                              SEM_PRI ==202209) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 34] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202209) %>% 
+                                                                                              SEM_PRI ==202210) %>% 
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 35] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202210) %>% 
+                                                                                              SEM_PRI ==202211) %>% 
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 36] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202211) %>%
+                                                                                              SEM_PRI ==202212) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 37] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202212) %>%
+                                                                                              SEM_PRI ==202213) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 38] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202213) %>% 
+                                                                                              SEM_PRI ==202214) %>% 
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 39] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202214) %>%
+                                                                                              SEM_PRI ==202215) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 40] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202215) %>%
+                                                                                              SEM_PRI ==202216) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 41] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202216) %>%
+                                                                                              SEM_PRI ==202217) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 42] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202217) %>%
+                                                                                              SEM_PRI ==202218) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 43] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202218) %>%
+                                                                                              SEM_PRI ==202219) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 44] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202219) %>%
+                                                                                              SEM_PRI ==202220) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 45] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202220) %>%
+                                                                                              SEM_PRI ==202221) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 46] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202221) %>%
+                                                                                              SEM_PRI ==202222) %>%
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 47] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202222) %>%
+                                                                                              SEM_PRI ==202223) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 48] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202223) %>%
+                                                                                              SEM_PRI ==202224) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 49] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202224) %>%
+                                                                                              SEM_PRI ==202225) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 50] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202225) %>% 
+                                                                                              SEM_PRI ==202226) %>% 
                                                                                        count()
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 51] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202226) %>% 
+                                                                                              SEM_PRI ==202227) %>% 
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 52] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202227) %>%
+                                                                                              SEM_PRI ==202228) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 53] <- as.integer(RS22_21_22_SINAN %>%
                                                                                        filter(ID_MN_RESI == i,
-                                                                                              SEM_PRI ==202228) %>%
+                                                                                              SEM_PRI ==202229) %>%
                                                                                        count() 
   )
   
   RS22_21_22_SE_Notificados[which(RS22_21_22_SE_Notificados == i), 54] <- as.integer(RS22_21_22_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202229) %>%
+                                                                                              SEM_PRI ==202230) %>%
                                                                                        count() 
   )
 }
@@ -18880,9 +18880,9 @@ colnames(RS22_21_22_SE_Confirmados)[1] <- "Município"
 
 RS22_21_22_SE_Confirmados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
 
-colnames (RS22_21_22_SE_Confirmados)[2:25] <- c(30:53)
+colnames (RS22_21_22_SE_Confirmados)[2:24] <- c(31:53)
 
-colnames (RS22_21_22_SE_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_21_22_SE_Confirmados)[25:54] <- c(1:30)
 
 for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
@@ -18893,7 +18893,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202130)%>%
+                                                                                             SEM_PRI ==202131)%>%
                                                                                       count()
   )
   
@@ -18904,7 +18904,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202131) %>% 
+                                                                                             SEM_PRI ==202132) %>% 
                                                                                       count()
   )
   
@@ -18915,7 +18915,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202132) %>% 
+                                                                                             SEM_PRI ==202133) %>% 
                                                                                       count()
   )
   
@@ -18926,7 +18926,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                               CLASSI_FIN == 11 
                                                                                             |
                                                                                               CLASSI_FIN == 12,
-                                                                                            SEM_PRI ==202133) %>% 
+                                                                                            SEM_PRI ==202134) %>% 
                                                                                      count()
   )
   
@@ -18937,7 +18937,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202134) %>% 
+                                                                                             SEM_PRI ==202135) %>% 
                                                                                       count() 
   )
   
@@ -18948,7 +18948,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202135) %>%
+                                                                                             SEM_PRI ==202136) %>%
                                                                                       count()
   )
   
@@ -18959,7 +18959,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202136) %>% 
+                                                                                             SEM_PRI ==202137) %>% 
                                                                                       count() 
   )
   
@@ -18970,7 +18970,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                CLASSI_FIN == 11 
                                                                                              |
                                                                                                CLASSI_FIN == 12,
-                                                                                             SEM_PRI ==202137) %>% 
+                                                                                             SEM_PRI ==202138) %>% 
                                                                                       count() 
   )
   
@@ -18981,7 +18981,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202138) %>%
+                                                                                              SEM_PRI ==202139) %>%
                                                                                        count()
   )
   
@@ -18992,7 +18992,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202139) %>%
+                                                                                              SEM_PRI ==202140) %>%
                                                                                        count() 
   )
   
@@ -19003,7 +19003,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202140) %>%
+                                                                                              SEM_PRI ==202141) %>%
                                                                                        count() 
   )
   
@@ -19014,7 +19014,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202141) %>%
+                                                                                              SEM_PRI ==202142) %>%
                                                                                        count() 
   )
   
@@ -19025,7 +19025,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202142) %>% 
+                                                                                              SEM_PRI ==202143) %>% 
                                                                                        count() 
   )
   
@@ -19036,7 +19036,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202143) %>%
+                                                                                              SEM_PRI ==202144) %>%
                                                                                        count() 
   )
   
@@ -19047,7 +19047,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202144) %>%
+                                                                                              SEM_PRI ==202145) %>%
                                                                                        count() 
   )
   
@@ -19058,7 +19058,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202145) %>%
+                                                                                              SEM_PRI ==202146) %>%
                                                                                        count()
   )
   
@@ -19069,7 +19069,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202146) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202147) %>%                                                                                        count() 
   )
   
   RS22_21_22_SE_Confirmados[which(RS22_21_22_SE_Confirmados == i), 19] <- as.integer(RS22_21_22_SINAN %>% 
@@ -19079,7 +19079,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202147) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202148) %>%                                                                                        count() 
   )
   
   RS22_21_22_SE_Confirmados[which(RS22_21_22_SE_Confirmados == i), 20] <- as.integer(RS22_21_22_SINAN %>% 
@@ -19089,7 +19089,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202148) %>%
+                                                                                              SEM_PRI ==202149) %>%
                                                                                        count() 
   )
   
@@ -19100,7 +19100,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                  CLASSI_FIN == 11 
                                                                                                |
                                                                                                  CLASSI_FIN == 12,
-                                                                                               SEM_PRI ==202149) %>%
+                                                                                               SEM_PRI ==202150) %>%
                                                                                         count() 
   )
   
@@ -19111,7 +19111,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202150) %>%
+                                                                                              SEM_PRI ==202151) %>%
                                                                                        count() 
   )
   
@@ -19122,7 +19122,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202151) %>%
+                                                                                              SEM_PRI ==202152) %>%
                                                                                        count() 
   )
   
@@ -19133,7 +19133,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202152) %>%
+                                                                                              SEM_PRI ==202153) %>%
                                                                                        count()
   )
   
@@ -19144,7 +19144,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202153) %>%
+                                                                                              SEM_PRI ==202201) %>%
                                                                                        count() 
   )
   
@@ -19155,7 +19155,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202201) %>%
+                                                                                              SEM_PRI ==202202) %>%
                                                                                        count()
   )
   
@@ -19166,7 +19166,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202202) %>%
+                                                                                              SEM_PRI ==202203) %>%
                                                                                        count() 
   )
   
@@ -19177,7 +19177,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202203) %>%
+                                                                                              SEM_PRI ==202204) %>%
                                                                                        count() 
   )
   
@@ -19188,7 +19188,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202204) %>%
+                                                                                              SEM_PRI ==202205) %>%
                                                                                        count() 
   )
   
@@ -19199,7 +19199,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202205) %>%
+                                                                                              SEM_PRI ==202206) %>%
                                                                                        count() 
   )
   
@@ -19210,7 +19210,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202206) %>% 
+                                                                                              SEM_PRI ==202207) %>% 
                                                                                        count()
   )
   
@@ -19221,7 +19221,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202207) %>%
+                                                                                              SEM_PRI ==202208) %>%
                                                                                        count()
   )
   
@@ -19232,7 +19232,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202208) %>%
+                                                                                              SEM_PRI ==202209) %>%
                                                                                        count() 
   )
   
@@ -19243,7 +19243,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202209) %>% 
+                                                                                              SEM_PRI ==202210) %>% 
                                                                                        count() 
   )
   
@@ -19254,7 +19254,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202210) %>% 
+                                                                                              SEM_PRI ==202211) %>% 
                                                                                        count() 
   )
   
@@ -19265,7 +19265,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202211) %>%
+                                                                                              SEM_PRI ==202212) %>%
                                                                                        count() 
   )
   
@@ -19276,7 +19276,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202212) %>%
+                                                                                              SEM_PRI ==202213) %>%
                                                                                        count() 
   )
   
@@ -19287,7 +19287,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202213) %>% 
+                                                                                              SEM_PRI ==202214) %>% 
                                                                                        count() 
   )
   
@@ -19298,7 +19298,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202214) %>%
+                                                                                              SEM_PRI ==202215) %>%
                                                                                        count()
   )
   
@@ -19309,7 +19309,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202215) %>%
+                                                                                              SEM_PRI ==202216) %>%
                                                                                        count() 
   )
   
@@ -19320,7 +19320,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202216) %>%
+                                                                                              SEM_PRI ==202217) %>%
                                                                                        count() 
   )
   
@@ -19331,7 +19331,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202217) %>%
+                                                                                              SEM_PRI ==202218) %>%
                                                                                        count() 
   )
   
@@ -19342,7 +19342,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202218) %>%
+                                                                                              SEM_PRI ==202219) %>%
                                                                                        count()
   )
   
@@ -19353,7 +19353,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202219) %>%
+                                                                                              SEM_PRI ==202220) %>%
                                                                                        count()
   )
   
@@ -19364,7 +19364,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202220) %>%
+                                                                                              SEM_PRI ==202221) %>%
                                                                                        count() 
   )
   
@@ -19375,7 +19375,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202221) %>%
+                                                                                              SEM_PRI ==202222) %>%
                                                                                        count()
   )
   
@@ -19386,7 +19386,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202222) %>%
+                                                                                              SEM_PRI ==202223) %>%
                                                                                        count() 
   )
   
@@ -19397,7 +19397,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202223) %>%
+                                                                                              SEM_PRI ==202224) %>%
                                                                                        count() 
   )
   
@@ -19408,7 +19408,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202224) %>%
+                                                                                              SEM_PRI ==202225) %>%
                                                                                        count() 
   )
   
@@ -19419,7 +19419,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202225) %>% 
+                                                                                              SEM_PRI ==202226) %>% 
                                                                                        count()
   )
   
@@ -19430,7 +19430,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202226) %>% 
+                                                                                              SEM_PRI ==202227) %>% 
                                                                                        count() 
   )
   
@@ -19441,7 +19441,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202227) %>%
+                                                                                              SEM_PRI ==202228) %>%
                                                                                        count() 
   )
   
@@ -19452,7 +19452,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202228) %>%
+                                                                                              SEM_PRI ==202229) %>%
                                                                                        count() 
   )
   
@@ -19463,7 +19463,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202229) %>%
+                                                                                              SEM_PRI ==202230) %>%
                                                                                        count() 
   )
 }
@@ -20600,8 +20600,8 @@ RS22_CE_Base_Notificados[13, 1] <- "2021/22"
 RS22_CE_Base_Notificados[13, 2:54] <- as.integer(data.frame(RS22_21_22_SE_Notificados[17, 2:54]))
 
 colnames (RS22_CE_Base_Notificados)[1] <- "Período Sazonal"
-colnames (RS22_CE_Base_Notificados)[2:25] <- c(30:53)
-colnames (RS22_CE_Base_Notificados)[26:54] <- c(1:29)
+colnames (RS22_CE_Base_Notificados)[2:24] <- c(31:53)
+colnames (RS22_CE_Base_Notificados)[25:54] <- c(1:30)
 
 #####Gravando tabela base do canal endêmico NOTIFICADOS#####
 
@@ -20651,8 +20651,8 @@ RS22_CE_Base_Confirmados[13, 1] <- "2021/22"
 RS22_CE_Base_Confirmados[13, 2:54] <- as.integer(data.frame(RS22_21_22_SE_Confirmados[17, 2:54]))
 
 colnames (RS22_CE_Base_Confirmados)[1] <- "Período Sazonal"
-colnames (RS22_CE_Base_Confirmados)[2:25] <- c(30:53)
-colnames (RS22_CE_Base_Confirmados)[26:54] <- c(1:29)
+colnames (RS22_CE_Base_Confirmados)[2:24] <- c(31:53)
+colnames (RS22_CE_Base_Confirmados)[25:54] <- c(1:30)
 
 #####Gravando tabela base do canal endêmico NOTIFICADOS#####
 
