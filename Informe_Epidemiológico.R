@@ -9,12 +9,16 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoe
 #######################################E DATA DA BASE DBF####################################################
 #############################################################################################################
 
+###Definir fonte para ser utilizada nos gráficos (ggplot ira buscar o objeto Fonte para "labs(caption = Fonte...")###
+
 Fonte <- "SINAN. BASE DBF: Acesso em 04/11/2022"
 
-SE <- as.data.frame("44")
+###Objeto SE irá ser utilizado como auxiliar definidor de ponto, a partir do qual, os histogramas de casos Notificados/Confirmados/Prováveis
+###nas últimas 10 semanas irá buscar os dados.###
+
+SE <- as.data.frame("48")
 
 SE <- as.numeric(SE)
-
 
 #############################################################################################################
 #############################################################################################################
@@ -28,7 +32,6 @@ library (googlesheets4)
 library (ggplot2)
 ###Não sei usar o httpuv!!!###
 library (httpuv)
-
 
 ####Importando as tabelas da Tabulação Primária para construção das tabelas base do Informe Epidemiológico ###
 
@@ -69,7 +72,6 @@ DENGON2023$SEM_PRI <-as.numeric(as.character(DENGON2023$SEM_PRI))
 #####################################################################################################################
 ########################################         2022/23        ###################################################
 #####################################################################################################################
-
 
 #####################################################################################################################
 ######### A partir deste ponto do script, o código terá como função, além de criar a ################################
@@ -217,12 +219,14 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
   
   RS22_22_23_SE_Notificados[which(RS22_22_23_SE_Notificados == i), 18] <- as.integer(RS22_22_23_SINAN %>%
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202247) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202247) %>%  
+                                                                                       count() 
   )
   
   RS22_22_23_SE_Notificados[which(RS22_22_23_SE_Notificados == i), 19] <- as.integer(RS22_22_23_SINAN %>% 
                                                                                        filter(ID_MN_RESI == i, 
-                                                                                              SEM_PRI ==202248) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202248) %>%      
+                                                                                       count() 
   )
   
   RS22_22_23_SE_Notificados[which(RS22_22_23_SE_Notificados == i), 20] <- as.integer(RS22_22_23_SINAN %>% 
@@ -644,7 +648,8 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202247) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202247) %>%    
+                                                                                       count() 
   )
   
   RS22_22_23_SE_Confirmados[which(RS22_22_23_SE_Confirmados == i), 19] <- as.integer(RS22_22_23_SINAN %>% 
@@ -654,7 +659,8 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
                                                                                                 CLASSI_FIN == 11 
                                                                                               |
                                                                                                 CLASSI_FIN == 12,
-                                                                                              SEM_PRI ==202248) %>%                                                                                        count() 
+                                                                                              SEM_PRI ==202248) %>%  
+                                                                                       count() 
   )
   
   RS22_22_23_SE_Confirmados[which(RS22_22_23_SE_Confirmados == i), 20] <- as.integer(RS22_22_23_SINAN %>% 
@@ -2396,9 +2402,11 @@ rm(AUX, AUX2, RS22_CE_Confirmados_Base)
 
 write.csv (RS22_CE_Confirmados, "/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoes_R/Tabulacoes_Primarias/RS22_CE_Confirmados.csv", row.names = FALSE)
 
-#####Planilhas Google Sheets. Realizando o download das planilhas do google sheets e fazendo o upload da planilha de notificações######
+#####Planilhas Google Sheets. Realizando o download das planilhas do google sheets e fazendo o upload da planilha de notificações e Geral Resumida######
 
-###Upload de Notificações para posterior download da mesma planilha com as coordenadas. A planilha que irá subir para o google sheets é derivada da BASE DBF do SINAN e NÃO CONTÉM COORDENADAS. As coordenadas estão em planilha própria no google drive, preenchida pelos municípios, e é vinculada no google sheets com esta planilha.####
+###Upload de Notificações para posterior download da mesma planilha com as coordenadas. A planilha que irá subir para o google sheets é derivada 
+###da BASE DBF do SINAN e NÃO CONTÉM COORDENADAS. As coordenadas estão em planilha própria no google drive, preenchida pelos municípios, e é vinculada 
+###no google sheets com esta planilha.####
 
 RS22_22_23_SINAN_DECODIFICADO$SINAN <- as.numeric(as.character(RS22_22_23_SINAN_DECODIFICADO$SINAN))
 
@@ -2445,7 +2453,20 @@ RS22_22_23_PE <- as.data.frame(lapply(RS22_22_23_PE,
 RS22_22_23_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1SCe_xImlW3cExZ2AzbfCQc51OPo9JETqAJkSvbGn8rk/edit#gid=863361484",
                                      sheet = "Consolidado")
 
-###########Incluindo Sorotipos na Planilha RS22_22_23_GERAL. Essa etapa está sendo realizada somente agora pois depende da tabela PR_22_23_DENGUE_MUNICÍPIOS, a qual só foi realizado o download neste ponto do script###########
+###Criando tabela Geral Resumida para utilização no Informe###
+
+RS22_22_23_Resumida <- data_frame(Notificados = sum(RS22_22_23_GERAL$Notificados),
+                                  Dengue = sum(RS22_22_23_GERAL$Dengue),
+                                  DSA = sum(RS22_22_23_GERAL$D_S_A),
+                                  Dengue_Grave = sum(RS22_22_23_GERAL$Dengue_Grave),
+                                  Obitos = sum(RS22_22_23_GERAL$Obitos)
+)
+
+sheet_write(RS22_22_23_Resumida, ss = "https://docs.google.com/spreadsheets/d/1bAPfOaZfUOf7ZP8-sxNLXa91YRGJ9QtnBL5cFeLpJPc/edit#gid=0", sheet = "Resumo")
+
+
+###########Incluindo Sorotipos na Planilha RS22_22_23_GERAL. Essa etapa está sendo realizada somente agora pois depende da tabela 
+###########PR_22_23_DENGUE_MUNICÍPIOS, a qual só foi realizado o download neste ponto do script###########
 
 for (i in RS22_22_23_GERAL$Município){
   RS22_22_23_GERAL[which(RS22_22_23_GERAL$Município  == i), 21] <- as.character(PR_22_23_DENGUE_MUNICIPIOS[which(PR_22_23_DENGUE_MUNICIPIOS$MUNICÍPIO  == i), 17])
@@ -2498,7 +2519,7 @@ RS22_Serie_Historica_GRAF_Not_Conf <- ggplot (AUX_GRAF,
              alpha = 0.5,
              nudge_x = -.20,
              nudge_y = 30) + 
-  scale_fill_manual(name = "", values = c("Notificados" = "#5F9EA0", "Confirmados" = "#9ACD32")) +
+  scale_fill_manual(name = "", values = c("Notificados" = "#1E5D18", "Confirmados" = "#746343")) +
   geom_bar(
     aes( y = Confirmados, fill = "Confirmados"),
     stat = "identity",
@@ -2533,7 +2554,7 @@ RS22_Serie_Historica_GRAF_Hospitalizados <- ggplot (RS22_Serie_Historica,
                                    size = 14,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity", 
-           fill = "#BDB76B",
+           fill = "#0F815D",
            color = "black") + 
   geom_label(aes(label = Hospitalizados),
              alpha = 0.5,
@@ -2570,9 +2591,9 @@ RS22_Serie_Historica_GRAF_Sorotipo <- ggplot (RS22_Serie_Historica,
              size = 3, 
              alpha = 0.5,
              nudge_x = -.20,
-             nudge_y = .3) + 
+             nudge_y = .5) + 
   scale_fill_manual(name = "", 
-                    values = c("DENV I" = "#BC8F8F", "DENV II" = "#F4A460")) +
+                    values = c("DENV I" = "#2F657E", "DENV II" = "#6D0B21")) +
   geom_bar(
     aes( y = DENV_II, 
          fill = "DENV II"),
@@ -2585,7 +2606,7 @@ RS22_Serie_Historica_GRAF_Sorotipo <- ggplot (RS22_Serie_Historica,
              size = 3, 
              alpha = 0.5,
              nudge_x = .20,
-             nudge_y = .3) 
+             nudge_y = .5) 
 
 
 ###Sintomas Confirmados e Notificados
@@ -2650,9 +2671,9 @@ RS22_22_23_GRAF_SINAIS <- ggplot (AUX_GRAF,
              size = 3, 
              alpha = 0.5,
              nudge_x = -.20,
-             nudge_y = .3) + 
+             nudge_y = .5) + 
   scale_fill_manual(name = "", 
-                    values = c("Notificados" = "#BC8F8F", "Confirmados" = "#F4A460")) +
+                    values = c("Notificados" = "#4D5656", "Confirmados" = "#B03A2E")) +
   geom_bar(
     aes( y = Confirmados, 
          fill = "Confirmados"),
@@ -2665,11 +2686,7 @@ RS22_22_23_GRAF_SINAIS <- ggplot (AUX_GRAF,
              size = 3, 
              alpha = 0.5,
              nudge_x = .20,
-             nudge_y = .3) 
-
-
-
-
+             nudge_y = .5) 
 
 #####Casos Notificados por município - Período sazonal atual####
 
@@ -2691,12 +2708,11 @@ RS22_22_23_GRAF_Notificados <- ggplot (RS22_22_23_GERAL,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#BDB76B") + 
+           fill = "#046236") + 
   geom_label(aes(label = Notificados), 
              size = 3, 
              alpha = 0.5,
-             nudge_y = 0.7)  
-
+             nudge_y = 0.9)  
 
 AUX_GRAF <- data.frame (Municípios = RS22_22_23_GERAL[, 2],
                         Confirmados = (RS22_22_23_GERAL[, 6] + RS22_22_23_GERAL[, 7] + RS22_22_23_GERAL[, 8])
@@ -2719,7 +2735,7 @@ RS22_22_23_GRAF_Confirmados <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#D2B48C") + 
+           fill = "#8E1C21") + 
   geom_label(aes(label = Confirmados), 
              size = 3, 
              alpha = 0.5,
@@ -2743,7 +2759,7 @@ RS22_22_23_GRAF_Autoctones <- ggplot (RS22_22_23_GERAL,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "8FBC8F") + 
+           fill = "#300A01") + 
   geom_label(aes(label = Autoctones), 
              size = 3, 
              alpha = 0.5,
@@ -2767,7 +2783,7 @@ RS22_22_23_GRAF_Investigacao <- ggplot (RS22_22_23_GERAL,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#9B665A") + 
   geom_label(aes(label = Em_Investigacao), 
              size = 3, 
              alpha = 0.5,
@@ -2820,7 +2836,6 @@ RS22_22_23_GRAF_Descartados <- ggplot (RS22_22_23_GERAL,
              alpha = 0.5,
              nudge_y = 0.6)
 
-
 RS22_22_23_GRAF_Hospitalizados <- ggplot (RS22_22_23_GERAL, 
                                           aes(x = Município, 
                                               y = Hospitalizacao)) + 
@@ -2843,7 +2858,6 @@ RS22_22_23_GRAF_Hospitalizados <- ggplot (RS22_22_23_GERAL,
   geom_label(aes(label = Hospitalizacao),
              alpha = 0.5,
              nudge_y = 0.02) 
-
 
 ###CANAL ENDÊMICO NOTIFICADOS####
 
@@ -2893,11 +2907,472 @@ RS22_22_23_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
   ) +
   geom_area(aes(,Lim_Superior), fill = "#F0E68C",alpha = 0.9) +
   geom_area(aes(,Media), fill = "#556B2F") +
-  geom_line(aes(,`2022/23`), stat = "identity", color = "black", size = 1.5) +
+  geom_line(aes(,`2022/23`), stat = "identity", color = "black", linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
   scale_x_continuous(breaks = c(1:53), label = AUX_GRAF$Sem_EPI)
 
+####Elaborando tabela de casos Prováveis (Casos Notificados - Casos Descartados) por semana epidemiológica. Será usado para elaboração do diagrama de controle de casos prováveis###
+RS22_22_23_SE_Descartados <- matrix(data = NA, 
+                                    nrow = 16, 
+                                    ncol = 54)
+
+RS22_22_23_SE_Descartados <- as.data.frame(RS22_22_23_SE_Descartados)
+
+colnames(RS22_22_23_SE_Descartados)[1] <- "Município" 
+
+RS22_22_23_SE_Descartados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
+
+colnames (RS22_22_23_SE_Descartados)[2:24] <- c(31:53)
+
+colnames (RS22_22_23_SE_Descartados)[25:54] <- c(1:30)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 2] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202231,
+                                                                                             CLASSI_FIN == 5)%>%
+                                                                                      count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 3] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202232,
+                                                                                             CLASSI_FIN == 5) %>% 
+                                                                                      count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 4] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202233,
+                                                                                             CLASSI_FIN == 5) %>% 
+                                                                                      count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i),5] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                     filter(ID_MN_RESI == i,
+                                                                                            SEM_PRI ==202234,
+                                                                                            CLASSI_FIN == 5) %>% 
+                                                                                     count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 6] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                      filter(ID_MN_RESI == i,
+                                                                                             SEM_PRI ==202235,
+                                                                                             CLASSI_FIN == 5) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 7] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202236,
+                                                                                             CLASSI_FIN == 5) %>%
+                                                                                      count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 8] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202237,
+                                                                                             CLASSI_FIN == 5) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 9] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                      filter(ID_MN_RESI == i, 
+                                                                                             SEM_PRI ==202238,
+                                                                                             CLASSI_FIN == 5) %>% 
+                                                                                      count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 10] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202239,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 11] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202240,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 12] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202241,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 13] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202242,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 14] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202243,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 15] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202244,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 16] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202245,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 17] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202246,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 18] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202247,
+                                                                                              CLASSI_FIN == 5) %>%       
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 19] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202248,
+                                                                                              CLASSI_FIN == 5) %>%     
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 20] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202249,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i),  21] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                        filter(ID_MN_RESI == i, 
+                                                                                               SEM_PRI ==202250,
+                                                                                               CLASSI_FIN == 5) %>%
+                                                                                        count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 22] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202251,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 23] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202252,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 24] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202253,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 25] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202301,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 26] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202302,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 27] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202303,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 28] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202304,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 29] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202305,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 30] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202306,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 31] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202307,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 32] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202308,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 33] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202309,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 34] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202310,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 35] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202311,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 36] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202312,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 37] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202313,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 38] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202314,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 39] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202315,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 40] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202316,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 41] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202317,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 42] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202318,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 43] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202319,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 44] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202320,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 45] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202321,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 46] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202322,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 47] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202323,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 48] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202324,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 49] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202325,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 50] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202326,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count()
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 51] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202327,
+                                                                                              CLASSI_FIN == 5) %>% 
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 52] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202328,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 53] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                       filter(ID_MN_RESI == i,
+                                                                                              SEM_PRI ==202329,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+  
+  RS22_22_23_SE_Descartados[which(RS22_22_23_SE_Descartados == i), 54] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                       filter(ID_MN_RESI == i, 
+                                                                                              SEM_PRI ==202330,
+                                                                                              CLASSI_FIN == 5) %>%
+                                                                                       count() 
+  )
+}
+
+RS22_22_23_SE_Descartados[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 3]
+
+RS22_22_23_SE_Descartados[17,2:54] <- apply(RS22_22_23_SE_Descartados[,2:54], 2, sum)
+
+RS22_22_23_SE_Descartados[17,1] <- "Total"
+
+####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
+
+RS22_22_23_Casos_Provaveis <- (RS22_22_23_SE_Notificados[17, 2: 54] - RS22_22_23_SE_Descartados[17, 2: 54])
+
+rownames(RS22_22_23_Casos_Provaveis)[1] <- "Provaveis"
+
+RS22_22_23_Casos_Provaveis <- t(as.data.frame(RS22_22_23_Casos_Provaveis))
+
+###CANAL ENDÊMICO CONFIRMADOS####
+
+###Puxando os dados da tabela RS22_CE_Notificados e excluindo os períodos epidêmicos: 2015/16, 2019/20 e 2021/22
+
+AUX_GRAF <- RS22_CE_Notificados[, c(2, 3, 4, 5, 6, 7, 9, 10, 11, 13)]
+
+###Usando apply para tirar a média por semana epidemiológica
+
+AUX_GRAF$Media <- apply(AUX_GRAF[,], 1 , mean)
+
+###Usando apply para tirar o desvio padrão por semana epidemiológica
+
+AUX_GRAF$Desvio_Padrao <- apply(AUX_GRAF[,], 1 , sd)
+
+###### Criando a coluna de Média + 2(DP)
+
+AUX_GRAF <- AUX_GRAF[, c(11:12)]
+
+AUX_GRAF$Lim_Superior <- NA
+
+AUX_GRAF <- AUX_GRAF %>% mutate(Lim_Superior = (Media + 1.96 * Desvio_Padrao))
+
+###Criando uma coluna de ordem das se para o R não colocar em ordem numérica.
+AUX_GRAF$Ordem <- c(1: nrow(RS22_CE_Notificados))
+
+###Puxando o período sazonal atual para o gráfico de linhas
+
+AUX_GRAF$`2022/23` <- RS22_CE_Notificados$`2022/23`
+
+AUX_GRAF$Sem_Epidemiológica <- RS22_CE_Notificados$Semana_Epidemiológica
+
+AUX_GRAF$Sem_EPI <-as.character(c("2022/31",  "2022/32", "2022/33",  "2022/34",  "2022/35",  "2022/36",  "2022/37",  "2022/38",  "2022/39",  "2022/40",  "2022/41",  "2022/42",  "2022/43",  "2022/44",  "2022/45",  "2022/46",  "2022/47",  "2022/48",  "2022/49",  "2022/50",  "2022/51",  "2022/52",  "2022/53",  "2023/01",  "2023/02",  "2023/03",  "2023/04",  "2023/05",  "2023/06",  "2023/07",  "2023/08",  "2023/09",  "2023/10", "2023/11",  "2023/12",  "2023/13",  "2023/14",  "2023/15",  "2023/16",  "2023/17",  "2023/18",  "2023/19",  "2023/20",  "2023/21",  "2023/22",  "2023/23",  "2023/24",  "2023/25",  "2023/26",  "2023/27",  "2023/28",  "2023/29",  "2023/30"))
+
+AUX_GRAF[, 8] <- RS22_22_23_Casos_Provaveis[,1]
+
+colnames(AUX_GRAF)[8] <- "Provaveis"
+
+RS22_22_23_GRAF_CE_Provaveis <- ggplot(AUX_GRAF, aes(Ordem))  +
+  theme(axis.text.x = element_text(angle = 85, 
+                                   vjust = .5,
+                                   face = "bold")) +
+  labs(caption = Fonte,
+       title = "Canal Endêmico Casos PROVÁVEIS - 2022/23") +
+  theme(
+    panel.grid.major = element_line(color = "#C0C0C0"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "#DC143C"),
+    plot.title = element_text(face = "bold",
+                              size = 19)
+  ) +
+  geom_area(aes(,Lim_Superior), fill = "#F0E68C",alpha = 0.9) +
+  geom_area(aes(,Media), fill = "#556B2F") +
+  geom_line(aes(,Provaveis), stat = "identity", color = "black", linewidth = 1.5) +
+  xlab("Semana Epidemiológica") +
+  ylab("Número de Casos") +
+  scale_x_continuous(breaks = c(1:53), label = AUX_GRAF$Sem_EPI)
+
+rm(RS22_22_23_Casos_Provaveis)
 
 ###CANAL ENDÊMICO CONFIRMADOS####
 
@@ -2947,7 +3422,7 @@ RS22_22_23_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
   ) +
   geom_area(aes(,Lim_Superior), fill = "#F0E68C",alpha = 0.9) +
   geom_area(aes(,Media), fill = "#556B2F") +
-  geom_line(aes(,`2022/23`), stat = "identity", color = "black", size = 1.5) +
+  geom_line(aes(,`2022/23`), stat = "identity", color = "black", linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
   scale_x_continuous(breaks = c(1:53), label = AUX_GRAF$Sem_EPI)
@@ -3770,6 +4245,1076 @@ SE_HIST_CONF_SJI <- ggplot (AUX_GRAF,
 
 RS22_22_23_GRAF_Histograma_Confirmados_02 <- (SE_HIST_CONF_LUNARDELLI + SE_HIST_CONF_MANOEL_RIBAS) / (SE_HIST_CONF_MATO_RICO + SE_HIST_CONF_NOVA_TEBAS) / (SE_HIST_CONF_RBI + SE_HIST_CONF_RSI) / (SE_HIST_CONF_SMO + SE_HIST_CONF_SJI) 
 
+###Construindo um for loop para realizar a tabela de Prováveis por semana epidemiológica###
+
+RS22_22_23_SE_Provaveis <- matrix(data = NA, 
+                                  nrow = 16, 
+                                  ncol = 54)
+
+RS22_22_23_SE_Provaveis <- as.data.frame(RS22_22_23_SE_Provaveis)
+
+colnames(RS22_22_23_SE_Provaveis)[1] <- "Município" 
+
+RS22_22_23_SE_Provaveis[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 2]
+
+colnames (RS22_22_23_SE_Provaveis)[2:24] <- c(31:53)
+
+colnames (RS22_22_23_SE_Provaveis)[25:54] <- c(1:30)
+
+for (i in BASE_IBGE[(which(BASE_IBGE$RS == 22)), 2]){
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 2] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI ==202231)%>%
+                                                                                  count()
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202231,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  )                                                                                       
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 3] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI ==202231)%>%
+                                                                                  count()
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202231,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  )  
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 4] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI ==202233) %>% 
+                                                                                  count()
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202233,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i),5] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                 filter(ID_MN_RESI == i,
+                                                                                        SEM_PRI ==202234) %>% 
+                                                                                 count()
+                                                                               -
+                                                                                 RS22_22_23_SINAN %>%
+                                                                                 filter(ID_MN_RESI == i,
+                                                                                        SEM_PRI == 202234,
+                                                                                        CLASSI_FIN == 5) %>%
+                                                                                 count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 6] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI ==202235) %>% 
+                                                                                  count()
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202235,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 7] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i, 
+                                                                                         SEM_PRI ==202236) %>%
+                                                                                  count()
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202236,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 8] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i, 
+                                                                                         SEM_PRI ==202237) %>% 
+                                                                                  count() 
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202237,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 9] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i, 
+                                                                                         SEM_PRI ==202238) %>% 
+                                                                                  count() 
+                                                                                -
+                                                                                  RS22_22_23_SINAN %>%
+                                                                                  filter(ID_MN_RESI == i,
+                                                                                         SEM_PRI == 202238,
+                                                                                         CLASSI_FIN == 5) %>%
+                                                                                  count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 10] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202239) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202239,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 11] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202240) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202240,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 12] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202241) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202241,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 13] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202242) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202242,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )  
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 14] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202243) %>% 
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202243,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 15] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202244) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202244,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 16] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202245) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202245,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )  
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 17] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202246) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202246,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 18] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202247) %>%  
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202247,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 19] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202248) %>%   
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202248,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 20] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202249) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202249,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i),  21] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                    filter(ID_MN_RESI == i, 
+                                                                                           SEM_PRI ==202250) %>%
+                                                                                    count() 
+                                                                                  -
+                                                                                    RS22_22_23_SINAN %>%
+                                                                                    filter(ID_MN_RESI == i,
+                                                                                           SEM_PRI == 202250,
+                                                                                           CLASSI_FIN == 5) %>%
+                                                                                    count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 22] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202251) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202251,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 23] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202252) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202252,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 24] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202253) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202253,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 25] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202301) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202301,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 26] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202302) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202302,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 27] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202303) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202303,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 28] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202304) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202304,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 29] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202305) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202305,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 30] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202306) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202306,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )   
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 31] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202307) %>% 
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202307,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 32] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202308) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202308,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 33] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202309) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202309,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 34] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202310) %>% 
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202310,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 35] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202311) %>% 
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202311,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 36] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202312) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202312,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 37] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202313) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202313,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 38] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202314) %>% 
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202314,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 39] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202315) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202315,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 40] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202316) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202316,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 41] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202317) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202317,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 42] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202318) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202318,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 43] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202319) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202319,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 44] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202320) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202320,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 45] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202321) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202321,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 46] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202322) %>%
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202322,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 47] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202323) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202323,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 48] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202324) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202324,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 49] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202325) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202325,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 50] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202326) %>% 
+                                                                                   count()
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202326,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 51] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202327) %>% 
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202327,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 52] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202328) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202328,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  )
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 53] <- as.integer(RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI ==202329) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202329,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+  
+  RS22_22_23_SE_Provaveis[which(RS22_22_23_SE_Provaveis == i), 54] <- as.integer(RS22_22_23_SINAN %>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          SEM_PRI ==202330) %>%
+                                                                                   count() 
+                                                                                 -
+                                                                                   RS22_22_23_SINAN %>%
+                                                                                   filter(ID_MN_RESI == i,
+                                                                                          SEM_PRI == 202330,
+                                                                                          CLASSI_FIN == 5) %>%
+                                                                                   count()
+  ) 
+}
+
+RS22_22_23_SE_Provaveis[,1] <- BASE_IBGE[which(BASE_IBGE$RS == 22), 3]
+
+RS22_22_23_SE_Provaveis[17,2:54] <- apply(RS22_22_23_SE_Provaveis[,2:54], 2, sum)
+
+RS22_22_23_SE_Provaveis[17,1] <- "Total"
+
+AUX_GRAF <- as.data.frame(RS22_22_23_SE_Provaveis$Município)
+
+AUX_GRAF[, 2] <- as.data.frame(SE - 9)
+AUX_GRAF[, 3] <- as.data.frame(SE - 8)
+AUX_GRAF[, 4] <- as.data.frame(SE - 7)
+AUX_GRAF[, 5] <- as.data.frame(SE - 6)
+AUX_GRAF[, 6] <- as.data.frame(SE - 5)
+AUX_GRAF[, 7] <- as.data.frame(SE - 4)
+AUX_GRAF[, 8] <- as.data.frame(SE - 3)
+AUX_GRAF[, 9] <- as.data.frame(SE - 2)
+AUX_GRAF[, 10] <- as.data.frame(SE - 1)
+AUX_GRAF[, 11] <- as.data.frame(SE)
+
+colnames(AUX_GRAF)[1] <- "Municipios"
+colnames(AUX_GRAF)[2] <- as.data.frame(SE - 9)
+colnames(AUX_GRAF)[3] <- as.data.frame(SE - 8)
+colnames(AUX_GRAF)[4] <- as.data.frame(SE - 7)
+colnames(AUX_GRAF)[5] <- as.data.frame(SE - 6)
+colnames(AUX_GRAF)[6] <- as.data.frame(SE - 5)
+colnames(AUX_GRAF)[7] <- as.data.frame(SE - 4)
+colnames(AUX_GRAF)[8] <- as.data.frame(SE - 3)
+colnames(AUX_GRAF)[9] <- as.data.frame(SE - 2)
+colnames(AUX_GRAF)[10] <- as.data.frame(SE - 1)
+colnames(AUX_GRAF)[11] <- as.data.frame(SE)
+
+AUX_GRAF[, 2] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 9)]
+AUX_GRAF[, 3] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 8)]
+AUX_GRAF[, 4] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 7)]
+AUX_GRAF[, 5] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 6)]
+AUX_GRAF[, 6] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 5)]
+AUX_GRAF[, 7] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 4)]
+AUX_GRAF[, 8] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 3)]
+AUX_GRAF[, 9] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 2)]
+AUX_GRAF[, 10] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE - 1)]
+AUX_GRAF[, 11] <- RS22_22_23_SE_Provaveis[, which(colnames(RS22_22_23_SE_Provaveis) == SE)]
+
+AUX_GRAF[17,] <- colnames(AUX_GRAF)
+
+AUX_GRAF <- AUX_GRAF[c(17, 1:16),]
+
+AUX_GRAF <- t(AUX_GRAF)
+
+colnames(AUX_GRAF) <- AUX_GRAF[1,]
+
+AUX_GRAF <- AUX_GRAF[-1,]
+
+colnames(AUX_GRAF)[1] <- "SE"
+
+AUX_GRAF <- data.frame(SE = AUX_GRAF[, 1],
+                       Arapuã = as.numeric(AUX_GRAF[, 2]),
+                       Ariranha_do_Ivaí = as.numeric(AUX_GRAF[, 3]),
+                       Cândido_de_Abreu = as.numeric(AUX_GRAF[, 4]),
+                       Cruzmaltina = as.numeric(AUX_GRAF[, 5]),
+                       Godoy_Moreira = as.numeric(AUX_GRAF[, 6]),
+                       Ivaiporã = as.numeric(AUX_GRAF[, 7]),
+                       Jardim_Alegre = as.numeric(AUX_GRAF[, 8]),
+                       Lidianópolis = as.numeric(AUX_GRAF[, 9]),
+                       Lunardelli = as.numeric(AUX_GRAF[, 10]),
+                       Manoel_Ribas = as.numeric(AUX_GRAF[, 11]),
+                       Mato_Rico = as.numeric(AUX_GRAF[, 12]),
+                       Nova_Tebas = as.numeric(AUX_GRAF[, 13]),
+                       Rio_Branco_do_Ivaí = as.numeric(AUX_GRAF[, 14]),
+                       Rosário_do_Ivaí = as.numeric(AUX_GRAF[, 15]),
+                       Santa_Maria_do_Oeste = as.numeric(AUX_GRAF[, 16]),
+                       São_João_do_Ivaí = as.numeric(AUX_GRAF[, 17]))
+
+SE_HIST_PROV_ARAPUÃ <- ggplot (AUX_GRAF, 
+                               aes(x = SE, 
+                                   y = Arapuã)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "ARAPUÃ") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Arapuã),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_ARIRANHA <- ggplot (AUX_GRAF, 
+                                 aes(x = SE, 
+                                     y = Ariranha_do_Ivaí)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "ARIRANHA DO IVAÍ") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Ariranha_do_Ivaí),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_CANDIDO <- ggplot (AUX_GRAF, 
+                                aes(x = SE, 
+                                    y = Cândido_de_Abreu)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "CÂNDIDO DE ABREU") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Cândido_de_Abreu),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_CRUZMALTINA <- ggplot (AUX_GRAF, 
+                                    aes(x = SE, 
+                                        y = Cruzmaltina)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "CRUZMALTINA") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Cruzmaltina),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_GODOY <- ggplot (AUX_GRAF, 
+                              aes(x = SE, 
+                                  y = Godoy_Moreira)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "GODOY MOREIRA") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Godoy_Moreira),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_IVAIPORA <- ggplot (AUX_GRAF, 
+                                 aes(x = SE, 
+                                     y = Ivaiporã)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "IVAIPORÃ") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Ivaiporã),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_JARDIM <- ggplot (AUX_GRAF, 
+                               aes(x = SE, 
+                                   y = Jardim_Alegre)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "JARDIM ALEGRE") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Jardim_Alegre),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_LIDIANÓPOLIS <- ggplot (AUX_GRAF, 
+                                     aes(x = SE, 
+                                         y = Lidianópolis)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "LIDIANÓPOLIS") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Lidianópolis),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+RS22_22_23_GRAF_Histograma_Provaveis_01 <- (SE_HIST_PROV_ARAPUÃ + SE_HIST_PROV_ARIRANHA) / (SE_HIST_PROV_CANDIDO + SE_HIST_PROV_CRUZMALTINA) / (SE_HIST_PROV_GODOY + SE_HIST_PROV_IVAIPORA) / (SE_HIST_PROV_JARDIM + SE_HIST_PROV_LIDIANÓPOLIS) 
+
+SE_HIST_PROV_LUNARDELLI <- ggplot (AUX_GRAF, 
+                                   aes(x = SE, 
+                                       y = Lunardelli)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "LUNARDELLI") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Lunardelli),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_MANOEL_RIBAS <- ggplot (AUX_GRAF, 
+                                     aes(x = SE, 
+                                         y = Manoel_Ribas)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "MANOEL RIBAS") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Manoel_Ribas),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_MATO_RICO <- ggplot (AUX_GRAF, 
+                                  aes(x = SE, 
+                                      y = Mato_Rico)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "MATO RICO") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Mato_Rico),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_NOVA_TEBAS <- ggplot (AUX_GRAF, 
+                                   aes(x = SE, 
+                                       y = Nova_Tebas)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "NOVA TEBAS") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Nova_Tebas),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_RBI <- ggplot (AUX_GRAF, 
+                            aes(x = SE, 
+                                y = Rio_Branco_do_Ivaí)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "RIO BRANCO DO IVAÍ") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Rio_Branco_do_Ivaí),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_RSI <- ggplot (AUX_GRAF, 
+                            aes(x = SE, 
+                                y = Rosário_do_Ivaí)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "ROSÁRIO DO IVAÍ") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Rosário_do_Ivaí),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_SMO <- ggplot (AUX_GRAF, 
+                            aes(x = SE, 
+                                y = Santa_Maria_do_Oeste)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "SANTA MARIA DO OESTE") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = Santa_Maria_do_Oeste),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+SE_HIST_PROV_SJI <- ggplot (AUX_GRAF, 
+                            aes(x = SE, 
+                                y = São_João_do_Ivaí)) + 
+  theme(axis.text.x = element_text(face = "bold")) +
+  labs(caption = Fonte, 
+       x = "Semana Epidemiológica",
+       y = "Número de Casos",
+       title = "SÃO JOÃO DO IVAÍ") +
+  theme( panel.grid.major = element_line(color = "#C0C0C0"),
+         panel.grid.minor = element_blank(),
+         panel.background = element_rect(fill = "#F5F5F5"),
+         plot.title = element_text(face = "bold",
+                                   size = 15,
+                                   colour = "#556B2F")) +
+  geom_bar(stat = "identity",
+           color = "black",
+           fill = "#98FB98") + 
+  geom_label(aes(label = São_João_do_Ivaí),
+             alpha = 0.5,
+             nudge_y = 0.01)
+
+RS22_22_23_GRAF_Histograma_Provaveis_02 <- (SE_HIST_PROV_LUNARDELLI + SE_HIST_PROV_MANOEL_RIBAS) / (SE_HIST_PROV_MATO_RICO + SE_HIST_PROV_NOVA_TEBAS) / (SE_HIST_PROV_RBI + SE_HIST_PROV_RSI) / (SE_HIST_PROV_SMO + SE_HIST_PROV_SJI) 
+
+rm(AUX_GRAF)
 
 #####Salvando as tabelas#####
 
@@ -3968,7 +5513,7 @@ ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Ma
        width = 12.51,
        height = 15.51) 
 
-###Canal Endêmicos Notificados
+###Canal Endêmicos Notificados/Confirmados
 
 RS22_22_23_GRAF_CANAIS_ENDEMICOS <- (RS22_22_23_GRAF_CE_Notificados / RS22_22_23_GRAF_CE_Confirmados)
 
@@ -3977,4 +5522,11 @@ ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Ma
        width = 12.51,
        height = 15.51)
 
+####Canal Endêmico Prováveis
 
+RS22_22_23_GRAF_CANAL_ENDEMICO_PROVAVEIS <- RS22_22_23_GRAF_CE_Provaveis
+
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/Canal_Endemico_22_23_Provaveis.png", 
+      plot = RS22_22_23_GRAF_CANAL_ENDEMICO_PROVAVEIS,
+      width = 15.51,
+      height = 8.51)
