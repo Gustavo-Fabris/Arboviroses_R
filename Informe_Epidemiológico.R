@@ -11,12 +11,12 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoe
 
 ###Definir fonte para ser utilizada nos gráficos (ggplot ira buscar o objeto Fonte para "labs(caption = Fonte...")###
 
-Fonte <- "SINAN. BASE DBF: Acesso em 04/11/2022"
+Fonte <- "SINAN. BASE DBF: Acesso em 08/12/2022"
 
 ###Objeto SE irá ser utilizado como auxiliar definidor de ponto, a partir do qual, os histogramas de casos Notificados/Confirmados/Prováveis
 ###nas últimas 10 semanas irá buscar os dados.###
 
-SE <- as.data.frame("48")
+SE <- as.data.frame("49")
 
 SE <- as.numeric(SE)
 
@@ -2453,9 +2453,14 @@ RS22_22_23_PE <- as.data.frame(lapply(RS22_22_23_PE,
 RS22_22_23_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1SCe_xImlW3cExZ2AzbfCQc51OPo9JETqAJkSvbGn8rk/edit#gid=863361484",
                                      sheet = "Consolidado")
 
+###Upload tabelas a serem usadas nos Dashboards mmunicipais
+
+sheet_write(RS22_22_23_SE_Notificados, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Planilha")
+
+
 ###Criando tabela Geral Resumida para utilização no Informe###
 
-RS22_22_23_Resumida <- data_frame(Notificados = sum(RS22_22_23_GERAL$Notificados),
+RS22_22_23_Resumida <- tibble(Notificados = sum(RS22_22_23_GERAL$Notificados),
                                   Dengue = sum(RS22_22_23_GERAL$Dengue),
                                   DSA = sum(RS22_22_23_GERAL$D_S_A),
                                   Dengue_Grave = sum(RS22_22_23_GERAL$Dengue_Grave),
@@ -5415,118 +5420,112 @@ write.csv(RS22_22_23_SINAN_DECODIFICADO,  "/home/gustavo/Área de trabalho/Anál
 
 #####Salvando os Gráficos
 
-###Série Histórica
+###Série Histórica - Pag_03
 
-RS22_22_23_GRAF_SERIES_HISTORICAS <- (RS22_Serie_Historica_GRAF_Not_Conf / (RS22_Serie_Historica_GRAF_Sorotipo + RS22_Serie_Historica_GRAF_Hospitalizados))
+RS22_22_23_INFORME_Pag_03 <- (RS22_Serie_Historica_GRAF_Not_Conf / (RS22_Serie_Historica_GRAF_Sorotipo + RS22_Serie_Historica_GRAF_Hospitalizados))
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/Serie_Historica.png", 
-       plot = RS22_22_23_GRAF_SERIES_HISTORICAS,
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_03.png", 
+       plot = RS22_22_23_INFORME_Pag_03,
        width = 12.51,
        height = 15.51)
 
+###Canal Endêmicos Notificados/Confirmados - Pag 04
 
-###Notificados/Municípios
+RS22_22_23_INFORME_Pag_04 <- (RS22_22_23_GRAF_CE_Notificados / RS22_22_23_GRAF_CE_Confirmados)
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_Notificados_.png", 
-       plot = RS22_22_23_GRAF_Notificados,
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_04.png", 
+       plot = RS22_22_23_INFORME_Pag_04,
+       width = 12.51,
+       height = 15.51)
+
+####Canal Endêmico Prováveis - Pag 05
+
+RS22_22_23_INFORME_Pag_05 <- RS22_22_23_GRAF_CE_Provaveis
+
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_05.png", 
+       plot = RS22_22_23_INFORME_Pag_05,
        width = 15.51,
-       height = 8.51) 
+       height = 9.51)
 
-###Autóctones
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_Autoctones_.png", 
-       plot = RS22_22_23_GRAF_Autoctones,
-       width = 15.51,
-       height = 8.51) 
+###Notificados/Confirmados - Pag 06
 
-###Em Investigação
+RS22_22_23_INFORME_Pag_06 <- (RS22_22_23_GRAF_Notificados / RS22_22_23_GRAF_Confirmados)
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_Investigacao_.png", 
-       plot = RS22_22_23_GRAF_Investigacao,
-       width = 15.51,
-       height = 8.51) 
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_06.png", 
+       plot = RS22_22_23_INFORME_Pag_06,
+       width = 12.51,
+       height = 16.51) 
 
-###Confirmados
+###Autóctones/Descartados
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_IConfirmados_.png", 
-       plot = RS22_22_23_GRAF_Confirmados,
-       width = 15.51,
-       height = 8.51) 
+RS22_22_23_INFORME_Pag_07 <- (RS22_22_23_GRAF_Autoctones / RS22_22_23_GRAF_Descartados)
 
-###Incidência
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_07.png", 
+       plot = RS22_22_23_INFORME_Pag_07,
+       width = 12.51,
+       height = 16.51)  
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_Incidencia_.png", 
-       plot = RS22_22_23_GRAF_Incidencia,
-       width = 15.51,
-       height = 8.51) 
+###Em Investigação/Incidência
 
-###Descartados
+RS22_22_23_INFORME_Pag_08 <- (RS22_22_23_GRAF_Investigacao / RS22_22_23_GRAF_Incidencia)
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_Descartados_.png", 
-       plot = RS22_22_23_GRAF_Descartados,
-       width = 15.51,
-       height = 8.51) 
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_08.png", 
+       plot = RS22_22_23_INFORME_Pag_08,
+       width = 12.51,
+       height = 16.51) 
 
-###Hospitalização
+###Hospitalização/Sintomas
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_Hospitalizados_.png", 
-       plot = RS22_22_23_GRAF_Hospitalizados,
-       width = 15.51,
-       height = 8.51) 
+RS22_22_23_INFORME_Pag_09 <- (RS22_22_23_GRAF_Hospitalizados / RS22_22_23_GRAF_SINAIS)
 
-###Sintomas
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_09.png", 
+       plot = RS22_22_23_INFORME_Pag_09,
+       width = 12.51,
+       height = 16.51) 
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_GRAF_22_23_SINAIS_.png", 
-       plot = RS22_22_23_GRAF_SINAIS,
-       width = 15.51,
-       height = 8.51) 
+###Histogramas Notificados - Pag 10
 
-###Histogramas Notificados
-
-##PAG 01
-
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_GRAF_Histograma_Notificados_01.png", 
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_10.png", 
        plot = RS22_22_23_GRAF_Histograma_Notificados_01,
        width = 12.51,
        height = 15.51) 
 
-##PAG 02
+###Histogramas Notificados - Pag 11
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas//RS22_22_23_GRAF_Histograma_Notificados_02.png", 
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_11.png", 
        plot = RS22_22_23_GRAF_Histograma_Notificados_02,
        width = 12.51,
        height = 15.51) 
 
-###Histogramas Confirmados
+###Histogramas Confirmados - ##PAG 12
 
-##PAG 01
-
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_GRAF_Histograma_Confirmados_01.png", 
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_12.png", 
        plot = RS22_22_23_GRAF_Histograma_Confirmados_01,
        width = 12.51,
        height = 15.51) 
 
-##PAG 02
+###Histogramas Confirmados - ##PAG 13
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_GRAF_Histograma_Confirmados_02.png", 
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_13.png", 
        plot = RS22_22_23_GRAF_Histograma_Confirmados_02,
        width = 12.51,
        height = 15.51) 
 
-###Canal Endêmicos Notificados/Confirmados
+###Histogramas Prováveis - ##PAG 14
 
-RS22_22_23_GRAF_CANAIS_ENDEMICOS <- (RS22_22_23_GRAF_CE_Notificados / RS22_22_23_GRAF_CE_Confirmados)
-
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/Canal_Endemico_22_23_CE.png", 
-       plot = RS22_22_23_GRAF_CANAIS_ENDEMICOS,
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_14.png", 
+       plot = RS22_22_23_GRAF_Histograma_Provaveis_01,
        width = 12.51,
-       height = 15.51)
+       height = 15.51) 
 
-####Canal Endêmico Prováveis
+###Histogramas Prováveis - ##PAG 15
 
-RS22_22_23_GRAF_CANAL_ENDEMICO_PROVAVEIS <- RS22_22_23_GRAF_CE_Provaveis
+ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/RS22_22_23_INFORME_Pag_15.png", 
+       plot = RS22_22_23_GRAF_Histograma_Provaveis_02,
+       width = 12.51,
+       height = 15.51) 
 
-ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Mapas/Canal_Endemico_22_23_Provaveis.png", 
-      plot = RS22_22_23_GRAF_CANAL_ENDEMICO_PROVAVEIS,
-      width = 15.51,
-      height = 8.51)
+rm(RS22_22_23_GRAF_Autoctones,SE_HIST_PROV_GODOY, SE_HIST_PROV_CANDIDO, SE_HIST_NOT_SMO, SE_HIST_NOT_SJI, SE_HIST_NOT_RSI,  SE_HIST_PROV_CRUZMALTINA, SE_HIST_PROV_ARIRANHA, SE_HIST_PROV_ARAPUÃ,  SE_HIST_PROV_LUNARDELLI, SE_HIST_PROV_LIDIANÓPOLIS, SE_HIST_PROV_JARDIM, SE_HIST_PROV_IVAIPORA,  RS22_22_23_GRAF_Incidencia, RS22_Serie_Historica_GRAF_Hospitalizados, RS22_Serie_Historica_GRAF_Not_Conf, RS22_Serie_Historica_GRAF_Sorotipo, SE_HIST_PROV_MATO_RICO, SE_HIST_PROV_MANOEL_RIBAS, SE_HIST_PROV_SMO, RS22_22_23_GRAF_Histograma_Provaveis_01, RS22_22_23_GRAF_Histograma_Provaveis_02, RS22_22_23_GRAF_Hospitalizados, SE_HIST_PROV_SJI, SE_HIST_PROV_RSI, SE_HIST_PROV_RBI, SE_HIST_PROV_NOVA_TEBAS, RS22_22_23_GRAF_SINAIS, RS22_22_23_GRAF_Notificados, RS22_22_23_GRAF_Investigacao, RS22_22_23_GRAF_Descartados, RS22_22_23_GRAF_Histograma_Notificados_01, RS22_22_23_GRAF_Histograma_Notificados_02, SE_HIST_CONF_ARAPUÃ, SE_HIST_CONF_IVAIPORA, SE_HIST_CONF_JARDIM, SE_HIST_CONF_LIDIANÓPOLIS, SE_HIST_CONF_LUNARDELLI, SE_HIST_CONF_ARIRANHA, SE_HIST_CONF_CANDIDO, SE_HIST_CONF_CRUZMALTINA, SE_HIST_CONF_GODOY, RS22_22_23_GRAF_CE_Confirmados, RS22_22_23_GRAF_CE_Notificados, RS22_22_23_GRAF_CE_Provaveis, RS22_22_23_GRAF_Confirmados, RS22_22_23_GRAF_Histograma_Confirmados_01, RS22_22_23_GRAF_Histograma_Confirmados_02)
+
+warnings()
