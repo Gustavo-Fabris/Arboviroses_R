@@ -11,12 +11,12 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/Tabulacoe
 
 ###Definir fonte para ser utilizada nos gráficos (ggplot ira buscar o objeto Fonte para "labs(caption = Fonte...")###
 
-Fonte <- "SINAN. BASE DBF: Acesso em 08/12/2022"
+Fonte <- "SINAN. BASE DBF: Acesso em 21/12/2022"
 
 ###Objeto SE irá ser utilizado como auxiliar definidor de ponto, a partir do qual, os histogramas de casos Notificados/Confirmados/Prováveis
 ###nas últimas 10 semanas irá buscar os dados.###
 
-SE <- as.data.frame("49")
+SE <- as.data.frame("51")
 
 SE <- as.numeric(SE)
 
@@ -2455,8 +2455,19 @@ RS22_22_23_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1SC
 
 ###Upload tabelas a serem usadas nos Dashboards mmunicipais
 
-sheet_write(RS22_22_23_SE_Notificados, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Planilha")
+sheet_write(RS22_22_23_SE_Notificados, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Notificados")
 
+sheet_write(RS22_22_23_SE_Confirmados, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Confirmados")
+
+sheet_write(RS22_22_23_EXTRA, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "EXTRA")
+
+sheet_write(RS22_22_23_SINAIS_Notificados, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Sinais_Notificados")
+
+sheet_write(RS22_22_23_SINAIS_Confirmados, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Sinais_Confirmados")
+
+sheet_write(RS22_22_23_GERAL, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "GERAL")
+
+sheet_write(RS22_22_23_DOENCAS_PRE_EXISTENTES, ss = "https://docs.google.com/spreadsheets/d/1F8Yij8Opo5lcv9mlgVh-N37hEOrI9mnKw-mc2j4kQhk/edit#gid=0", sheet = "Doencas_Pre_Existentes")
 
 ###Criando tabela Geral Resumida para utilização no Informe###
 
@@ -2803,7 +2814,7 @@ RS22_22_23_GRAF_Incidencia <- ggplot (RS22_22_23_GERAL,
   labs(caption = Fonte, 
        x = "Municípios",
        y = "Número de Casos",
-       title = "INCIDÊNCIA/MUNICÍPIO - 2022/23") +
+       title = "INCIDÊNCIA/MUNICÍPIO (CASOS AUTÓCTONES) - 2022/23") +
   theme( panel.grid.major = element_line(color = "#C0C0C0"),
          panel.grid.minor = element_blank(),
          panel.background = element_rect(fill = "#F5F5F5"),
@@ -4995,7 +5006,7 @@ SE_HIST_PROV_ARAPUÃ <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Arapuã),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5016,7 +5027,7 @@ SE_HIST_PROV_ARIRANHA <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Ariranha_do_Ivaí),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5037,7 +5048,7 @@ SE_HIST_PROV_CANDIDO <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Cândido_de_Abreu),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5058,7 +5069,7 @@ SE_HIST_PROV_CRUZMALTINA <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Cruzmaltina),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5079,7 +5090,7 @@ SE_HIST_PROV_GODOY <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Godoy_Moreira),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5100,7 +5111,7 @@ SE_HIST_PROV_IVAIPORA <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Ivaiporã),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5121,7 +5132,7 @@ SE_HIST_PROV_JARDIM <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Jardim_Alegre),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5142,7 +5153,7 @@ SE_HIST_PROV_LIDIANÓPOLIS <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Lidianópolis),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5165,7 +5176,7 @@ SE_HIST_PROV_LUNARDELLI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Lunardelli),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5186,7 +5197,7 @@ SE_HIST_PROV_MANOEL_RIBAS <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Manoel_Ribas),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5207,7 +5218,7 @@ SE_HIST_PROV_MATO_RICO <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Mato_Rico),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5228,7 +5239,7 @@ SE_HIST_PROV_NOVA_TEBAS <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Nova_Tebas),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5249,7 +5260,7 @@ SE_HIST_PROV_RBI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Rio_Branco_do_Ivaí),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5270,7 +5281,7 @@ SE_HIST_PROV_RSI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Rosário_do_Ivaí),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5291,7 +5302,7 @@ SE_HIST_PROV_SMO <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = Santa_Maria_do_Oeste),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5312,7 +5323,7 @@ SE_HIST_PROV_SJI <- ggplot (AUX_GRAF,
                                    colour = "#556B2F")) +
   geom_bar(stat = "identity",
            color = "black",
-           fill = "#98FB98") + 
+           fill = "#00CED1") + 
   geom_label(aes(label = São_João_do_Ivaí),
              alpha = 0.5,
              nudge_y = 0.01)
@@ -5526,6 +5537,82 @@ ggsave(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Graficos_Ma
        width = 12.51,
        height = 15.51) 
 
-rm(RS22_22_23_GRAF_Autoctones,SE_HIST_PROV_GODOY, SE_HIST_PROV_CANDIDO, SE_HIST_NOT_SMO, SE_HIST_NOT_SJI, SE_HIST_NOT_RSI,  SE_HIST_PROV_CRUZMALTINA, SE_HIST_PROV_ARIRANHA, SE_HIST_PROV_ARAPUÃ,  SE_HIST_PROV_LUNARDELLI, SE_HIST_PROV_LIDIANÓPOLIS, SE_HIST_PROV_JARDIM, SE_HIST_PROV_IVAIPORA,  RS22_22_23_GRAF_Incidencia, RS22_Serie_Historica_GRAF_Hospitalizados, RS22_Serie_Historica_GRAF_Not_Conf, RS22_Serie_Historica_GRAF_Sorotipo, SE_HIST_PROV_MATO_RICO, SE_HIST_PROV_MANOEL_RIBAS, SE_HIST_PROV_SMO, RS22_22_23_GRAF_Histograma_Provaveis_01, RS22_22_23_GRAF_Histograma_Provaveis_02, RS22_22_23_GRAF_Hospitalizados, SE_HIST_PROV_SJI, SE_HIST_PROV_RSI, SE_HIST_PROV_RBI, SE_HIST_PROV_NOVA_TEBAS, RS22_22_23_GRAF_SINAIS, RS22_22_23_GRAF_Notificados, RS22_22_23_GRAF_Investigacao, RS22_22_23_GRAF_Descartados, RS22_22_23_GRAF_Histograma_Notificados_01, RS22_22_23_GRAF_Histograma_Notificados_02, SE_HIST_CONF_ARAPUÃ, SE_HIST_CONF_IVAIPORA, SE_HIST_CONF_JARDIM, SE_HIST_CONF_LIDIANÓPOLIS, SE_HIST_CONF_LUNARDELLI, SE_HIST_CONF_ARIRANHA, SE_HIST_CONF_CANDIDO, SE_HIST_CONF_CRUZMALTINA, SE_HIST_CONF_GODOY, RS22_22_23_GRAF_CE_Confirmados, RS22_22_23_GRAF_CE_Notificados, RS22_22_23_GRAF_CE_Provaveis, RS22_22_23_GRAF_Confirmados, RS22_22_23_GRAF_Histograma_Confirmados_01, RS22_22_23_GRAF_Histograma_Confirmados_02)
+rm(RS22_22_23_GRAF_Autoctones, 
+   SE_HIST_PROV_GODOY, 
+   SE_HIST_NOT_ARAPUÃ, 
+   SE_HIST_NOT_GODOY, 
+   SE_HIST_CONF_MANOEL_RIBAS, 
+   RS22_22_23_INFORME_Pag_09, 
+   RS22_22_23_INFORME_Pag_05, 
+   RS22_22_23_INFORME_Pag_06, 
+   RS22_22_23_INFORME_Pag_08, 
+   RS22_22_23_INFORME_Pag_07, 
+   RS22_22_23_Resumida, 
+   RS22_22_23_INFORME_Pag_03, 
+   RS22_22_23_INFORME_Pag_04, 
+   SE_HIST_CONF_MATO_RICO, 
+   SE_HIST_CONF_RSI, 
+   SE_HIST_CONF_RBI, 
+   SE_HIST_CONF_NOVA_TEBAS, 
+   SE_HIST_NOT_IVAIPORA, 
+   SE_HIST_CONF_SMO, 
+   SE_HIST_CONF_SJI, 
+   SE_HIST_NOT_ARIRANHA, 
+   SE_HIST_NOT_CANDIDO, 
+   SE_HIST_NOT_CRUZMALTINA, 
+   SE_HIST_NOT_RBI, 
+   SE_HIST_NOT_NOVA_TEBAS, 
+   SE_HIST_NOT_MATO_RICO,  
+   SE_HIST_NOT_MANOEL_RIBAS, 
+   SE_HIST_NOT_LUNARDELLI, 
+   SE_HIST_NOT_LIDIANÓPOLIS, 
+   SE_HIST_NOT_JARDIM, 
+   SE_HIST_PROV_CANDIDO, 
+   SE_HIST_NOT_SMO, 
+   SE_HIST_NOT_SJI, 
+   SE_HIST_NOT_RSI,  
+   SE_HIST_PROV_CRUZMALTINA, 
+   SE_HIST_PROV_ARIRANHA, 
+   SE_HIST_PROV_ARAPUÃ,  
+   SE_HIST_PROV_LUNARDELLI, 
+   SE_HIST_PROV_LIDIANÓPOLIS, 
+   SE_HIST_PROV_JARDIM, 
+   SE_HIST_PROV_IVAIPORA,  
+   RS22_22_23_GRAF_Incidencia, 
+   RS22_Serie_Historica_GRAF_Hospitalizados, 
+   RS22_Serie_Historica_GRAF_Not_Conf, 
+   RS22_Serie_Historica_GRAF_Sorotipo, 
+   SE_HIST_PROV_MATO_RICO, 
+   SE_HIST_PROV_MANOEL_RIBAS, 
+   SE_HIST_PROV_SMO, 
+   RS22_22_23_GRAF_Histograma_Provaveis_01, 
+   RS22_22_23_GRAF_Histograma_Provaveis_02, 
+   RS22_22_23_GRAF_Hospitalizados, 
+   SE_HIST_PROV_SJI, 
+   SE_HIST_PROV_RSI, 
+   SE_HIST_PROV_RBI, 
+   SE_HIST_PROV_NOVA_TEBAS, 
+   RS22_22_23_GRAF_SINAIS, 
+   RS22_22_23_GRAF_Notificados, 
+   RS22_22_23_GRAF_Investigacao, 
+   RS22_22_23_GRAF_Descartados, 
+   RS22_22_23_GRAF_Histograma_Notificados_01, 
+   RS22_22_23_GRAF_Histograma_Notificados_02, 
+   SE_HIST_CONF_ARAPUÃ, 
+   SE_HIST_CONF_IVAIPORA, 
+   SE_HIST_CONF_JARDIM, 
+   SE_HIST_CONF_LIDIANÓPOLIS, 
+   SE_HIST_CONF_LUNARDELLI, 
+   SE_HIST_CONF_ARIRANHA, 
+   SE_HIST_CONF_CANDIDO, 
+   SE_HIST_CONF_CRUZMALTINA, 
+   SE_HIST_CONF_GODOY, 
+   RS22_22_23_GRAF_CE_Confirmados, 
+   RS22_22_23_GRAF_CE_Notificados, 
+   RS22_22_23_GRAF_CE_Provaveis, 
+   RS22_22_23_GRAF_Confirmados, 
+   RS22_22_23_GRAF_Histograma_Confirmados_01, 
+   RS22_22_23_GRAF_Histograma_Confirmados_02
+   )
 
 warnings()
